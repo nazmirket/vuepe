@@ -1,0 +1,43 @@
+import './editor.js'
+import './preview.js'
+
+import { getEditorById } from './helpers.js'
+import {
+   changeBackground,
+   getNonFunctionalPage,
+   getPreviewPage,
+   insert,
+   removeElement,
+} from './actions.js'
+
+import { reload as reloadEditor } from './editor.js'
+import { reload as reloadPreview } from './preview.js'
+
+function reload() {
+   reloadEditor()
+   reloadPreview()
+}
+
+function init() {
+   // append to the window
+   window.$pe = {
+      reload,
+      changeBackground,
+      getNonFunctionalPage,
+      getPreviewPage,
+      insert,
+      removeElement,
+      getEditorById,
+   }
+}
+
+export {
+   init,
+   changeBackground,
+   getNonFunctionalPage,
+   getPreviewPage,
+   insert,
+   removeElement,
+   reload,
+   getEditorById,
+}
