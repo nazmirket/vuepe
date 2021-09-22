@@ -1,3 +1,5 @@
+import VideoIcon from '../icons/video.svg'
+
 export function create(src) {
    const video = document.createElement('video')
    video.controls = true
@@ -9,7 +11,7 @@ export function create(src) {
 
    // create icon
    const videoIcon = document.createElement('img')
-   videoIcon.src = 'icons/video.svg'
+   videoIcon.src = VideoIcon
 
    // create link
    const link = document.createElement('a')

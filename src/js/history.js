@@ -1,6 +1,7 @@
 import { getEditor, registerClick, registerHover } from './helpers.js'
 import { init as initAudio } from './audio.js'
 import { init as initTextAreaElements } from './textarea.js'
+import { init as initDragDrop } from './drag-drop.js'
 import { openMenu, toggleToolbar } from './toolbar.js'
 import {
    deleteItem,
@@ -160,6 +161,9 @@ function refresh(editor) {
 
    // init text area elements
    initTextAreaElements()
+
+   // init drag and drop
+   initDragDrop()
 
    // element hover
    const { start, end } = hoverListeners

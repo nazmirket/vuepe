@@ -1,5 +1,8 @@
 import { queryParent } from './helpers.js'
 
+import AudioIcon from '../icons/audio.svg'
+import AudioActiveIcon from '../icons/audio-active.svg'
+
 // GLOBAL VARIABLE TO KEEP CURRENT AUDIO
 let active = null
 
@@ -16,7 +19,7 @@ export function create(src) {
    audio.appendChild(source.cloneNode(true))
    // create icon
    const audioIcon = document.createElement('img')
-   audioIcon.src = 'icons/audio.svg'
+   audioIcon.src = AudioIcon
    // create link
    const link = document.createElement('a')
    link.href = src
@@ -50,7 +53,7 @@ function play(event) {
       const icon = active.querySelector('img')
       audio.pause()
       audio.currentTime = 0
-      icon.src = 'icons/audio.svg'
+      icon.src = AudioIcon
    }
    // play
    if (active !== item) {
@@ -58,7 +61,7 @@ function play(event) {
       const audio = item.querySelector('audio')
       const icon = item.querySelector('img')
       audio.currentTime = 0
-      icon.src = 'icons/audio-active.svg'
+      icon.src = AudioActiveIcon
       audio.play()
       audio.addEventListener('ended', ended)
    } else {
@@ -71,7 +74,7 @@ function ended(event) {
    const current = queryParent(event.target, 'pe-element')
    const item = current.querySelector('.pe-item')
    const icon = item.querySelector('img')
-   icon.src = 'icons/audio.svg'
+   icon.src = AudioActiveIcon
    if (active === item) {
       active = null
    }

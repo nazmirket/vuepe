@@ -1,3 +1,8 @@
+// import icons
+import AlignLeftIcon from '../icons/align-left.svg'
+import AlignRightIcon from '../icons/align-right.svg'
+import AlignCenterIcon from '../icons/align-center.svg'
+
 // RGB TO HEX
 export function rgbToHex(rgb) {
    if (!rgb) {
@@ -199,6 +204,20 @@ export function resolveDropType(element) {
    if (element?.classList.contains('pe-text-material')) return 'text'
    if (element?.classList.contains('pe-audio-material')) return 'audio'
    if (element?.classList.contains('pe-video-material')) return 'video'
+}
+
+// RESOLVE ALIGN ICON
+export function resolveAlignIcon(alg) {
+   switch (alg) {
+      case 'right':
+         return AlignRightIcon
+      case 'left':
+         return AlignLeftIcon
+      case 'center':
+         return AlignCenterIcon
+      default:
+         return AlignLeftIcon
+   }
 }
 
 // COPY ATTR

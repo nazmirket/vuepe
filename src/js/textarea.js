@@ -1,4 +1,4 @@
-import { registerInput, rgbToHex } from './helpers.js'
+import { registerInput, rgbToHex, resolveAlignIcon } from './helpers.js'
 
 import { families, sizes } from './fonts.js'
 
@@ -25,11 +25,11 @@ export function init() {
       text.readOnly = true
    }
    // sync value with content attr
-   document.querySelectorAll('.reactive-text.pe-item').forEach(function (ta) {
+   document.querySelectorAll('.reactive-text.pe-item').forEach(function(ta) {
       ta.value = ta.getAttribute('content')
    })
    // sync value with content attr
-   registerInput('.reactive-text.pe-item', function (event) {
+   registerInput('.reactive-text.pe-item', function(event) {
       const ta = event.target
       ta.setAttribute('content', ta.value)
    })
@@ -71,7 +71,7 @@ export function load(editor) {
    const alignSelected = editor.querySelector(
       '.pe-change-align .pe-align-selected'
    )
-   alignSelected.src = `icons/align-${text.style.textAlign || 'left'}.svg`
+   alignSelected.src = resolveAlignIcon(text.style.textAlign)
 
    // load alpha
    const alphaSlider = editor.querySelector('.pe-alpha-slider')

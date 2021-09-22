@@ -1,4 +1,5 @@
 export const families = [
+   'Open Sans Bold',
    'Abril Fatface',
    'Anton',
    'Bevan',
@@ -9,7 +10,6 @@ export const families = [
    'Josefin Sans Bold',
    'Lobster',
    'Open Sans Regular',
-   'Open Sans Bold',
    'Paytone One',
 ]
 

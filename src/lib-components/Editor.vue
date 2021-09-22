@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="pe-editor pe-size-600x600">
+  <div :id="id" :class="`pe-editor pe-size-${options.size}`">
     <!--TOOLBAR-->
     <div class="pe-toolbar">
       <!--OPTIONS TOOLBAR-->
@@ -142,19 +142,23 @@ export default {
       type: String,
       required: true,
     },
+    options: {
+      type: Object,
+      default: () => {
+        return {
+          size: "1024x768", //
+        };
+      },
+    },
   },
   mounted() {
     init();
     reload();
 
-    insert(
-      getEditorById(this.id),
-      "image",
-      "https://w7.pngwing.com/pngs/208/269/png-transparent-youtube-play-button-computer-icons-youtube-youtube-logo-angle-rectangle-logo.png"
-    );
+    // insert(getEditorById(this.id), "text", "Lorem Ipsum");
 
-    reload();
-    console.log(window.editor);
+    // reload();
+    console.log(window.$pe);
   },
 };
 </script>

@@ -1,4 +1,4 @@
-import { queryParent, getEditor } from './helpers.js'
+import { queryParent, getEditor, resolveAlignIcon } from './helpers.js'
 import { markState } from './history.js'
 
 function toggle(event) {
@@ -11,21 +11,21 @@ function toggle(event) {
 function right(event) {
    const current = queryParent(event.target, 'pe-change-align')
    const selected = current.querySelector('.pe-align-selected')
-   selected.src = 'icons/align-right.svg'
+   selected.src = resolveAlignIcon('right')
    alignText(event, 'right')
 }
 
 function left(event) {
    const current = queryParent(event.target, 'pe-change-align')
    const selected = current.querySelector('.pe-align-selected')
-   selected.src = 'icons/align-left.svg'
+   selected.src = resolveAlignIcon('left')
    alignText(event, 'left')
 }
 
 function center(event) {
    const current = queryParent(event.target, 'pe-change-align')
    const selected = current.querySelector('.pe-align-selected')
-   selected.src = 'icons/align-center.svg'
+   selected.src = resolveAlignIcon('center')
    alignText(event, 'center')
 }
 

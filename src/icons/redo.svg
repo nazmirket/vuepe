@@ -13,11 +13,12 @@
    id="Capa_1"
    x="0px"
    y="0px"
-   viewBox="0 0 512.011 512.011"
-   style="enable-background:new 0 0 512.011 512.011;"
+   viewBox="0 0 24.000001 24.000001"
    xml:space="preserve"
    sodipodi:docname="redo.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"><metadata
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="24"
+   height="24"><metadata
    id="metadata43"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
@@ -34,67 +35,85 @@
    inkscape:window-height="1016"
    id="namedview39"
    showgrid="false"
-   inkscape:zoom="0.46092761"
-   inkscape:cx="256.00549"
-   inkscape:cy="256.00549"
+   inkscape:zoom="7.3748417"
+   inkscape:cx="13.422412"
+   inkscape:cy="30.09101"
    inkscape:window-x="0"
    inkscape:window-y="27"
    inkscape:window-maximized="1"
    inkscape:current-layer="Capa_1" />
 <g
    id="g6"
-   transform="matrix(-1,0,0,1,512.01056,0)">
+   transform="matrix(-0.04054615,0,0,0.04054615,22.362777,1.6382531)"
+   style="fill:#3f494d;fill-opacity:1;stroke-width:24.66325378">
 	<g
-   id="g4">
+   id="g4"
+   style="fill:#3f494d;fill-opacity:1;stroke-width:24.66325378">
 		<path
    d="M 511.136,286.255 C 502.08,194.863 419.84,128.015 328,128.015 H 192 v -80 c 0,-6.144 -3.52,-11.744 -9.056,-14.432 -5.568,-2.656 -12.128,-1.952 -16.928,1.92 l -160,128 C 2.208,166.575 0,171.151 0,176.015 c 0,4.864 2.208,9.44 5.984,12.512 l 160,128 c 2.912,2.304 6.464,3.488 10.016,3.488 2.368,0 4.736,-0.512 6.944,-1.568 5.536,-2.688 9.056,-8.288 9.056,-14.432 v -80 h 139.392 c 41.856,0 80,30.08 84.192,71.712 4.832,47.872 -32.704,88.288 -79.584,88.288 H 208 c -8.832,0 -16,7.168 -16,16 v 64 c 0,8.832 7.168,16 16,16 h 128 c 102.816,0 185.472,-88.864 175.136,-193.76 z"
    id="path2"
-   inkscape:connector-curvature="0" />
+   inkscape:connector-curvature="0"
+   style="fill:#3f494d;fill-opacity:1;stroke-width:24.66325378" />
 	</g>
 </g>
 <g
-   id="g8">
+   id="g8"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g10">
+   id="g10"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g12">
+   id="g12"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g14">
+   id="g14"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g16">
+   id="g16"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g18">
+   id="g18"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g20">
+   id="g20"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g22">
+   id="g22"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g24">
+   id="g24"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g26">
+   id="g26"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g28">
+   id="g28"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g30">
+   id="g30"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g32">
+   id="g32"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g34">
+   id="g34"
+   transform="translate(0,-488.01099)">
 </g>
 <g
-   id="g36">
+   id="g36"
+   transform="translate(0,-488.01099)">
 </g>
 </svg>

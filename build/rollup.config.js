@@ -11,6 +11,7 @@ import { terser } from 'rollup-plugin-terser'
 import minimist from 'minimist'
 import scss from 'rollup-plugin-scss'
 import svg from 'rollup-plugin-vue-inline-svg'
+import copy from 'rollup-plugin-copy'
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs
@@ -185,6 +186,9 @@ buildFormats.push({
          output: 'dist/editor.min.css',
          outputStyle: 'compressed',
          failOnError: true,
+      }),
+      copy({
+         targets: [{ src: 'src/fonts/*', dest: 'dist/fonts/' }],
       }),
    ],
 })

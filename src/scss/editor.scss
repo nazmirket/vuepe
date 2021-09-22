@@ -35,7 +35,7 @@
 .pe-drop-item {
    transition: 0.4s;
    border: $material-br;
-   cursor: grab;
+   cursor: pointer;
 }
 .pe-active-drop-item {
    transition: 0.4s;
@@ -48,6 +48,8 @@
    display: flex;
    align-items: center;
    height: 50px;
+   padding-bottom: 3px;
+   border-bottom: $default-br;
 }
 
 // OPTIONS TOOLBAR
@@ -57,12 +59,12 @@
    justify-content: center;
    align-items: center;
    z-index: 999999999999;
-   height: 30px;
+   height: 35px;
 
    // TOOL
    .pe-tool {
       padding: 0 4px;
-      height: 30px;
+      height: 35px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -81,7 +83,7 @@
       img {
          cursor: pointer;
          border-radius: 6px;
-         width: 30px;
+         width: 35px;
          height: 100%;
          background-color: transparent;
       }
@@ -89,11 +91,12 @@
 
    // FONT SELECTOR
    .pe-change-font select {
-      width: 150px;
-      height: 31px;
+      color: $icon-color;
+      width: 170px;
+      height: 35px;
       border: $default-br;
       padding: 5px 8px;
-      border-radius: 8px;
+      border-radius: 12px;
       -webkit-appearance: none;
       &:focus {
          outline: none;
@@ -102,11 +105,12 @@
 
    // FONT SIZE SELECTOR
    .pe-change-font-size select {
+      color: $icon-color;
       width: 60px;
-      height: 31px;
+      height: 35px;
       border: $default-br;
       padding: 5px 8px;
-      border-radius: 7px;
+      border-radius: 12px;
       margin-right: 4px;
       -webkit-appearance: none;
       &:focus {
@@ -116,40 +120,37 @@
 
    // ALIGN SELECTOR
    .pe-change-align {
-      border-radius: 6px;
       cursor: pointer;
       position: relative;
       padding: 0;
-      width: 32px;
-      margin-right: 8px;
+      width: 40px;
+      margin-right: 2px;
       .pe-align-selected {
          &:hover {
             background-color: $toggle-bg-active;
          }
-         width: 24px;
+         width: auto;
          padding: 3px 4px;
-         border-radius: 5px;
       }
       .pe-align-menu {
+         width: 40px;
+         padding: 0;
          overflow: hidden;
          background-color: white;
          display: flex;
          flex-direction: column;
-         top: 26px;
+         top: 0;
          left: 0;
          right: 0;
          position: absolute;
          align-items: center;
          outline: $default-br;
-         border-bottom-left-radius: 6px;
-         border-bottom-right-radius: 6px;
          img {
             &:hover {
                background-color: $toggle-bg-active;
             }
-            width: 24px;
-            padding: 2px 4px;
-            height: 30px;
+            width: auto;
+            padding: 3px 4px;
          }
       }
    }
@@ -158,26 +159,26 @@
    .pe-change-alpha {
       position: relative;
       .pe-alpha-icon {
-         width: 32px;
-         height: 28px;
+         width: 35px;
+         height: 35px;
          cursor: pointer;
          border-radius: 6px;
          display: flex;
          justify-content: center;
          img {
-            width: 20px;
+            width: 30px;
          }
       }
 
       .pe-alpha-menu {
          position: absolute;
-         top: 32px;
+         top: 35px;
          left: 0;
          background-color: white;
          border: $default-br;
-         border-radius: 8px;
+         border-radius: 12px;
          display: flex;
-         height: 27px;
+         height: 35px;
          width: 160px;
          align-items: center;
          justify-content: center;
@@ -213,12 +214,10 @@
 
    // COLOR SELECTOR
    .pe-change-color {
-      width: 28px;
-      height: 30px;
+      width: 40px;
+      height: 35px;
       cursor: pointer;
-      border-radius: 6px;
       background-color: white;
-      margin-right: 5px;
       position: relative;
       .pe-color-area {
          width: 100%;
@@ -228,11 +227,12 @@
          align-items: center;
          justify-content: center;
          img {
-            width: 20px;
+            width: 22px;
          }
          .pe-color-indicator {
-            width: 24px;
-            height: 4px;
+            background-color: red;
+            width: 28px;
+            height: 6px;
             border-radius: 3px;
          }
       }
@@ -268,7 +268,7 @@
          height: 100%;
       }
       img {
-         width: 22px;
+         width: auto;
       }
    }
 }
@@ -370,14 +370,14 @@
       background-color: $controls-bg;
       border: $controls-br;
       border-radius: 12px;
-      padding: 5px;
+      padding: 2px;
       z-index: 99999999;
       display: flex;
       justify-content: center;
       .pe-delete-handle,
       .pe-rotate-handle,
       .pe-move-handle {
-         margin: 0 5px;
+         margin: 0 2px;
          cursor: pointer;
          pointer-events: auto;
       }

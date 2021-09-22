@@ -8,6 +8,8 @@ import { create as createVideo } from './video.js'
 
 import { setReadOnly } from './controller.js'
 
+import AudioIcon from '../icons/audio.svg'
+
 // GET PREVIEW PAGE
 export function getPreviewPage(editor) {
    // get page
@@ -33,7 +35,7 @@ export function getNonFunctionalPage(editor) {
       audio.classList.remove('pe-hide-links')
       const item = audio.querySelector('.pe-item')
       const icon = item.querySelector('img')
-      icon.src = 'icons/audio.svg'
+      icon.src = AudioIcon
    })
    // place video links
    temp.querySelectorAll('.pe-element.pe-is-element-video').forEach((el) => {

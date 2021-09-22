@@ -20,6 +20,7 @@ const tools = {
       'flip-front',
    ],
    audio: ['flip-back', 'flip-front'],
+   video: ['flip-back', 'flip-front', 'change-alpha'],
 }
 
 import { markState } from './history.js'
@@ -291,7 +292,7 @@ export function hideAll(editor) {
    // find toolbar
    const toolbar = editor.querySelector('.pe-options-toolbar')
    // set display none to all toolbar components
-   toolbar?.querySelectorAll('.pe-tool').forEach(function (el) {
+   toolbar?.querySelectorAll('.pe-tool').forEach(function(el) {
       el.style.display = 'none'
    })
 }
@@ -301,7 +302,7 @@ export function deActivateAll(editor) {
    // get page
    const page = editor.querySelector('.pe-page')
    // deactivate all
-   page.querySelectorAll('.pe-element').forEach(function (e) {
+   page.querySelectorAll('.pe-element').forEach(function(e) {
       e.classList.remove('pe-is-active')
    })
 }
