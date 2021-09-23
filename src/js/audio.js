@@ -81,4 +81,17 @@ function ended(event) {
 }
 
 // LOAD FUNCTION
-export function load(editor) {}
+export function load(editor) {
+   // find element
+   const el = editor.querySelector('.pe-element.pe-is-active')
+
+   // find item
+   const audio = el.querySelector('.pe-item')
+
+   // load alpha
+   const alphaSlider = editor.querySelector('.pe-alpha-slider')
+   const alpha = isNaN(parseFloat(audio.style.opacity))
+      ? 1
+      : parseFloat(audio.style.opacity)
+   alphaSlider.value = alpha * 100
+}

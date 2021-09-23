@@ -36,6 +36,7 @@ import {
 } from './helpers.js'
 
 import { load as loadAudio } from './audio.js'
+import { load as loadVideo } from './video.js'
 import { load as loadText, updateFontColorIndicator } from './textarea.js'
 import { load as loadImage } from './image.js'
 
@@ -269,7 +270,7 @@ export function openMenu(editor) {
    hideAll(editor)
    // find element
    const el = editor.querySelector('.pe-element.pe-is-active')
-   // if no element is active return
+   // return if no element
    if (!el) {
       return
    }
@@ -320,5 +321,9 @@ function loadToolbar(editor, type) {
    // LOAD AUDIO TOOLBAR
    if (type === 'audio') {
       loadAudio(editor)
+   }
+   // LOAD VIDEO TOOLBAR
+   if (type === 'video') {
+      loadVideo(editor)
    }
 }

@@ -146,7 +146,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          size: "1024x768", //
+          size: "1024x768",
         };
       },
     },

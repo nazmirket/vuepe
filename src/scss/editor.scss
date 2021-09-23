@@ -6,15 +6,18 @@
 
 // EDITOR
 .pe-editor {
+   width: 100%;
    display: flex;
    flex-direction: column;
    align-items: center;
+   border: $default-br;
+   background: #d0dce221;
 }
 
 // PAGE
 .pe-editor .pe-page {
    padding: 10px;
-   margin-top: 1rem;
+   margin: 20px 0;
    display: block;
    border: $page-br;
    border-radius: 0px;
@@ -36,14 +39,22 @@
    transition: 0.4s;
    border: $material-br;
    cursor: pointer;
+   border-radius: 10px;
+   padding: 10px;
 }
 .pe-active-drop-item {
    transition: 0.4s;
    border: $material-br-active;
 }
+.pe-audio-material {
+   display: flex;
+   width: 230px;
+   height: 70px;
+}
 
 // TOOLBAR
 .pe-toolbar {
+   background: white;
    width: 100%;
    display: flex;
    align-items: center;
@@ -63,9 +74,9 @@
 
    // TOOL
    .pe-tool {
+      display: none;
       padding: 0 4px;
       height: 35px;
-      display: flex;
       justify-content: center;
       align-items: center;
    }
@@ -296,12 +307,16 @@
          width: 32px;
          height: 32px;
          background: none;
-         border: $default-br;
+         border: 1px solid transparent;
          border-radius: 100%;
          cursor: pointer;
+         &:hover {
+            border: $default-br;
+            transition: 0.4s;
+         }
       }
       img {
-         width: 16px;
+         width: 100%;
       }
 
       &.pe-is-disabled {

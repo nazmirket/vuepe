@@ -35,4 +35,18 @@ export function create(src) {
 
 export function init() {}
 
-export function load() {}
+// LOAD FUNCTION
+export function load(editor) {
+   // find element
+   const el = editor.querySelector('.pe-element.pe-is-active')
+
+   // find item
+   const video = el.querySelector('.pe-item')
+
+   // load alpha
+   const alphaSlider = editor.querySelector('.pe-alpha-slider')
+   const alpha = isNaN(parseFloat(video.style.opacity))
+      ? 1
+      : parseFloat(video.style.opacity)
+   alphaSlider.value = alpha * 100
+}
