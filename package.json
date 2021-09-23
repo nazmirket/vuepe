@@ -1,7 +1,7 @@
 {
    "name": "vue-page-editor",
    "author": "nazmiyilmaz",
-   "version": "1.0.0",
+   "version": "1.0.5",
    "description": "A multi purpose page editor plugin for Vue2",
    "main": "dist/vue-page-editor.ssr.js",
    "browser": "dist/vue-page-editor.esm.js",
@@ -9,7 +9,8 @@
    "unpkg": "dist/vue-page-editor.min.js",
    "files": [
       "dist/*",
-      "src/**/*.vue"
+      "src/**/*.vue",
+      "public/*"
    ],
    "sideEffects": false,
    "scripts": {
@@ -20,7 +21,7 @@
       "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
       "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
       "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
-      "apply": "npm run build:es && npm run test"
+      "apply": "npm run build && npm run test"
    },
    "dependencies": {
       "@interactjs/actions": "^1.10.11",

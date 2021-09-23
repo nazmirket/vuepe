@@ -7,7 +7,6 @@ import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-babel'
-import { terser } from 'rollup-plugin-terser'
 import minimist from 'minimist'
 import scss from 'rollup-plugin-scss'
 import svg from 'rollup-plugin-vue-inline-svg'
@@ -111,11 +110,6 @@ if (!argv.format || argv.format === 'es') {
                ],
             ],
          }),
-         terser({
-            output: {
-               ecma: 5,
-            },
-         }),
       ],
    }
    buildFormats.push(esConfig)
@@ -136,6 +130,7 @@ if (!argv.format || argv.format === 'cjs') {
       plugins: [
          replace(baseConfig.plugins.replace),
          ...baseConfig.plugins.preVue,
+         svg(),
          vue({
             ...baseConfig.plugins.vue,
             template: {
@@ -165,14 +160,10 @@ if (!argv.format || argv.format === 'iife') {
       plugins: [
          replace(baseConfig.plugins.replace),
          ...baseConfig.plugins.preVue,
+         svg(),
          vue(baseConfig.plugins.vue),
          ...baseConfig.plugins.postVue,
          babel(baseConfig.plugins.babel),
-         terser({
-            output: {
-               ecma: 5,
-            },
-         }),
       ],
    }
    buildFormats.push(unpkgConfig)
