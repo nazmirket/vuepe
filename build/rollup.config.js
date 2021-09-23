@@ -9,8 +9,8 @@ import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-babel'
 import minimist from 'minimist'
 import scss from 'rollup-plugin-scss'
-import svg from 'rollup-plugin-vue-inline-svg'
 import copy from 'rollup-plugin-copy'
+import url from '@rollup/plugin-url'
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs
@@ -95,7 +95,7 @@ if (!argv.format || argv.format === 'es') {
       plugins: [
          replace(baseConfig.plugins.replace),
          ...baseConfig.plugins.preVue,
-         svg(),
+         url(),
          vue(baseConfig.plugins.vue),
          ...baseConfig.plugins.postVue,
          babel({
@@ -130,7 +130,7 @@ if (!argv.format || argv.format === 'cjs') {
       plugins: [
          replace(baseConfig.plugins.replace),
          ...baseConfig.plugins.preVue,
-         svg(),
+         url(),
          vue({
             ...baseConfig.plugins.vue,
             template: {
@@ -160,7 +160,7 @@ if (!argv.format || argv.format === 'iife') {
       plugins: [
          replace(baseConfig.plugins.replace),
          ...baseConfig.plugins.preVue,
-         svg(),
+         url(),
          vue(baseConfig.plugins.vue),
          ...baseConfig.plugins.postVue,
          babel(baseConfig.plugins.babel),
