@@ -68,47 +68,70 @@ export const rotateListeners = {
 
 // DRAG ELEMENT
 function drag(event, target) {
+   // get page rectangle
+   const editor = getEditor(target)
+   const page = editor?.querySelector('.pe-page')
+   const pageRect = page.getBoundingClientRect()
+
+   // previous position
+   let left = parseFloat(target?.getAttribute('data-left')) || 0
+   let top = parseFloat(target?.getAttribute('data-top')) || 0
+
    // find position
-   const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-   const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+   left += (event.dx / pageRect.width) * 100
+   top += (event.dy / pageRect.height) * 100
 
    // move
-   target.style.transform = replaceTranslate(target.style.transform, x, y)
+   target.style.left = `${left}%`
+   target.style.top = `${top}%`
 
    // update data-x data-y
-   target.setAttribute('data-x', x)
-   target.setAttribute('data-y', y)
+   target.setAttribute('data-left', left)
+   target.setAttribute('data-top', top)
 }
 
 // RESIZE ELEMENT
 function resize(event, target) {
-   // get rect
-   const rect = event.rect
+   // get page rectangle
+   const editor = getEditor(event.target)
+   const page = editor?.querySelector('.pe-page')
+   const pageRect = page?.getBoundingClientRect()
+
+   // get element rect
+   const elRect = event.rect
+
+   // get delta rectangle
    const deltaRect = event.deltaRect
 
+   // get changes
+   const W = (elRect.width / pageRect.width) * 100
+   const H = (elRect.height / pageRect.height) * 100
+
    // set size
-   target.style.width = `${rect.width}px`
-   target.style.height = `${rect.height}px`
+   target.style.width = `${W}%`
+   target.style.height = `${H}%`
 
    // get position
-   let x = parseFloat(target.getAttribute('data-x')) || 0
-   let y = parseFloat(target.getAttribute('data-y')) || 0
+   let left = parseFloat(target?.getAttribute('data-left')) || 0
+   let top = parseFloat(target?.getAttribute('data-top')) || 0
 
    // move
-   x += deltaRect.left
-   y += deltaRect.top
-   target.style.transform = replaceTranslate(target.style.transform, x, y)
+   left += (deltaRect.left / pageRect.width) * 100
+   top += (deltaRect.top / pageRect.height) * 100
+
+   target.style.left = `${left}%`
+   target.style.top = `${top}%`
 
    // set data-x data-y
-   target.setAttribute('data-x', x)
-   target.setAttribute('data-y', y)
+   target.setAttribute('data-left', left)
+   target.setAttribute('data-top', top)
 }
 
 // ROTATE ELEMENT
 function rotate(angle, target) {
    // find position
-   let x = parseFloat(target.getAttribute('data-x')) || 0
-   let y = parseFloat(target.getAttribute('data-y')) || 0
+   let x = parseFloat(target?.getAttribute('data-x')) || 0
+   let y = parseFloat(target?.getAttribute('data-y')) || 0
 
    // rotate
    target.style.transform = replaceRotate(

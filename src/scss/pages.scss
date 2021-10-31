@@ -1,13 +1,48 @@
-// Page size options include following ratios and sizes
-$sizes: (1024 768), (768 1024), (800 600), (600 800), (800 400), (400 800),
-   (800 800), (600 600);
+// 1:1
+.pe-ratio-1by1 {
+   .pe-page {
+      aspect-ratio: 1/1 !important;
+   }
+}
 
-// loop to dynamically create classes for page sizes
-@each $size in $sizes {
-   .pe-size-#{nth($size,1)}x#{nth($size,2)} {
-      .pe-page {
-         width: #{nth($size, 1)}px;
-         height: #{nth($size, 2)}px;
-      }
+// 4:3
+.pe-ratio-4by3 {
+   .pe-page {
+      aspect-ratio: 4/3 !important;
+   }
+}
+
+// 3:4
+.pe-ratio-3by4 {
+   .pe-page {
+      aspect-ratio: 3/4 !important;
+   }
+}
+
+// 16:9
+.pe-ratio-16by9 {
+   .pe-page {
+      aspect-ratio: 16/9 !important;
+   }
+}
+
+// 9:16
+.pe-ratio-9by16 {
+   .pe-page {
+      aspect-ratio: 9/16 !important;
+   }
+}
+
+// 16:10
+.pe-ratio-16by10 {
+   .pe-page {
+      aspect-ratio: 16/10 !important;
+   }
+}
+
+// 10:16
+.pe-ratio-10by16 {
+   .pe-page {
+      aspect-ratio: 10/16 !important;
    }
 }

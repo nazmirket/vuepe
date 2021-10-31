@@ -110,17 +110,31 @@ export function removeElement(editor, element) {
 }
 
 // INSERT VIDEO
-function insertVideo(editor, src) {
+function insertVideo(editor, src, styles = {}, classes = []) {
    // create
    const video = createVideo(src)
+
+   // set styles
+   Object.keys(styles).forEach((k) => (video.style[k] = styles[k]))
+
+   // set classes
+   classes.forEach((c) => video.classList.add(c))
+
    // insert to the page
    insertItem(editor, video, 'video', ['pe-hide-links'])
 }
 
 // INSERT AUDIO
-function insertAudio(editor, src) {
+function insertAudio(editor, src, styles = {}, classes = []) {
    // create
    const audio = createAudio(src)
+
+   // set styles
+   Object.keys(styles).forEach((k) => (audio.style[k] = styles[k]))
+
+   // set classes
+   classes.forEach((c) => audio.classList.add(c))
+
    // insert to the page
    insertItem(editor, audio, 'audio', ['pe-hide-links'])
 }
@@ -141,9 +155,16 @@ function insertText(editor, value, styles = {}, classes = []) {
 }
 
 // INSERT IMAGE
-function insertImage(editor, src) {
+function insertImage(editor, src, styles = {}, classes = []) {
    // create image
    const image = createImage(src)
+
+   // set styles
+   Object.keys(styles).forEach((k) => (image.style[k] = styles[k]))
+
+   // set classes
+   classes.forEach((c) => image.classList.add(c))
+
    // insert to the page
    insertItem(editor, image, 'image')
 }

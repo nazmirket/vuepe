@@ -5,7 +5,6 @@ import {
    setActiveEditor,
 } from './helpers.js'
 import { init as initAudio } from './audio.js'
-import { init as initTextAreaElements } from './textarea.js'
 import { init as initMaterials } from './materials.js'
 import { openMenu, toggleToolbar } from './toolbar.js'
 import {
@@ -161,9 +160,6 @@ function refresh(editor) {
 
    // init audio
    initAudio()
-
-   // init text area elements
-   initTextAreaElements()
 
    // init materials
    initMaterials()

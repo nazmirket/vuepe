@@ -12,8 +12,6 @@
 }
 
 .pe-preview .pe-page {
-  padding: 10px;
-  margin-top: 1rem;
   display: block;
   border: 1px solid #e2e6eb;
   border-radius: 12px;
@@ -26,21 +24,13 @@
 }
 
 .pe-element {
-  border: 3px solid transparent;
   position: absolute;
+  border: 3px solid transparent;
   -ms-touch-action: none;
       touch-action: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: block;
 }
 
 .pe-element .pe-item {
@@ -49,12 +39,11 @@
   width: 100%;
   height: 100%;
   background: none;
-  padding: 1rem;
   cursor: default;
 }
 
 .pe-element.pe-is-element-image {
-  width: 300px;
+  width: 30%;
 }
 
 .pe-element.pe-is-element-image .pe-item {
@@ -62,16 +51,10 @@
 }
 
 .pe-element.pe-is-element-text {
-  width: 300px;
-}
-
-.pe-element.pe-is-element-text .pe-item {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.pe-element.pe-is-element-text .pe-item::-webkit-scrollbar {
-  display: none;
+  width: 40%;
+  height: auto;
+  display: block !important;
+  font-size: 1.2vmin;
 }
 
 .pe-element.pe-is-element-text .pe-item:focus {
@@ -134,7 +117,7 @@
 }
 
 .pe-element.pe-is-element-video {
-  width: 300px;
+  width: 30%;
 }
 
 .pe-element.pe-is-element-video .pe-item {

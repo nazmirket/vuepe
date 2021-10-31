@@ -1,39 +1,29 @@
-import { registerInput, rgbToHex, resolveAlignIcon } from './helpers.js'
+import { rgbToHex, resolveAlignIcon } from './helpers.js'
 
 import { families, sizes } from './fonts.js'
 
 export function create(value) {
-   const text = document.createElement('textarea')
-   text.value = value
-   text.setAttribute('content', value)
-   text.classList.add('reactive-text')
+   const svg = document.createElement('svg')
+   svg.setAttribute('viewBox', '0 0 56 18')
+   svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+
+   const text = document.createElement('text')
+   text.innerText = value
+   text.setAttribute('x', '0')
+   text.setAttribute('y', '15')
    text.style.fontFamily = families[0]
    text.style.fontSize = `${sizes.default}${sizes.unit}`
+   text.contentEditable = true
    text.spellcheck = false
-   return text.cloneNode(true)
+   text.style.width = '100%'
+   text.style.height = '100%'
+
+   svg.appendChild(text.cloneNode(true))
+   return svg.cloneNode(true)
 }
 
 // INIT
-export function init() {
-   // find texts
-   const texts = document.querySelectorAll(
-      '.pe-preview .pe-element.pe-is-element-text .pe-item'
-   )
-   // load slots
-   for (const text of texts) {
-      text.innerText = text.getAttribute('content')
-      text.readOnly = true
-   }
-   // sync value with content attr
-   document.querySelectorAll('.reactive-text.pe-item').forEach(function(ta) {
-      ta.value = ta.getAttribute('content')
-   })
-   // sync value with content attr
-   registerInput('.reactive-text.pe-item', function(event) {
-      const ta = event.target
-      ta.setAttribute('content', ta.value)
-   })
-}
+export function init() {}
 
 export function load(editor) {
    // find element

@@ -10,19 +10,19 @@ import { hideAll as hideToolbar } from './toolbar.js'
 const options = {
    image: {
       thumbs: true,
-      controls: { move: true, del: true, rotate: true },
+      rotate: true,
    },
    text: {
       thumbs: true,
-      controls: { move: true, del: true, rotate: true },
+      rotate: true,
    },
    audio: {
       thumbs: false,
-      controls: { move: true, del: true, rotate: false },
+      rotate: false,
    },
    video: {
       thumbs: true,
-      controls: { move: true, del: true, rotate: false },
+      rotate: false,
    },
 }
 
@@ -40,18 +40,10 @@ export function locate(editor) {
    const controller = editor.querySelector('.pe-controller')
 
    // resolve options
-   const { thumbs, controls } = options[type]
-   const { move, del, rotate } = controls
-
-   // set move
-   editor.querySelector('.pe-move-handle').style.display = move
-      ? 'unset'
-      : 'none'
+   const { thumbs, rotate = false } = options[type]
 
    // set delete
-   editor.querySelector('.pe-delete-handle').style.display = del
-      ? 'unset'
-      : 'none'
+   editor.querySelector('.pe-delete-handle').style.display = 'unset'
 
    // set rotate
    editor.querySelector('.pe-rotate-handle').style.display = rotate
@@ -73,11 +65,12 @@ export function locate(editor) {
    controller.style['z-index'] = 99999999
 
    // copy style
-   controller.style.transform = el?.style?.transform
    controller.style.width = el?.style?.width || `${rect.width}px`
    controller.style.height = el?.style?.height || `${rect.height}px`
-   copyAttribute(el, controller, 'data-x', 0)
-   copyAttribute(el, controller, 'data-y', 0)
+   controller.style.top = el?.style?.top || '0%'
+   controller.style.left = el?.style?.left || '0%'
+   copyAttribute(el, controller, 'data-left', 0)
+   copyAttribute(el, controller, 'data-top', 0)
 }
 
 export function hide(editor) {
@@ -105,11 +98,11 @@ export function deleteItem(event) {
 
 // HOVER LISTENERS
 export const hoverListeners = {
-   start: function (event) {
+   start: function(event) {
       const el = queryParent(event.target, 'pe-element')
       el.classList.add('pe-is-hovered')
    },
-   end: function (event) {
+   end: function(event) {
       const el = queryParent(event.target, 'pe-element')
       el.classList.remove('pe-is-hovered')
    },

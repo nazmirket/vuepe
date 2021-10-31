@@ -22,20 +22,20 @@
 
 // PAGE WRAPPER
 .pe-editor .pe-page-wrapper {
-   display: block;
+   display: grid;
    overflow: auto;
    position: absolute;
    bottom: 0px;
    right: 0px;
    left: 0px;
    top: 54px;
-   padding: 30px;
+   padding: 40px;
 }
 
 // PAGE
 .pe-editor .pe-page {
    margin: auto;
-   padding: 10px;
+   width: 100%;
    display: block;
    border: $page-br;
    background-color: $page-bg;
@@ -387,75 +387,77 @@
    position: absolute;
    display: none;
    border: $controller-br;
-   width: 300px;
    pointer-events: none;
-   justify-content: center;
+   font-size: 1.5vw;
    &.pe-is-active {
-      display: flex;
+      display: block;
    }
    &.pe-is-resizable {
       .pe-thumbs {
          display: unset;
       }
    }
-   // CONTROLS
-   .pe-controls {
+
+   // DELETE HANDLE
+   .pe-delete-handle {
       position: absolute;
-      bottom: 10px;
-      width: fit-content;
-      height: 24px;
-      background-color: $controls-bg;
-      border: $controls-br;
-      border-radius: 12px;
-      padding: 2px;
+      cursor: pointer;
+      pointer-events: auto;
       z-index: 99999999;
-      display: flex;
-      justify-content: center;
-      .pe-delete-handle,
-      .pe-rotate-handle,
-      .pe-move-handle {
-         margin: 0 2px;
-         cursor: pointer;
-         pointer-events: auto;
+      top: -3em;
+      left: calc(50% - 0.7em);
+      img {
+         width: 1.4em;
+         background: rgb(233, 236, 240);
+         border-radius: 100%;
+         padding: 0.2em;
       }
    }
+
+   // ROTATE HANDLE
+   .pe-rotate-handle {
+      position: absolute;
+      cursor: pointer;
+      pointer-events: auto;
+      z-index: 99999999;
+      bottom: -3em;
+      left: calc(50% - 0.7em);
+      img {
+         width: 1.4em;
+         background: rgb(233, 236, 240);
+         border-radius: 100%;
+         padding: 0.2em;
+      }
+   }
+
    // THUMBS
    .pe-thumbs {
       display: none;
       .pe-thumb {
          position: absolute;
-         width: 9px;
-         height: 9px;
+         width: 0.5em;
+         height: 0.5em;
          background: $page-bg;
          border: $controller-br;
          pointer-events: auto;
-
          &.pe-thumb-tl {
-            top: 0;
-            left: 0;
-            margin-top: -8px;
-            margin-left: -8px;
+            top: -0.55em;
+            left: -0.55em;
          }
 
          &.pe-thumb-tr {
-            top: 0;
-            right: 0;
-            margin-top: -8px;
-            margin-right: -8px;
+            top: -0.55em;
+            right: -0.55em;
          }
 
          &.pe-thumb-bl {
-            bottom: 0;
-            left: 0;
-            margin-bottom: -8px;
-            margin-left: -8px;
+            bottom: -0.55em;
+            left: -0.55em;
          }
 
          &.pe-thumb-br {
-            bottom: 0;
-            right: 0;
-            margin-bottom: -8px;
-            margin-right: -8px;
+            bottom: -0.55em;
+            right: -0.55em;
          }
       }
    }

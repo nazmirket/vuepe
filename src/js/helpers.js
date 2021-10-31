@@ -30,13 +30,13 @@ export function rgbToHex(rgb) {
 // REPLACE TRANSLATE VALUE
 export function replaceTranslate(str, x, y) {
    if (!str) {
-      return `translate(${x}px,${y}px)`
+      return `translate(${x},${y})`
    }
-   const translateRegex = /translate\(.*px,.*px\)/
+   const translateRegex = /translate\(.*,.*\)/
    if (!translateRegex.exec(str)?.length) {
-      return `${str} translate(${x}px,${y}px)`
+      return `${str} translate(${x},${y})`
    }
-   return `${str}`.replace(translateRegex, `translate(${x}px,${y}px)`)
+   return `${str}`.replace(translateRegex, `translate(${x},${y})`)
 }
 
 // REPLACE ROTATE VALUE
@@ -78,11 +78,11 @@ export function toggleFlipV(str) {
 // GET DRAG ANGLE
 export function getDragAngle(event, el) {
    // start value
-   const startAngle = parseFloat(el.getAttribute('data-angle')) || 0
+   const startAngle = parseFloat(el?.getAttribute('data-angle')) || 0
 
    // find center
-   const x = parseFloat(el.getAttribute('data-center-x')) || 0
-   const y = parseFloat(el.getAttribute('data-center-y')) || 0
+   const x = parseFloat(el?.getAttribute('data-center-x')) || 0
+   const y = parseFloat(el?.getAttribute('data-center-y')) || 0
 
    // calc angle
    const angle = Math.atan2(y - event.clientY, x - event.clientX)

@@ -1,40 +1,28 @@
-.pe-size-1024x768 .pe-page {
-  width: 1024px;
-  height: 768px;
+.pe-ratio-1by1 .pe-page {
+  aspect-ratio: 1/1 !important;
 }
 
-.pe-size-768x1024 .pe-page {
-  width: 768px;
-  height: 1024px;
+.pe-ratio-4by3 .pe-page {
+  aspect-ratio: 4/3 !important;
 }
 
-.pe-size-800x600 .pe-page {
-  width: 800px;
-  height: 600px;
+.pe-ratio-3by4 .pe-page {
+  aspect-ratio: 3/4 !important;
 }
 
-.pe-size-600x800 .pe-page {
-  width: 600px;
-  height: 800px;
+.pe-ratio-16by9 .pe-page {
+  aspect-ratio: 16/9 !important;
 }
 
-.pe-size-800x400 .pe-page {
-  width: 800px;
-  height: 400px;
+.pe-ratio-9by16 .pe-page {
+  aspect-ratio: 9/16 !important;
 }
 
-.pe-size-400x800 .pe-page {
-  width: 400px;
-  height: 800px;
+.pe-ratio-16by10 .pe-page {
+  aspect-ratio: 16/10 !important;
 }
 
-.pe-size-800x800 .pe-page {
-  width: 800px;
-  height: 800px;
-}
-
-.pe-size-600x600 .pe-page {
-  width: 600px;
-  height: 600px;
+.pe-ratio-10by16 .pe-page {
+  aspect-ratio: 10/16 !important;
 }
 /*# sourceMappingURL=pages.css.map */

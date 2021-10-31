@@ -11,11 +11,11 @@ export const families = [
 ]
 
 export const sizes = {
-   pace: 2,
-   unit: 'px',
-   min: 12,
-   max: 102,
-   default: 18,
+   pace: 1,
+   unit: 'em',
+   min: 1,
+   max: 20,
+   default: 2,
 }
 
 export function init() {

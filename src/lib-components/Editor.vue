@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" :class="`pe-editor pe-active-editor pe-size-${options.size}`">
+  <div :id="id" :class="`pe-editor pe-active-editor pe-ratio-${aspectRatio}`">
     <!--TOOLBAR-->
     <div class="pe-toolbar">
       <!--OPTIONS TOOLBAR-->
@@ -113,17 +113,16 @@
       <div class="pe-page">
         <!--CONTROLLER-->
         <div class="pe-controller">
-          <div class="pe-controls">
-            <span class="pe-rotate-handle">
-              <img src="../icons/rotation.svg" />
-            </span>
-            <span class="pe-move-handle">
-              <img src="../icons/move.svg" />
-            </span>
-            <span class="pe-delete-handle">
-              <img src="../icons/delete.svg" />
-            </span>
-          </div>
+          <!--ROTATE HANDLE-->
+          <span class="pe-rotate-handle">
+            <img src="../icons/rotate.svg" />
+          </span>
+
+          <!--DELETE HANDLE-->
+          <span class="pe-delete-handle">
+            <img src="../icons/delete.svg" />
+          </span>
+
           <div class="pe-thumbs">
             <span class="pe-thumb pe-thumb-tl"></span>
             <span class="pe-thumb pe-thumb-tr"></span>
@@ -144,13 +143,9 @@ export default {
       type: String,
       required: true,
     },
-    options: {
-      type: Object,
-      default: () => {
-        return {
-          size: "1024x768",
-        };
-      },
+    aspectRatio: {
+      type: String,
+      deault: "1by1",
     },
   },
   mounted() {
@@ -164,5 +159,10 @@ export default {
 .pe-change-font-size-select,
 .pe-change-font-select {
   background: url("") no-repeat right rgb(255, 255, 255);
+}
+
+.pe-editor {
+  height: 60vh;
+  width: 80vw;
 }
 </style>

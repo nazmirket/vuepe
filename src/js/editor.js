@@ -29,7 +29,6 @@ import { init as initFonts } from './fonts.js'
 import { init as initHistory, undoListener, redoListener } from './history.js'
 import { init as initKeyboard } from './keyboard.js'
 import { init as initAudio } from './audio.js'
-import { init as initTextAreaElements } from './textarea.js'
 import { init as initMaterials } from './materials.js'
 
 export function reload() {
@@ -41,7 +40,7 @@ export function reload() {
    // delete-handle
    registerClick('.pe-delete-handle', deleteItem)
    // drag listener
-   setDrag('.pe-move-handle')
+   setDrag('.pe-element')
    // rotate listener
    setRotate('.pe-rotate-handle')
    // resize listener
@@ -91,9 +90,6 @@ export function reload() {
 
    // INIT AUDIO
    initAudio()
-
-   // INIT TEXT AREAS
-   initTextAreaElements()
 
    // INIT FONTS
    initFonts()
