@@ -1,21 +1,28 @@
-import { getEditor, resolveDropType } from './helpers.js'
+import { getEditor, resolveDropType, parseJSON } from './helpers.js'
 
 import { insert } from './actions.js'
 
 function onDragStart(event) {
    try {
+      // empty data transfer
+      event.dataTransfer.clearData()
+
       // find props
       const type = resolveDropType(event.target)
-      const src = event.target.src || event.target.innerText
+      const value = event.target.getAttribute('pass-value')
+      const styles = parseJSON(event.target.getAttribute('pass-style')) || {}
+      const classes = parseJSON(event.target.getAttribute('pass-class')) || []
+
+      // data to be transferred
+      const data = JSON.stringify({
+         type: type,
+         value: value,
+         styles: styles,
+         classes: classes,
+      })
 
       // pass data as json string
-      event.dataTransfer.setData(
-         'text/plain',
-         JSON.stringify({
-            type,
-            src,
-         })
-      )
+      event.dataTransfer.setData('text/json', data)
 
       // add active class to drop element
       event.currentTarget.classList.add('pe-active-drop-item')
@@ -49,17 +56,27 @@ function onDrop(event) {
    // get editor
    const editor = getEditor(event.target)
    // raw json
-   const rawJson = event.dataTransfer.getData('text')
-   // parse props
-   const props = JSON.parse(rawJson)
-   // extract fields
-   const { type, src } = props
-   // empty dta transfer
+   const rawJson = event.dataTransfer.getData('text/json')
+
+   // empty data transfer
    event.dataTransfer.clearData()
+
    // remove active class from page
    event.currentTarget.classList.remove('pe-page-can-drop')
+
+   // parse props
+   const props = parseJSON(rawJson)
+
+   // return if a error occurs
+   if (!props) return
+
+   console.log(props)
+
+   // extract fields
+   const { type, value, styles = {}, classes = [] } = props
+
    // insert element
-   insert(editor, type, src)
+   insert(editor, type, value, styles, classes)
 }
 
 export function init() {

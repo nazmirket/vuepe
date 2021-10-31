@@ -1,15 +1,18 @@
-import { getEditor, registerClick, registerHover } from './helpers.js'
+import {
+   getEditor,
+   registerClick,
+   registerHover,
+   setActiveEditor,
+} from './helpers.js'
 import { init as initAudio } from './audio.js'
 import { init as initTextAreaElements } from './textarea.js'
-import { init as initDragDrop } from './drag-drop.js'
+import { init as initMaterials } from './materials.js'
 import { openMenu, toggleToolbar } from './toolbar.js'
 import {
    deleteItem,
    hoverListeners,
    locate as locateController,
 } from './controller.js'
-
-import { setActive as setActiveEditor } from './keyboard.js'
 
 const histories = new Map()
 const memory = 50 // step count to keep in memory
@@ -144,6 +147,9 @@ function refreshButtons(editor) {
 
 // REFRESH EDITOR
 function refresh(editor) {
+   // set active editor
+   registerClick('.pe-editor', setActiveEditor)
+
    // delete-handle
    registerClick('.pe-delete-handle', deleteItem, editor)
 
@@ -153,17 +159,14 @@ function refresh(editor) {
    // hide toolbar
    registerClick('.pe-page', toggleToolbar, editor)
 
-   // set active editor listener
-   registerClick('.pe-editor .pe-page', setActiveEditor)
-
    // init audio
    initAudio()
 
    // init text area elements
    initTextAreaElements()
 
-   // init drag and drop
-   initDragDrop()
+   // init materials
+   initMaterials()
 
    // element hover
    const { start, end } = hoverListeners

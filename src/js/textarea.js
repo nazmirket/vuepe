@@ -44,7 +44,7 @@ export function load(editor) {
 
    // load font family
    const fontPicker = editor.querySelector('.pe-change-font-select')
-   fontPicker.value = text.style.fontFamily
+   fontPicker.value = `${text.style.fontFamily}`.replace(/[\"\']/g, '')
 
    // load font size
    const sizePicker = editor.querySelector('.pe-change-font-size-select')

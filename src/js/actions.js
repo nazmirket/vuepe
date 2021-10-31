@@ -60,11 +60,18 @@ export function changeBackground(editor, src) {
 }
 
 // INSERT
-export function insert(editor, type, src) {
-   if (type === 'image') insertImage(editor, src)
-   if (type === 'video') insertVideo(editor, src)
-   if (type === 'text') insertText(editor, src)
-   if (type === 'audio') insertAudio(editor, src)
+export function insert(editor, type, value, styles = {}, classes = []) {
+   // image
+   if (type === 'image') insertImage(editor, value, styles, classes)
+
+   // video
+   if (type === 'video') insertVideo(editor, value, styles, classes)
+
+   // text
+   if (type === 'text') insertText(editor, value, styles, classes)
+
+   // audio
+   if (type === 'audio') insertAudio(editor, value, styles, classes)
 }
 
 // INSERT HTML
@@ -119,9 +126,16 @@ function insertAudio(editor, src) {
 }
 
 // INSERT TEXT
-function insertText(editor, value) {
+function insertText(editor, value, styles = {}, classes = []) {
    // create text
    const text = createText(value)
+
+   // set styles
+   Object.keys(styles).forEach((k) => (text.style[k] = styles[k]))
+
+   // set classes
+   classes.forEach((c) => text.classList.add(c))
+
    // insert to the page
    insertItem(editor, text, 'text')
 }

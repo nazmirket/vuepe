@@ -1,17 +1,17 @@
 <template>
-  <div :id="id" :class="`pe-editor pe-size-${options.size}`">
+  <div :id="id" :class="`pe-editor pe-active-editor pe-size-${options.size}`">
     <!--TOOLBAR-->
     <div class="pe-toolbar">
       <!--OPTIONS TOOLBAR-->
       <div class="pe-options-toolbar">
         <!--FONT FAMILY-->
         <span class="pe-tool pe-change-font">
-          <select class="pe-change-font-select"></select>
+          <select class="pe-change-font-select" />
         </span>
 
         <!--FONT SIZE-->
         <span class="pe-tool pe-change-font-size">
-          <select class="pe-change-font-size-select"></select>
+          <select class="pe-change-font-size-select" />
         </span>
 
         <!--TEXT ALIGN-->
@@ -109,25 +109,27 @@
     </div>
 
     <!--CONTENT-->
-    <div class="pe-page">
-      <!--CONTROLLER-->
-      <div class="pe-controller">
-        <div class="pe-controls">
-          <span class="pe-rotate-handle">
-            <img src="../icons/rotation.svg" />
-          </span>
-          <span class="pe-move-handle">
-            <img src="../icons/move.svg" />
-          </span>
-          <span class="pe-delete-handle">
-            <img src="../icons/delete.svg" />
-          </span>
-        </div>
-        <div class="pe-thumbs">
-          <span class="pe-thumb pe-thumb-tl"></span>
-          <span class="pe-thumb pe-thumb-tr"></span>
-          <span class="pe-thumb pe-thumb-bl"></span>
-          <span class="pe-thumb pe-thumb-br"></span>
+    <div class="pe-page-wrapper">
+      <div class="pe-page">
+        <!--CONTROLLER-->
+        <div class="pe-controller">
+          <div class="pe-controls">
+            <span class="pe-rotate-handle">
+              <img src="../icons/rotation.svg" />
+            </span>
+            <span class="pe-move-handle">
+              <img src="../icons/move.svg" />
+            </span>
+            <span class="pe-delete-handle">
+              <img src="../icons/delete.svg" />
+            </span>
+          </div>
+          <div class="pe-thumbs">
+            <span class="pe-thumb pe-thumb-tl"></span>
+            <span class="pe-thumb pe-thumb-tr"></span>
+            <span class="pe-thumb pe-thumb-bl"></span>
+            <span class="pe-thumb pe-thumb-br"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -135,7 +137,7 @@
 </template>
 
 <script>
-import { init, reload, getEditorById, insert } from "../js/index";
+import { init, reload } from "../js/index";
 export default {
   props: {
     id: {
@@ -154,19 +156,13 @@ export default {
   mounted() {
     init();
     reload();
-
-    // insert(getEditorById(this.id), "text", "Lorem Ipsum");
-
-    // reload();
-    console.log(window.$pe);
   },
 };
 </script>
 
 <style>
-.pe-change-font select,
-.pe-change-font-size select {
-  background: url("../icons/select-arrow.svg") no-repeat right
-    rgb(255, 255, 255);
+.pe-change-font-size-select,
+.pe-change-font-select {
+  background: url("") no-repeat right rgb(255, 255, 255);
 }
 </style>

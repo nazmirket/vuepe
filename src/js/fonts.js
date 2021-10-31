@@ -1,16 +1,13 @@
+import SelectArrow from '../icons/select-arrow.svg'
+
 export const families = [
-   'Open Sans Bold',
-   'Abril Fatface',
-   'Anton',
-   'Bevan',
-   'Grandstander Regular',
-   'Grandstander Bold',
-   'Grenze Gotisch',
-   'Josefin Sans Regular',
-   'Josefin Sans Bold',
-   'Lobster',
-   'Open Sans Regular',
-   'Paytone One',
+   'Arial',
+   'Trebuchet MS',
+   'Verdana',
+   'Georgia',
+   'Palatino',
+   'Times New Roman',
+   'Courier New',
 ]
 
 export const sizes = {
@@ -42,6 +39,10 @@ export function init() {
 }
 
 function clearSelect(select) {
+   // set icon
+   select.style.backgroundImage = `url(${SelectArrow})`
+
+   // clear opts
    const options = select.querySelectorAll('option')
    for (const opt of options) {
       opt?.remove()
@@ -52,7 +53,7 @@ function insertFontOptions(picker) {
    for (const family of families) {
       const option = document.createElement('option')
       option.label = family
-      option.value = `"${family}"`
+      option.setAttribute('value', family)
       option.style.fontFamily = family
       picker.appendChild(option.cloneNode(true))
    }

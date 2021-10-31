@@ -2,25 +2,42 @@
 @import 'preview.scss';
 @import 'helpers.scss';
 @import 'pages.scss';
-@import 'fonts.scss';
 
 // EDITOR
 .pe-editor {
    width: 100%;
+   height: 100%;
    display: flex;
    flex-direction: column;
    align-items: center;
+   justify-content: center;
    border: $default-br;
-   background: #d0dce221;
+   background: #ffffff;
+   position: relative;
+
+   &.pe-active-editor .pe-page {
+      outline: 2px solid rgba(220, 205, 255, 0.329);
+   }
+}
+
+// PAGE WRAPPER
+.pe-editor .pe-page-wrapper {
+   display: block;
+   overflow: auto;
+   position: absolute;
+   bottom: 0px;
+   right: 0px;
+   left: 0px;
+   top: 54px;
+   padding: 30px;
 }
 
 // PAGE
 .pe-editor .pe-page {
+   margin: auto;
    padding: 10px;
-   margin: 20px 0;
    display: block;
    border: $page-br;
-   border-radius: 0px;
    background-color: $page-bg;
    overflow: hidden;
    position: relative;
@@ -54,8 +71,11 @@
 
 // TOOLBAR
 .pe-toolbar {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
    background: white;
-   width: 100%;
    display: flex;
    align-items: center;
    height: 50px;
@@ -79,6 +99,7 @@
       height: 35px;
       justify-content: center;
       align-items: center;
+      max-width: unset !important;
    }
 
    // TOGGLE BOLD-ITALIC-STRIKE
@@ -106,7 +127,7 @@
       width: 170px;
       height: 35px;
       border: $default-br;
-      padding: 5px 8px;
+      padding: 5px 15px;
       border-radius: 12px;
       -webkit-appearance: none;
       &:focus {
@@ -120,7 +141,7 @@
       width: 60px;
       height: 35px;
       border: $default-br;
-      padding: 5px 8px;
+      padding: 5px 15px;
       border-radius: 12px;
       margin-right: 4px;
       -webkit-appearance: none;
@@ -300,6 +321,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      max-width: unset !important;
    }
    .pe-undo,
    .pe-redo {

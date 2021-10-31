@@ -9,7 +9,6 @@ import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-babel'
 import minimist from 'minimist'
 import scss from 'rollup-plugin-scss'
-import copy from 'rollup-plugin-copy'
 import url from '@rollup/plugin-url'
 
 // Get browserslist config and remove ie from es build targets
@@ -177,9 +176,6 @@ buildFormats.push({
          output: 'dist/editor.min.css',
          outputStyle: 'compressed',
          failOnError: true,
-      }),
-      copy({
-         targets: [{ src: 'src/fonts/*', dest: 'dist/fonts/' }],
       }),
    ],
 })

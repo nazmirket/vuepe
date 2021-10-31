@@ -1,4 +1,9 @@
-import { registerClick, registerChange, registerHover } from './helpers.js'
+import {
+   registerClick,
+   registerChange,
+   registerHover,
+   setActiveEditor,
+} from './helpers.js'
 
 import { setDrag, setResize, setRotate } from './interact.js'
 
@@ -22,15 +27,16 @@ import { deleteItem, hoverListeners } from './controller.js'
 
 import { init as initFonts } from './fonts.js'
 import { init as initHistory, undoListener, redoListener } from './history.js'
-import {
-   init as initKeyboard,
-   setActive as setActiveEditor,
-} from './keyboard.js'
+import { init as initKeyboard } from './keyboard.js'
 import { init as initAudio } from './audio.js'
 import { init as initTextAreaElements } from './textarea.js'
-import { init as initDragDrop } from './drag-drop.js'
+import { init as initMaterials } from './materials.js'
 
 export function reload() {
+   // EDITOR
+   // set active editor
+   registerClick('.pe-editor', setActiveEditor)
+
    // CONTROLLER
    // delete-handle
    registerClick('.pe-delete-handle', deleteItem)
@@ -74,8 +80,8 @@ export function reload() {
       hoverListeners.end
    )
 
-   // DRAG DROP
-   initDragDrop()
+   // INIT MATERIAL DRAG DROP
+   initMaterials()
 
    // TOOLBAR TOGGLE
    // toggle toolbar
@@ -94,7 +100,6 @@ export function reload() {
 
    // INIT KEYBOARD
    initKeyboard()
-   registerClick('.pe-editor .pe-page', setActiveEditor)
 
    // INIT HISTORY
    initHistory()

@@ -1,11 +1,4 @@
-import { getEditor } from './helpers.js'
-
-let active = null
-
-export function setActive(event) {
-   const editor = getEditor(event?.target || event)
-   active = editor
-}
+import { getActiveEditor } from './helpers.js'
 
 import { undo, redo } from './history.js'
 
@@ -16,6 +9,9 @@ export function init() {
 }
 
 function keyListener(event) {
+   // GET EDITOR
+   const active = getActiveEditor()
+
    // CTRL+Z
    if (checkKey(event, 'ctrl+z')) {
       if (active) {

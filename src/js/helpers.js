@@ -5,22 +5,26 @@ import AlignCenterIcon from '../icons/align-center.svg'
 
 // RGB TO HEX
 export function rgbToHex(rgb) {
-   if (!rgb) {
-      return null
+   try {
+      if (!rgb) {
+         return null
+      }
+      const rgbRegex = /rgb\((.*?), (.*?), (.*?)\)/
+
+      const match = rgbRegex.exec(rgb)
+
+      const r = match[1]
+      const g = match[2]
+      const b = match[3]
+
+      const componentToHex = (c) => {
+         const hex = parseInt(c, 10).toString(16)
+         return hex.length == 1 ? `0${hex}` : hex
+      }
+      return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b)
+   } catch (error) {
+      return rgb
    }
-   const rgbRegex = /rgb\((.*?), (.*?), (.*?)\)/
-
-   const match = rgbRegex.exec(rgb)
-
-   const r = match[1]
-   const g = match[2]
-   const b = match[3]
-
-   const componentToHex = (c) => {
-      const hex = parseInt(c, 10).toString(16)
-      return hex.length == 1 ? `0${hex}` : hex
-   }
-   return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b)
 }
 
 // REPLACE TRANSLATE VALUE
@@ -98,6 +102,23 @@ export function getEditor(el) {
       }
    }
    return el
+}
+
+// SET ACTIVE EDITOR
+export function setActiveEditor(event) {
+   try {
+      const editor = getEditor(event.target)
+      document
+         .querySelectorAll('.pe-editor')
+         .forEach((e) => e.classList.remove('pe-active-editor'))
+      editor.classList.add('pe-active-editor')
+   } catch (error) {}
+}
+
+// GET ACTIVE EDITOR
+export function getActiveEditor() {
+   const activeEditor = document.querySelector('.pe-editor.pe-active-editor')
+   return activeEditor
 }
 
 // GET EDITOR BY ID
@@ -226,4 +247,15 @@ export function copyAttribute(from, to, attrName, fallback) {
       return
    }
    to.setAttribute(attrName, from.getAttribute(attrName) || fallback)
+}
+
+// TO JSON
+export function parseJSON(data) {
+   let temp
+   try {
+      temp = JSON.parse(data)
+      return temp
+   } catch (error) {
+      return null
+   }
 }
