@@ -1,7 +1,7 @@
 {
    "name": "vue-page-editor",
    "author": "nazmiyilmaz",
-   "version": "1.1.6",
+   "version": "1.1.8",
    "description": "A multi purpose page editor plugin for Vue2",
    "main": "dist/vue-page-editor.ssr.js",
    "browser": "dist/vue-page-editor.esm.js",

@@ -171,9 +171,4 @@ export default {
 .pe-change-font-select {
   background: url("") no-repeat right rgb(255, 255, 255);
 }
-
-.pe-editor {
-  height: 60vh;
-  width: 80vw;
-}
 </style>
