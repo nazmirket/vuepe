@@ -11,10 +11,10 @@ export const families = [
 ]
 
 export const sizes = {
-   pace: 1,
+   pace: 2, // 10x scaled
    unit: 'em',
-   min: 1,
-   max: 20,
+   min: 10, // 10x scaled
+   max: 100, // 10x scaled
    default: 2,
 }
 
@@ -63,7 +63,7 @@ function insertSizeOptions(picker) {
    for (let size = sizes.min; size < sizes.max; size += sizes.pace) {
       const option = document.createElement('option')
       option.label = size
-      option.value = `${size}${sizes.unit}`
+      option.value = `${size / 10}${sizes.unit}`
       picker.appendChild(option.cloneNode(true))
    }
 }

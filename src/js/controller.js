@@ -51,24 +51,30 @@ export function locate(editor) {
       : 'none'
 
    // set thumbs
-   if (thumbs) {
-      controller.classList.add('pe-is-resizable')
-   } else {
-      controller.classList.remove('pe-is-resizable')
-   }
+   if (thumbs) controller.classList.add('pe-is-resizable')
+   else controller.classList.remove('pe-is-resizable')
 
-   // get rect
-   const rect = el.getBoundingClientRect()
+   // get page rectangle
+   const page = editor.querySelector('.pe-page')
+   const pageRect = page.getBoundingClientRect()
+
+   // get element rect
+   const elRect = el.getBoundingClientRect()
 
    // activate
    controller.classList.add('pe-is-active')
    controller.style['z-index'] = 99999999
 
    // copy style
-   controller.style.width = el?.style?.width || `${rect.width}px`
-   controller.style.height = el?.style?.height || `${rect.height}px`
+   controller.style.width =
+      el?.style?.width || `${(elRect.width / pageRect.width) * 100}%`
+
+   controller.style.height =
+      el?.style?.height || `${(elRect.height / pageRect.height) * 100}%`
+
    controller.style.top = el?.style?.top || '0%'
    controller.style.left = el?.style?.left || '0%'
+
    copyAttribute(el, controller, 'data-left', 0)
    copyAttribute(el, controller, 'data-top', 0)
 }

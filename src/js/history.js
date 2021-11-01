@@ -78,6 +78,11 @@ export function redoListener(event) {
 
 // MARK STATE
 export function markState(editor) {
+   // return if not editor
+   if (!editor) {
+      return
+   }
+
    // get history
    const current = histories.get(editor)
 

@@ -44,11 +44,13 @@ export const rotateListeners = {
       const editor = getEditor(event.target)
       const target = editor.querySelector('.pe-element.pe-is-active .pe-item')
 
-      const rect = target.getBoundingClientRect()
+      const rect = target?.getBoundingClientRect()
 
-      target.setAttribute('data-center-x', rect.left + rect.width / 2)
-      target.setAttribute('data-center-y', rect.top + rect.height / 2)
-      target.setAttribute('data-angle', getDragAngle(event, target))
+      if (rect) {
+         target.setAttribute('data-center-x', rect.left + rect.width / 2)
+         target.setAttribute('data-center-y', rect.top + rect.height / 2)
+         target.setAttribute('data-angle', getDragAngle(event, target))
+      }
    },
    onmove: function(event) {
       const editor = getEditor(event.target)
@@ -69,9 +71,13 @@ export const rotateListeners = {
 // DRAG ELEMENT
 function drag(event, target) {
    // get page rectangle
-   const editor = getEditor(target)
+   const editor = getEditor(event.target)
    const page = editor?.querySelector('.pe-page')
-   const pageRect = page.getBoundingClientRect()
+   const pageRect = page?.getBoundingClientRect()
+
+   if (!pageRect) {
+      return
+   }
 
    // previous position
    let left = parseFloat(target?.getAttribute('data-left')) || 0
@@ -96,6 +102,10 @@ function resize(event, target) {
    const editor = getEditor(event.target)
    const page = editor?.querySelector('.pe-page')
    const pageRect = page?.getBoundingClientRect()
+
+   if (!pageRect) {
+      return
+   }
 
    // get element rect
    const elRect = event.rect

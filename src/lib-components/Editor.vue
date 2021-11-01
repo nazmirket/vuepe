@@ -1,5 +1,8 @@
 <template>
-  <div :id="id" :class="`pe-editor pe-active-editor pe-ratio-${aspectRatio}`">
+  <div
+    :id="id"
+    :class="`pe-editor pe-active-editor pe-size-${width}x${height} pe-zoom-${zoom}`"
+  >
     <!--TOOLBAR-->
     <div class="pe-toolbar">
       <!--OPTIONS TOOLBAR-->
@@ -143,9 +146,17 @@ export default {
       type: String,
       required: true,
     },
-    aspectRatio: {
-      type: String,
-      deault: "1by1",
+    width: {
+      type: Number,
+      deault: 600,
+    },
+    height: {
+      type: Number,
+      deault: 600,
+    },
+    zoom: {
+      type: Number,
+      default: 100, // 10 to 200
     },
   },
   mounted() {

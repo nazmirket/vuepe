@@ -3,23 +3,15 @@ import { rgbToHex, resolveAlignIcon } from './helpers.js'
 import { families, sizes } from './fonts.js'
 
 export function create(value) {
-   const svg = document.createElement('svg')
-   svg.setAttribute('viewBox', '0 0 56 18')
-   svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-
-   const text = document.createElement('text')
+   const text = document.createElement('p')
    text.innerText = value
-   text.setAttribute('x', '0')
-   text.setAttribute('y', '15')
    text.style.fontFamily = families[0]
    text.style.fontSize = `${sizes.default}${sizes.unit}`
    text.contentEditable = true
    text.spellcheck = false
    text.style.width = '100%'
    text.style.height = '100%'
-
-   svg.appendChild(text.cloneNode(true))
-   return svg.cloneNode(true)
+   return text.cloneNode(true)
 }
 
 // INIT

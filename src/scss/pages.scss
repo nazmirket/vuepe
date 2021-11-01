@@ -1,48 +1,47 @@
-// 1:1
-.pe-ratio-1by1 {
+// 600 600
+.pe-size-600x600 {
    .pe-page {
-      aspect-ratio: 1/1 !important;
+      width: 600px !important;
+      height: 600px !important;
    }
 }
 
-// 4:3
-.pe-ratio-4by3 {
+// 800 600
+.pe-size-800x600 {
    .pe-page {
-      aspect-ratio: 4/3 !important;
+      width: 800px !important;
+      height: 600px !important;
    }
 }
 
-// 3:4
-.pe-ratio-3by4 {
+// 600 800
+.pe-size-600x800 {
    .pe-page {
-      aspect-ratio: 3/4 !important;
+      width: 600px !important;
+      height: 800px !important;
    }
 }
 
-// 16:9
-.pe-ratio-16by9 {
+// 1000 1000
+.pe-size-1000x1000 {
    .pe-page {
-      aspect-ratio: 16/9 !important;
+      width: 800px !important;
+      height: 800px !important;
    }
 }
 
-// 9:16
-.pe-ratio-9by16 {
+// 1000 600
+.pe-size-1000x600 {
    .pe-page {
-      aspect-ratio: 9/16 !important;
+      width: 1000px !important;
+      height: 600px !important;
    }
 }
 
-// 16:10
-.pe-ratio-16by10 {
+// 600 1000
+.pe-size-600x1000 {
    .pe-page {
-      aspect-ratio: 16/10 !important;
-   }
-}
-
-// 10:16
-.pe-ratio-10by16 {
-   .pe-page {
-      aspect-ratio: 10/16 !important;
+      width: 600px !important;
+      height: 1000px !important;
    }
 }

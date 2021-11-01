@@ -2,6 +2,7 @@
 @import 'preview.scss';
 @import 'helpers.scss';
 @import 'pages.scss';
+@import 'zoom.scss';
 
 // EDITOR
 .pe-editor {
@@ -35,7 +36,6 @@
 // PAGE
 .pe-editor .pe-page {
    margin: auto;
-   width: 100%;
    display: block;
    border: $page-br;
    background-color: $page-bg;
@@ -46,6 +46,7 @@
    background-size: cover;
    box-shadow: $page-shadow;
    -webkit-box-shadow: $page-shadow;
+   font-size: $page-font-size !important;
 }
 
 // DRAG DROP
@@ -326,15 +327,18 @@
    .pe-undo,
    .pe-redo {
       button {
-         width: 32px;
-         height: 32px;
+         width: 34px;
+         height: 34px;
          background: none;
-         border: 1px solid transparent;
+         border: 1px solid rgb(223, 227, 230);
+         display: flex;
+         align-items: center;
+         justify-content: center;
          border-radius: 100%;
          cursor: pointer;
          &:hover {
-            border: $default-br;
-            transition: 0.4s;
+            transform: scale(0.97);
+            transition: 0.2s;
          }
       }
       img {
@@ -388,7 +392,7 @@
    display: none;
    border: $controller-br;
    pointer-events: none;
-   font-size: 1.5vw;
+   font-size: 12px;
    &.pe-is-active {
       display: block;
    }

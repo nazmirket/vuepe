@@ -23,12 +23,12 @@
           :styles="{
             'font-family': 'Courier New',
             color: 'blue',
-            'font-size': '1.2em',
+            'font-size': '2em',
           }"
           :classes="['pe-is-bold']"
         />
       </div>
-      <Editor id="editor-asdasd" aspectRatio="10by16" />
+      <Editor id="editor-asdasd" :width="600" :height="600" :zoom="60" />
     </div>
   </div>
 </template>

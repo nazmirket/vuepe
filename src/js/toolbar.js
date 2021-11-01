@@ -236,10 +236,14 @@ export function toggleToolbar(event) {
    const isControl = queryParent(event.target, 'pe-controller')
    // check if click origin is delete button
    const isDel = queryParent(event.target, 'pe-delete-handle')
+   // check if click origin is rotate button
+   const isRotate = queryParent(event.target, 'pe-rotate-handle')
+
    // ignore if the origin is controller
-   if (isControl && !isDel) {
+   if ((isControl || isRotate) && !isDel) {
       return
    }
+
    // hide controller
    hideController(editor)
    // de-activate all elements at first

@@ -1,28 +1,30 @@
-.pe-ratio-1by1 .pe-page {
-  aspect-ratio: 1/1 !important;
+.pe-size-600x600 .pe-page {
+  width: 600px !important;
+  height: 600px !important;
 }
 
-.pe-ratio-4by3 .pe-page {
-  aspect-ratio: 4/3 !important;
+.pe-size-800x600 .pe-page {
+  width: 800px !important;
+  height: 600px !important;
 }
 
-.pe-ratio-3by4 .pe-page {
-  aspect-ratio: 3/4 !important;
+.pe-size-600x800 .pe-page {
+  width: 600px !important;
+  height: 800px !important;
 }
 
-.pe-ratio-16by9 .pe-page {
-  aspect-ratio: 16/9 !important;
+.pe-size-1000x1000 .pe-page {
+  width: 800px !important;
+  height: 800px !important;
 }
 
-.pe-ratio-9by16 .pe-page {
-  aspect-ratio: 9/16 !important;
+.pe-size-1000x600 .pe-page {
+  width: 1000px !important;
+  height: 600px !important;
 }
 
-.pe-ratio-16by10 .pe-page {
-  aspect-ratio: 16/10 !important;
-}
-
-.pe-ratio-10by16 .pe-page {
-  aspect-ratio: 10/16 !important;
+.pe-size-600x1000 .pe-page {
+  width: 600px !important;
+  height: 1000px !important;
 }
 /*# sourceMappingURL=pages.css.map */
