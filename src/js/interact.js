@@ -46,7 +46,7 @@ export function setDrag(selector) {
       modifiers: [
          interact.modifiers.restrictRect({
             restriction: '.pe-editor .pe-page',
-            endOnly: true,
+            endOnly: false,
          }),
       ],
       autoScroll: false,

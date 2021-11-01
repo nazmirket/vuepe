@@ -184,6 +184,31 @@
   height: 600px !important;
 }
 
+.pe-size-800x600 .pe-page {
+  width: 800px !important;
+  height: 600px !important;
+}
+
+.pe-size-600x800 .pe-page {
+  width: 600px !important;
+  height: 800px !important;
+}
+
+.pe-size-1000x1000 .pe-page {
+  width: 800px !important;
+  height: 800px !important;
+}
+
+.pe-size-1000x600 .pe-page {
+  width: 1000px !important;
+  height: 600px !important;
+}
+
+.pe-size-600x1000 .pe-page {
+  width: 600px !important;
+  height: 1000px !important;
+}
+
 .pe-zoom-10 .pe-page {
   -webkit-transform: scale(0.1);
           transform: scale(0.1);
@@ -767,7 +792,6 @@
   display: none;
   border: 2px solid rgba(112, 128, 136, 0.6);
   pointer-events: none;
-  font-size: 12px;
 }
 
 .pe-controller.pe-is-active {
@@ -783,15 +807,16 @@
   cursor: pointer;
   pointer-events: auto;
   z-index: 99999999;
-  top: -3em;
-  left: calc(50% - 0.7em);
+  top: -37px;
+  left: calc(50% - 9px);
 }
 
 .pe-controller .pe-delete-handle img {
-  width: 1.4em;
+  width: 18px;
   background: #e9ecf0;
   border-radius: 100%;
-  padding: 0.2em;
+  padding: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .pe-controller .pe-rotate-handle {
@@ -799,15 +824,16 @@
   cursor: pointer;
   pointer-events: auto;
   z-index: 99999999;
-  bottom: -3em;
-  left: calc(50% - 0.7em);
+  bottom: -40px;
+  left: calc(50% - 9px);
 }
 
 .pe-controller .pe-rotate-handle img {
-  width: 1.4em;
+  width: 18px;
   background: #e9ecf0;
   border-radius: 100%;
-  padding: 0.2em;
+  padding: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .pe-controller .pe-thumbs {
@@ -816,30 +842,31 @@
 
 .pe-controller .pe-thumbs .pe-thumb {
   position: absolute;
-  width: 0.5em;
-  height: 0.5em;
+  width: 12px;
+  height: 12px;
   background: white;
   border: 2px solid rgba(112, 128, 136, 0.6);
   pointer-events: auto;
+  border-radius: 100%;
 }
 
 .pe-controller .pe-thumbs .pe-thumb.pe-thumb-tl {
-  top: -0.55em;
-  left: -0.55em;
+  top: -8px;
+  left: -8px;
 }
 
 .pe-controller .pe-thumbs .pe-thumb.pe-thumb-tr {
-  top: -0.55em;
-  right: -0.55em;
+  top: -8px;
+  right: -8px;
 }
 
 .pe-controller .pe-thumbs .pe-thumb.pe-thumb-bl {
-  bottom: -0.55em;
-  left: -0.55em;
+  bottom: -8px;
+  left: -8px;
 }
 
 .pe-controller .pe-thumbs .pe-thumb.pe-thumb-br {
-  bottom: -0.55em;
-  right: -0.55em;
+  bottom: -8px;
+  right: -8px;
 }
 /*# sourceMappingURL=editor.css.map */

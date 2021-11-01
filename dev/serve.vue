@@ -28,7 +28,7 @@
           :classes="['pe-is-bold']"
         />
       </div>
-      <Editor id="editor-asdasd" :width="600" :height="600" :zoom="60" />
+      <Editor id="editor-asdasd" :width="600" :height="600" :zoom="150" />
     </div>
   </div>
 </template>

@@ -392,7 +392,6 @@
    display: none;
    border: $controller-br;
    pointer-events: none;
-   font-size: 12px;
    &.pe-is-active {
       display: block;
    }
@@ -408,13 +407,14 @@
       cursor: pointer;
       pointer-events: auto;
       z-index: 99999999;
-      top: -3em;
-      left: calc(50% - 0.7em);
+      top: -37px;
+      left: calc(50% - 9px);
       img {
-         width: 1.4em;
+         width: 18px;
          background: rgb(233, 236, 240);
          border-radius: 100%;
-         padding: 0.2em;
+         padding: 3px;
+         border: 1px solid rgba(0, 0, 0, 0.4);
       }
    }
 
@@ -424,13 +424,14 @@
       cursor: pointer;
       pointer-events: auto;
       z-index: 99999999;
-      bottom: -3em;
-      left: calc(50% - 0.7em);
+      bottom: -40px;
+      left: calc(50% - 9px);
       img {
-         width: 1.4em;
+         width: 18px;
          background: rgb(233, 236, 240);
          border-radius: 100%;
-         padding: 0.2em;
+         padding: 3px;
+         border: 1px solid rgba(0, 0, 0, 0.4);
       }
    }
 
@@ -439,29 +440,30 @@
       display: none;
       .pe-thumb {
          position: absolute;
-         width: 0.5em;
-         height: 0.5em;
+         width: 12px;
+         height: 12px;
          background: $page-bg;
          border: $controller-br;
          pointer-events: auto;
+         border-radius: 100%;
          &.pe-thumb-tl {
-            top: -0.55em;
-            left: -0.55em;
+            top: -8px;
+            left: -8px;
          }
 
          &.pe-thumb-tr {
-            top: -0.55em;
-            right: -0.55em;
+            top: -8px;
+            right: -8px;
          }
 
          &.pe-thumb-bl {
-            bottom: -0.55em;
-            left: -0.55em;
+            bottom: -8px;
+            left: -8px;
          }
 
          &.pe-thumb-br {
-            bottom: -0.55em;
-            right: -0.55em;
+            bottom: -8px;
+            right: -8px;
          }
       }
    }
