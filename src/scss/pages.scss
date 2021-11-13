@@ -1,47 +1,31 @@
-// 600 600
-.pe-size-600x600 {
-   .pe-page {
-      width: 600px !important;
-      height: 600px !important;
-   }
-}
+$sizes: (600 600), (800 600), (600 800), (1000 1000), (1000 600), (600 1000);
 
-// 800 600
-.pe-size-800x600 {
-   .pe-page {
-      width: 800px !important;
-      height: 600px !important;
-   }
-}
-
-// 600 800
-.pe-size-600x800 {
-   .pe-page {
-      width: 600px !important;
-      height: 800px !important;
-   }
-}
-
-// 1000 1000
-.pe-size-1000x1000 {
-   .pe-page {
-      width: 800px !important;
-      height: 800px !important;
-   }
-}
-
-// 1000 600
-.pe-size-1000x600 {
-   .pe-page {
-      width: 1000px !important;
-      height: 600px !important;
-   }
-}
-
-// 600 1000
-.pe-size-600x1000 {
-   .pe-page {
-      width: 600px !important;
-      height: 1000px !important;
+@each $dims in $sizes {
+   $w: #{nth($dims, 1)};
+   $h: #{nth($dims, 2)};
+   .pe-size-#{$w}x#{$h} {
+      .pe-page {
+         width: #{$w + 'px'} !important;
+         height: #{$h + 'px'} !important;
+      }
+      @for $i from 5 through 20 {
+         $perc: ($i * 10);
+         $ratio: ($perc / 100);
+         $scaledW: calc(#{$w + 'px'} * #{$ratio});
+         $scaledH: calc(#{$h + 'px'} * #{$ratio});
+         $topOffset: calc(#{$h + 'px'} * #{($ratio - 1) / 2});
+         $leftOffset: calc(#{$w + 'px'} * #{($ratio - 1) / 2});
+         &.pe-zoom-#{$perc} {
+            .pe-page {
+               transform: scale($ratio);
+               top: $topOffset;
+               left: $leftOffset;
+            }
+            .pe-page-wrapper {
+               width: $scaledW;
+               height: $scaledH;
+            }
+         }
+      }
    }
 }

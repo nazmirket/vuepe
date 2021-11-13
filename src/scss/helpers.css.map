@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AACA,AAAA,UAAU,CAAC;EACR,OAAO,EAAE,eAAe;CAC1B;;AAGD,AAAA,WAAW,CAAC;EACT,WAAW,EAAE,IAAI;CACnB;;AACD,AAAA,aAAa,CAAC;EACX,UAAU,EAAE,MAAM;CACpB;;AACD,AAAA,aAAa,CAAC;EACX,eAAe,EAAE,YAAY;CAC/B",
-    "sources": [
-        "helpers.scss"
-    ],
-    "names": [],
-    "file": "helpers.css"
-}

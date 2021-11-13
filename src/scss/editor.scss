@@ -2,7 +2,6 @@
 @import 'preview.scss';
 @import 'helpers.scss';
 @import 'pages.scss';
-@import 'zoom.scss';
 
 // EDITOR
 .pe-editor {
@@ -21,26 +20,31 @@
    }
 }
 
-// PAGE WRAPPER
-.pe-editor .pe-page-wrapper {
+// EDITOR CONTENT
+.pe-editor .pe-content {
    display: grid;
    overflow: auto;
    position: absolute;
+   padding: 30px;
    bottom: 0px;
    right: 0px;
    left: 0px;
    top: 54px;
-   padding: 40px;
+}
+
+// PAGE WRAPPER
+.pe-editor .pe-page-wrapper {
+   margin: auto;
+   display: block;
+   position: relative;
 }
 
 // PAGE
 .pe-editor .pe-page {
-   margin: auto;
-   display: block;
    border: $page-br;
    background-color: $page-bg;
    overflow: hidden;
-   position: relative;
+   position: absolute;
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;

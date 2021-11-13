@@ -1,7 +1,0 @@
-@for $i from 1 through 20 {
-   .pe-zoom-#{$i*10} {
-      .pe-page {
-         transform: scale(#{$i/10});
-      }
-   }
-}

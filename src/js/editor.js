@@ -88,7 +88,7 @@ export function reload() {
    // hide toolbar
    registerClick('.pe-editor .pe-page', toggleToolbar)
    // hide toolbar
-   registerClick('.pe-editor .pe-page-wrapper', toggleToolbar)
+   registerClick('.pe-editor .pe-content', toggleToolbar)
 
    // INIT AUDIO
    initAudio()

@@ -112,29 +112,33 @@
     </div>
 
     <!--CONTENT-->
-    <div class="pe-page-wrapper">
-      <div class="pe-page">
-        <!--CONTROLLER-->
-        <div class="pe-controller">
-          <!--ROTATE HANDLE-->
-          <span class="pe-rotate-handle">
-            <img src="../icons/rotate.svg" />
-          </span>
+    <div class="pe-content">
+      <div class="pe-page-wrapper">
+        <div class="pe-page">
+          <!--CONTROLLER-->
+          <div class="pe-controller">
+            <!--ROTATE HANDLE-->
+            <span class="pe-rotate-handle">
+              <img src="../icons/rotate.svg" />
+            </span>
 
-          <!--DELETE HANDLE-->
-          <span class="pe-delete-handle">
-            <img src="../icons/delete.svg" />
-          </span>
+            <!--DELETE HANDLE-->
+            <span class="pe-delete-handle">
+              <img src="../icons/delete.svg" />
+            </span>
 
-          <div class="pe-thumbs">
-            <span class="pe-thumb pe-thumb-tl"></span>
-            <span class="pe-thumb pe-thumb-tr"></span>
-            <span class="pe-thumb pe-thumb-bl"></span>
-            <span class="pe-thumb pe-thumb-br"></span>
+            <div class="pe-thumbs">
+              <span class="pe-thumb pe-thumb-tl"></span>
+              <span class="pe-thumb pe-thumb-tr"></span>
+              <span class="pe-thumb pe-thumb-bl"></span>
+              <span class="pe-thumb pe-thumb-br"></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!---->
   </div>
 </template>
 
