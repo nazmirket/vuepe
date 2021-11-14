@@ -51,10 +51,13 @@ export function getNonFunctionalPage(editor) {
 }
 
 // CHANGE BACKGROUND
-export function changeBackground(editor, src) {
+export function changeBackground(editor, { type = 'image', value = '' }) {
    // find page
    const page = editor.querySelector('.pe-page')
-   page.style.backgroundImage = `url(${src})`
+   // image
+   if (type === 'image') page.style.backgroundImage = `url(${value})`
+   // color
+   if (type === 'color') page.style.background = `${value}`
    // mark state
    markState(editor)
 }

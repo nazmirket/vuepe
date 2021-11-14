@@ -1,7 +1,7 @@
 import './editor.js'
 import './preview.js'
 
-import { getEditorById } from './helpers.js'
+import { getEditorById, getActiveEditor } from './helpers.js'
 import {
    changeBackground,
    getNonFunctionalPage,
@@ -28,6 +28,7 @@ function init() {
       insert,
       removeElement,
       getEditorById,
+      getActiveEditor,
    }
 }
 
@@ -40,4 +41,5 @@ export {
    removeElement,
    reload,
    getEditorById,
+   getActiveEditor,
 }

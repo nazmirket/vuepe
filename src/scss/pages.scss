@@ -8,7 +8,7 @@ $sizes: (600 600), (800 600), (600 800), (1000 1000), (1000 600), (600 1000);
          width: #{$w + 'px'} !important;
          height: #{$h + 'px'} !important;
       }
-      @for $i from 5 through 20 {
+      @for $i from 2 through 20 {
          $perc: ($i * 10);
          $ratio: ($perc / 100);
          $scaledW: calc(#{$w + 'px'} * #{$ratio});
