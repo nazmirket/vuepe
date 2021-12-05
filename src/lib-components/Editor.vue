@@ -113,8 +113,47 @@
 
     <!--CONTENT-->
     <div class="pe-content">
-      <div class="pe-page-wrapper">
-        <div class="pe-page">
+      <!--PAGE WRAPPER-->
+      <div class="pe-page-wrapper" v-html="temp" />
+    </div>
+    <!---->
+  </div>
+</template>
+
+<script>
+import { init, reload } from "../js/index";
+export default {
+  model: {
+    prop: "content",
+    event: "reflect",
+  },
+  props: {
+    content: {
+      type: String,
+      default: "",
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    width: {
+      type: Number,
+      deault: 600,
+    },
+    height: {
+      type: Number,
+      deault: 600,
+    },
+    zoom: {
+      type: Number,
+      default: 100, // 10 to 200
+    },
+  },
+  computed: {
+    temp() {
+      return (
+        this.content ||
+        `<div class="pe-page">
           <!--CONTROLLER-->
           <div class="pe-controller">
             <!--ROTATE HANDLE-->
@@ -134,38 +173,19 @@
               <span class="pe-thumb pe-thumb-br"></span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!---->
-  </div>
-</template>
-
-<script>
-import { init, reload } from "../js/index";
-export default {
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    width: {
-      type: Number,
-      deault: 600,
-    },
-    height: {
-      type: Number,
-      deault: 600,
-    },
-    zoom: {
-      type: Number,
-      default: 100, // 10 to 200
+       </div>`
+      );
     },
   },
   mounted() {
     init();
-    reload();
+    reload({ listener: this.update });
+  },
+  methods: {
+    update(editor, pageContent) {
+      const id = editor?.getAttribute("id");
+      if (id === this.id) this.$emit("reflect", pageContent);
+    },
   },
 };
 </script>

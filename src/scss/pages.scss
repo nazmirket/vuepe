@@ -1,4 +1,8 @@
-$sizes: (600 600), (800 600), (600 800), (1000 1000), (1000 600), (600 1000);
+$sizes: (640 640), (600 850), (850 600);
+
+.pe-page {
+   transform-origin: 0 0;
+}
 
 @each $dims in $sizes {
    $w: #{nth($dims, 1)};
@@ -13,13 +17,9 @@ $sizes: (600 600), (800 600), (600 800), (1000 1000), (1000 600), (600 1000);
          $ratio: ($perc / 100);
          $scaledW: calc(#{$w + 'px'} * #{$ratio});
          $scaledH: calc(#{$h + 'px'} * #{$ratio});
-         $topOffset: calc(#{$h + 'px'} * #{($ratio - 1) / 2});
-         $leftOffset: calc(#{$w + 'px'} * #{($ratio - 1) / 2});
          &.pe-zoom-#{$perc} {
             .pe-page {
                transform: scale($ratio);
-               top: $topOffset;
-               left: $leftOffset;
             }
             .pe-page-wrapper {
                width: $scaledW;

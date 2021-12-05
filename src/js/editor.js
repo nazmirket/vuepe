@@ -31,7 +31,7 @@ import { init as initKeyboard } from './keyboard.js'
 import { init as initAudio } from './audio.js'
 import { init as initMaterials } from './materials.js'
 
-export function reload() {
+export function reload(opts) {
    // EDITOR
    // set active editor
    registerClick('.pe-editor', setActiveEditor)
@@ -100,7 +100,7 @@ export function reload() {
    initKeyboard()
 
    // INIT HISTORY
-   initHistory()
+   initHistory(opts?.listener)
    registerClick('.pe-undo', undoListener)
    registerClick('.pe-redo', redoListener)
 }

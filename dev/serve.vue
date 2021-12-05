@@ -28,8 +28,16 @@
           :classes="['pe-is-bold']"
         />
       </div>
-      <Editor id="editor-asdasd" :width="600" :height="600" :zoom="150" />
+      <Editor
+        id="editor-asdasd"
+        v-model="pageContent"
+        :width="640"
+        :height="640"
+        :zoom="100"
+      />
     </div>
+
+    {{ pageContent }}
   </div>
 </template>
 
@@ -54,6 +62,11 @@ export default Vue.extend({
     VideoMaterial,
     AudioMaterial,
     TextMaterial,
+  },
+  data() {
+    return {
+      pageContent: null,
+    };
   },
 });
 </script>

@@ -13,9 +13,9 @@ import {
 import { reload as reloadEditor } from './editor.js'
 import { reload as reloadPreview } from './preview.js'
 
-function reload() {
-   reloadEditor()
-   reloadPreview()
+function reload(opts) {
+   reloadEditor(opts)
+   reloadPreview(opts)
 }
 
 function init() {

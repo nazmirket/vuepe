@@ -19,7 +19,7 @@ export function getPreviewPage(editor) {
    // remove controller
    setReadOnly(temp)
    // return html
-   return temp.outerHTML
+   return temp.innerHTML
 }
 
 // GET NON FUNCTIONAL PAGE

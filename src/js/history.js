@@ -15,6 +15,7 @@ import {
 
 const histories = new Map()
 const memory = 50 // step count to keep in memory
+let listener = () => {}
 
 // UNDO
 export function undo(editor) {
@@ -111,10 +112,16 @@ export function markState(editor) {
 
    // refresh
    refresh(editor)
+
+   // call history listener
+   listener(editor, page.outerHTML)
 }
 
 // INIT
-export function init() {
+export function init(cb) {
+   if (typeof cb === 'function') listener = cb // switch listener function
+
+   // init editor hists
    const editors = document.querySelectorAll('.pe-editor')
    for (const editor of editors) {
       const page = editor.querySelector('.pe-page')
