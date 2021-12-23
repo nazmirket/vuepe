@@ -1,8 +1,5 @@
 <template>
-  <div
-    style="border: 1px solid red"
-    :class="`pe-preview ${cls} pe-size-${options.w}x${options.h}`"
-  >
+  <div :class="`pe-preview ${cls} pe-size-${options.w}x${options.h}`">
     <div v-html="style" />
     <div class="pe-page-wrapper" v-html="page" />
   </div>
