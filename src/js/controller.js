@@ -1,11 +1,15 @@
+import DeleteIcon from '../icons/delete.svg'
+import RotateIcon from '../icons/rotate.svg'
+
 import {
    copyAttribute,
    queryParent,
    getEditor,
    resolveType,
+   setActiveEditor,
 } from './helpers.js'
 import { markState } from './history.js'
-import { hideAll as hideToolbar } from './toolbar.js'
+import { hideAll as hideToolbar, toggleToolbar } from './toolbar.js'
 
 const options = {
    image: {
@@ -26,13 +30,21 @@ const options = {
    },
 }
 
-export function locate(editor) {
-   // find element
-   const el = editor.querySelector('.pe-element.pe-is-active')
-   if (!el) {
-      return
-   }
+export function locateListener(event) {
+   // hide first
+   const editor = getEditor(event?.target || event)
+   hide(editor)
 
+   // activate target
+   const element = queryParent(event?.target || event, 'pe-element')
+   element.classList.add('pe-is-active')
+   locate(editor, element)
+
+   // toggle toolbar
+   toggleToolbar(event)
+}
+
+function locate(editor, el) {
    // get type
    const type = resolveType(el)
 
@@ -43,12 +55,16 @@ export function locate(editor) {
    const { thumbs, rotate = false } = options[type]
 
    // set delete
-   editor.querySelector('.pe-delete-handle').style.display = 'unset'
+   const deleteHandle = editor.querySelector('.pe-delete-handle')
+   deleteHandle.style.display = 'unset'
+   deleteHandle.querySelector('img').src = DeleteIcon
+
+   deleteHandle.addEventListener('click', deleteItem)
 
    // set rotate
-   editor.querySelector('.pe-rotate-handle').style.display = rotate
-      ? 'unset'
-      : 'none'
+   const rotateHandle = editor.querySelector('.pe-rotate-handle')
+   rotateHandle.style.display = rotate ? 'unset' : 'none'
+   rotateHandle.querySelector('img').src = RotateIcon
 
    // set thumbs
    if (thumbs) controller.classList.add('pe-is-resizable')
@@ -80,9 +96,14 @@ export function locate(editor) {
 }
 
 export function hide(editor) {
+   // deactivate all elements
+   editor
+      .querySelectorAll('.pe-editor .pe-element')
+      .forEach((e) => e.classList.remove('pe-is-active'))
+
    // get controller
-   const controller = editor.querySelector('.pe-controller')
-   controller.classList.remove('pe-is-active')
+   const controller = editor?.querySelector('.pe-controller')
+   if (controller) controller.classList.remove('pe-is-active')
 }
 
 // DELETE
@@ -97,21 +118,29 @@ export function deleteItem(event) {
       el.remove()
       // hide toolbar components
       hideToolbar(editor)
+      // hide controller
+      hide(editor)
    }
    // mark state
    markState(editor)
 }
 
+const hoverStart = function (event) {
+   const el = queryParent(event.target, 'pe-element')
+   el.classList.add('pe-is-hovered')
+}
+
+const hoverEnd = function (event) {
+   const el = queryParent(event.target, 'pe-element')
+   el.classList.remove('pe-is-hovered')
+}
+
 // HOVER LISTENERS
-export const hoverListeners = {
-   start: function(event) {
-      const el = queryParent(event.target, 'pe-element')
-      el.classList.add('pe-is-hovered')
-   },
-   end: function(event) {
-      const el = queryParent(event.target, 'pe-element')
-      el.classList.remove('pe-is-hovered')
-   },
+export function initHover() {
+   document.querySelectorAll('.pe-editor .pe-element').forEach(function (el) {
+      el.addEventListener('mouseover', hoverStart)
+      el.addEventListener('mouseleave', hoverEnd)
+   })
 }
 
 export function setReadOnly(page) {

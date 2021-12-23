@@ -2,6 +2,7 @@
 @import 'preview.scss';
 @import 'helpers.scss';
 @import 'pages.scss';
+@import 'zoom.scss';
 
 // EDITOR
 .pe-editor {
@@ -21,11 +22,11 @@
 }
 
 // EDITOR CONTENT
-.pe-editor .pe-content {
+.pe-content {
    display: grid;
    overflow: auto;
    position: absolute;
-   padding: 30px;
+   padding: 50px;
    bottom: 0px;
    right: 0px;
    left: 0px;
@@ -33,10 +34,11 @@
 }
 
 // PAGE WRAPPER
-.pe-editor .pe-page-wrapper {
+.pe-page-wrapper {
    margin: auto;
    display: block;
    position: relative;
+   box-sizing: content-box;
 }
 
 // PAGE
@@ -51,6 +53,7 @@
    box-shadow: $page-shadow;
    -webkit-box-shadow: $page-shadow;
    font-size: $page-font-size !important;
+   transform-origin: 0 0;
 }
 
 // DRAG DROP

@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { reload } from "../js/index";
 export default {
   props: {
     src: {
@@ -57,7 +56,7 @@ export default {
     });
 
     // reload page
-    reload();
+    if (window) window?.$pe?.reload();
   },
 };
 </script>

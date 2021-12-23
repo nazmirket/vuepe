@@ -114,14 +114,33 @@
     <!--CONTENT-->
     <div class="pe-content">
       <!--PAGE WRAPPER-->
-      <div class="pe-page-wrapper" v-html="temp" />
+      <div class="pe-page-wrapper" :style="wrapperStyle" v-html="temp">
+        <div class="pe-page">
+          <div class="pe-controller">
+            <span class="pe-rotate-handle">
+              <img src="../icons/rotate.svg" />
+            </span>
+            <span class="pe-delete-handle">
+              <img src="../icons/delete.svg" />
+            </span>
+            <div class="pe-thumbs">
+              <span class="pe-thumb pe-thumb-tl"></span>
+              <span class="pe-thumb pe-thumb-tr"></span>
+              <span class="pe-thumb pe-thumb-bl"></span>
+              <span class="pe-thumb pe-thumb-br"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!---->
+
+    <p>{{ temp }}</p>
   </div>
 </template>
 
 <script>
-import { init, reload } from "../js/index";
+import { init } from "../js/index";
 export default {
   model: {
     prop: "content",
@@ -138,11 +157,11 @@ export default {
     },
     width: {
       type: Number,
-      deault: 600,
+      default: 600,
     },
     height: {
       type: Number,
-      deault: 600,
+      default: 600,
     },
     zoom: {
       type: Number,
@@ -150,22 +169,23 @@ export default {
     },
   },
   computed: {
+    wrapperStyle() {
+      const ratio = (this.zoom || 100) / 100;
+      const scaledWidth = ratio * this.width;
+      const scaledHeight = ratio * this.height;
+      return `width:${scaledWidth}px;height:${scaledHeight}px;`;
+    },
     temp() {
       return (
         this.content ||
         `<div class="pe-page">
-          <!--CONTROLLER-->
           <div class="pe-controller">
-            <!--ROTATE HANDLE-->
             <span class="pe-rotate-handle">
               <img src="../icons/rotate.svg" />
             </span>
-
-            <!--DELETE HANDLE-->
             <span class="pe-delete-handle">
               <img src="../icons/delete.svg" />
             </span>
-
             <div class="pe-thumbs">
               <span class="pe-thumb pe-thumb-tl"></span>
               <span class="pe-thumb pe-thumb-tr"></span>
@@ -178,13 +198,22 @@ export default {
     },
   },
   mounted() {
-    init();
-    reload({ listener: this.update });
+    init({ listener: this.update });
+    this.reload();
+  },
+  watch: {
+    temp() {
+      setTimeout(this.reload, 200);
+      setTimeout(this.reload, 500);
+    },
   },
   methods: {
     update(editor, pageContent) {
       const id = editor?.getAttribute("id");
       if (id === this.id) this.$emit("reflect", pageContent);
+    },
+    reload() {
+      window?.$pe.reload();
     },
   },
 };

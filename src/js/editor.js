@@ -1,9 +1,4 @@
-import {
-   registerClick,
-   registerChange,
-   registerHover,
-   setActiveEditor,
-} from './helpers.js'
+import { registerClick, registerChange, setActiveEditor } from './helpers.js'
 
 import { setDrag, setResize, setRotate } from './interact.js'
 
@@ -23,28 +18,35 @@ import {
    setupAlpha,
 } from './toolbar.js'
 
-import { deleteItem, hoverListeners } from './controller.js'
+import { deleteItem, initHover, locateListener } from './controller.js'
 
 import { init as initFonts } from './fonts.js'
-import { init as initHistory, undoListener, redoListener } from './history.js'
+import { init as initHistory } from './history.js'
 import { init as initKeyboard } from './keyboard.js'
 import { init as initAudio } from './audio.js'
 import { init as initMaterials } from './materials.js'
 
-export function reload(opts) {
+export function reload() {
+   // INIT HISTORY
+   initHistory()
+
    // EDITOR
    // set active editor
    registerClick('.pe-editor', setActiveEditor)
 
    // CONTROLLER
    // delete-handle
-   registerClick('.pe-delete-handle', deleteItem)
+   registerClick('.pe-editor .pe-delete-handle', deleteItem)
    // drag listener
-   setDrag('.pe-element')
+   setDrag('.pe-editor .pe-element')
    // rotate listener
-   setRotate('.pe-rotate-handle')
+   setRotate('.pe-editor .pe-rotate-handle')
    // resize listener
-   setResize('.pe-controller.pe-is-resizable')
+   setResize('.pe-editor .pe-controller.pe-is-resizable')
+   // init hover
+   initHover()
+   // register element clicks
+   registerClick('.pe-editor .pe-element', locateListener)
 
    // TOOLBAR
    // setup align
@@ -72,19 +74,10 @@ export function reload(opts) {
    // flip back
    registerClick('.pe-flip-back', flipBack)
 
-   // ELEMENT HOVER
-   registerHover(
-      '.pe-editor .pe-element',
-      hoverListeners.start,
-      hoverListeners.end
-   )
-
    // INIT MATERIAL DRAG DROP
    initMaterials()
 
    // TOOLBAR TOGGLE
-   // toggle toolbar
-   registerClick('.pe-editor .pe-element', toggleToolbar)
    // hide toolbar
    registerClick('.pe-editor .pe-page', toggleToolbar)
    // hide toolbar
@@ -98,9 +91,4 @@ export function reload(opts) {
 
    // INIT KEYBOARD
    initKeyboard()
-
-   // INIT HISTORY
-   initHistory(opts?.listener)
-   registerClick('.pe-undo', undoListener)
-   registerClick('.pe-redo', redoListener)
 }

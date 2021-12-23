@@ -1,0 +1,9 @@
+@for $i from 2 through 20 {
+   $perc: ($i * 10);
+   $ratio: ($perc / 100);
+   .pe-zoom-#{$perc} {
+      .pe-page {
+         transform: scale($ratio);
+      }
+   }
+}

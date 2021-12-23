@@ -1,8 +1,4 @@
-$sizes: (640 640), (600 850), (850 600);
-
-.pe-page {
-   transform-origin: 0 0;
-}
+$sizes: (800 800), (595 842), (800 600), (600 800);
 
 @each $dims in $sizes {
    $w: #{nth($dims, 1)};
@@ -11,21 +7,6 @@ $sizes: (640 640), (600 850), (850 600);
       .pe-page {
          width: #{$w + 'px'} !important;
          height: #{$h + 'px'} !important;
-      }
-      @for $i from 2 through 20 {
-         $perc: ($i * 10);
-         $ratio: ($perc / 100);
-         $scaledW: calc(#{$w + 'px'} * #{$ratio});
-         $scaledH: calc(#{$h + 'px'} * #{$ratio});
-         &.pe-zoom-#{$perc} {
-            .pe-page {
-               transform: scale($ratio);
-            }
-            .pe-page-wrapper {
-               width: $scaledW;
-               height: $scaledH;
-            }
-         }
       }
    }
 }

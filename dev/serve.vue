@@ -19,9 +19,8 @@
 
         <p>Örnek Yazı</p>
         <TextMaterial
-          placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+          placeholder="Lorem ipsum is simply dummy"
           :styles="{
-            'font-family': 'Courier New',
             color: 'blue',
             'font-size': '2em',
           }"
@@ -31,13 +30,15 @@
       <Editor
         id="editor-asdasd"
         v-model="pageContent"
-        :width="640"
-        :height="640"
+        :width="800"
+        :height="600"
         :zoom="100"
       />
     </div>
 
-    {{ pageContent }}
+    <div class="sub">
+      <PageViewer :page="pageContent" :opts="{ w: 800, h: 600, maxH: 220 }" />
+    </div>
   </div>
 </template>
 
@@ -46,22 +47,22 @@
 import Vue from "vue";
 import {
   Editor,
-  Viewer,
   ImageMaterial,
   VideoMaterial,
   AudioMaterial,
   TextMaterial,
+  PageViewer,
 } from "@/entry.esm";
 
 export default Vue.extend({
   name: "ServeDev",
   components: {
     Editor,
-    Viewer,
     ImageMaterial,
     VideoMaterial,
     AudioMaterial,
     TextMaterial,
+    PageViewer,
   },
   data() {
     return {
@@ -97,6 +98,14 @@ body {
 .pe-video-material {
   margin: 10px;
   width: auto;
+}
+
+.sub {
+  padding: 5px;
+  border: 1px solid red;
+  margin-top: 10px;
+  height: 230px;
+  width: 300px;
 }
 </style>
 

@@ -7,18 +7,21 @@
    align-items: center;
 }
 
+// HIDE CONTROLLER
+.pe-preview .pe-controller {
+   display: none !important;
+}
+
 // PAGE
 .pe-preview .pe-page {
-   display: block;
-   border: $page-br;
-   border-radius: 12px;
-   overflow: hidden;
-   position: relative;
    background-color: $page-bg;
+   overflow: hidden;
+   position: absolute;
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
    font-size: $page-font-size !important;
+   transform-origin: 0 0;
 }
 
 // ELEMENT

@@ -97,7 +97,7 @@ export function getEditor(el) {
    while (!el?.classList?.contains('pe-editor')) {
       el = el?.parentElement
       depth++
-      if (depth >= 30) {
+      if (depth >= 50) {
          return null
       }
    }
@@ -106,13 +106,19 @@ export function getEditor(el) {
 
 // SET ACTIVE EDITOR
 export function setActiveEditor(event) {
-   try {
-      const editor = getEditor(event.target)
-      document
-         .querySelectorAll('.pe-editor')
-         .forEach((e) => e.classList.remove('pe-active-editor'))
-      editor.classList.add('pe-active-editor')
-   } catch (error) {}
+   // find current
+   const editor = getEditor(event?.target)
+
+   // return if not found
+   if (!editor) return
+
+   // deactivate others
+   document
+      .querySelectorAll('.pe-editor')
+      .forEach((e) => e.classList.remove('pe-active-editor'))
+
+   // activate current
+   editor?.classList.add('pe-active-editor')
 }
 
 // GET ACTIVE EDITOR
@@ -125,13 +131,9 @@ export function getActiveEditor() {
 export function getEditorById(id) {
    const editor = document.getElementById(id)
 
-   if (!editor) {
-      return null
-   }
+   if (!editor) return null
 
-   if (!editor.classList.contains('pe-editor')) {
-      return null
-   }
+   if (!editor.classList.contains('pe-editor')) return null
 
    return editor
 }
@@ -142,7 +144,7 @@ export function queryParent(el, cls) {
    while (!el?.classList?.contains(cls)) {
       el = el?.parentElement
       depth++
-      if (depth >= 12 || el?.id === 'editor') {
+      if (depth >= 12) {
          return null
       }
    }
@@ -174,7 +176,7 @@ export function getMaxZ(page) {
 // RAISE ALL
 export function raiseAllElements(page) {
    const elements = page.querySelectorAll('.pe-element')
-   elements.forEach(function(element) {
+   elements.forEach(function (element) {
       const fixed = (parseInt(element.style['z-index']) || 0) + 1
       element.style['z-index'] = fixed
    })
@@ -182,32 +184,22 @@ export function raiseAllElements(page) {
 
 // REGISTER CLICK
 export function registerClick(query, handler, parent = document) {
-   parent.querySelectorAll(query).forEach(function(el) {
+   parent.querySelectorAll(query).forEach(function (el) {
       el.addEventListener('click', handler)
    })
 }
 
 // REGISTER CHANGE
 export function registerChange(query, handler, parent = document) {
-   parent.querySelectorAll(query).forEach(function(el) {
+   parent.querySelectorAll(query).forEach(function (el) {
       el.addEventListener('change', handler)
    })
 }
 
 // REGISTER INPUT
 export function registerInput(query, handler, parent = document) {
-   parent.querySelectorAll(query).forEach(function(el) {
+   parent.querySelectorAll(query).forEach(function (el) {
       el.addEventListener('input', handler)
-   })
-}
-
-// REGISTER HOVER
-export function registerHover(query, start, end, parent = document) {
-   parent.querySelectorAll(query).forEach(function(el) {
-      el.addEventListener('mouseenter', start)
-   })
-   parent.querySelectorAll(query).forEach(function(el) {
-      el.addEventListener('mouseleave', end)
    })
 }
 

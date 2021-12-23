@@ -11,17 +11,20 @@
           align-items: center;
 }
 
+.pe-preview .pe-controller {
+  display: none !important;
+}
+
 .pe-preview .pe-page {
-  display: block;
-  border: 1px solid #e2e6eb;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
   background-color: white;
+  overflow: hidden;
+  position: absolute;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   font-size: 12px !important;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 
 .pe-element {

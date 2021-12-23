@@ -8,7 +8,7 @@ import { markState } from './history.js'
 
 // DRAG LISTENER
 export const dragListeners = {
-   move: function(event) {
+   move: function (event) {
       const editor = getEditor(event.target)
       const controller = editor.querySelector('.pe-controller')
       const target = editor.querySelector('.pe-element.pe-is-active')
@@ -16,7 +16,7 @@ export const dragListeners = {
       drag(event, controller)
       drag(event, target)
    },
-   end: function(event) {
+   end: function (event) {
       const editor = getEditor(event.target)
       markState(editor)
    },
@@ -24,7 +24,7 @@ export const dragListeners = {
 
 // RESIZE LISTENER
 export const resizeListeners = {
-   move: function(event) {
+   move: function (event) {
       const editor = getEditor(event.target)
       const controller = editor.querySelector('.pe-controller')
       const target = editor.querySelector('.pe-element.pe-is-active')
@@ -32,7 +32,7 @@ export const resizeListeners = {
       resize(event, controller)
       resize(event, target)
    },
-   end: function(event) {
+   end: function (event) {
       const editor = getEditor(event.target)
       markState(editor)
    },
@@ -40,7 +40,7 @@ export const resizeListeners = {
 
 // ROTATE LISTENER
 export const rotateListeners = {
-   onstart: function(event) {
+   onstart: function (event) {
       const editor = getEditor(event.target)
       const target = editor.querySelector('.pe-element.pe-is-active .pe-item')
 
@@ -52,13 +52,13 @@ export const rotateListeners = {
          target.setAttribute('data-angle', getDragAngle(event, target))
       }
    },
-   onmove: function(event) {
+   onmove: function (event) {
       const editor = getEditor(event.target)
       const target = editor.querySelector('.pe-element.pe-is-active .pe-item')
       const angle = getDragAngle(event, target)
       rotate(angle, target)
    },
-   onend: function(event) {
+   onend: function (event) {
       const editor = getEditor(event.target)
       const target = editor.querySelector('.pe-element.pe-is-active .pe-item')
       const angle = getDragAngle(event, target)
@@ -75,9 +75,7 @@ function drag(event, target) {
    const page = editor?.querySelector('.pe-page')
    const pageRect = page?.getBoundingClientRect()
 
-   if (!pageRect) {
-      return
-   }
+   if (!pageRect) return
 
    // previous position
    let left = parseFloat(target?.getAttribute('data-left')) || 0
@@ -103,9 +101,7 @@ function resize(event, target) {
    const page = editor?.querySelector('.pe-page')
    const pageRect = page?.getBoundingClientRect()
 
-   if (!pageRect) {
-      return
-   }
+   if (!pageRect) return
 
    // get element rect
    const elRect = event.rect

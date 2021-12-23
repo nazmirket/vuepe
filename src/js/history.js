@@ -1,191 +1,175 @@
-import {
-   getEditor,
-   registerClick,
-   registerHover,
-   setActiveEditor,
-} from './helpers.js'
-import { init as initAudio } from './audio.js'
-import { init as initMaterials } from './materials.js'
-import { openMenu, toggleToolbar } from './toolbar.js'
-import {
-   deleteItem,
-   hoverListeners,
-   locate as locateController,
-} from './controller.js'
+import { getEditor, registerClick } from './helpers.js'
 
 const histories = new Map()
 const memory = 50 // step count to keep in memory
-let listener = () => {}
 
-// UNDO
-export function undo(editor) {
-   // get history
-   const current = histories.get(editor)
-
-   if (!current) {
-      init()
-      return
-   }
-
-   // get page
-   const page = editor.querySelector('.pe-page')
-
-   // undo if history is not empty
-   if (current.pointer > 0) {
-      current.pointer--
-      page.outerHTML = current.history[current.pointer]
-   }
-
-   // refresh page
-   refresh(editor)
-}
-
-// REDO
-export function redo(editor) {
-   // get history
-   const current = histories.get(editor)
-
-   if (!current) {
-      init()
-      return
-   }
-
-   // get page
-   const page = editor.querySelector('.pe-page')
-
-   // redo if pointer is not the last index
-   if (current.pointer + 1 < current.history.length) {
-      current.pointer++
-      page.outerHTML = current.history[current.pointer]
-   }
-
-   // refresh page
-   refresh(editor)
-}
-
-export function undoListener(event) {
+function undoListener(event) {
    // get editor
    const editor = getEditor(event.target)
    // call undo
    undo(editor)
 }
 
-export function redoListener(event) {
+function redoListener(event) {
    // get editor
    const editor = getEditor(event.target)
    // call redo
    redo(editor)
 }
 
-// MARK STATE
-export function markState(editor) {
-   // return if not editor
-   if (!editor) {
-      return
-   }
-
-   // get history
-   const current = histories.get(editor)
-
+// GET CURRENT CONTENT
+function getPage(editor) {
    // get page
    const page = editor.querySelector('.pe-page')
+   // return html content
+   return { node: page, html: page.outerHTML }
+}
 
-   // if memory is full
-   if (
-      current.history.length >= memory &&
-      current.pointer + 1 === current.history.length
-   ) {
-      current.history.push(page.outerHTML)
-      current.history = current.history.slice(1, memory + 1)
-   }
-   // if last
-   else if (current.pointer + 1 === current.history.length) {
-      current.history.push(page.outerHTML)
-      current.pointer++
-   }
-   // else
-   else {
-      current.history = current.history.slice(0, current.pointer + 1)
-      current.history.push(page.outerHTML)
-      current.pointer++
-   }
+// GET CURRENT HISTORY
+function getCurrent(editor) {
+   const editorID = editor.getAttribute('id')
+   // get history
+   const current = histories.get(editorID)
 
-   // refresh
-   refresh(editor)
+   if (!current) return { history: null, pointer: -1 }
+   return { ...current, size: current.history?.length }
+}
 
-   // call history listener
-   listener(editor, page.outerHTML)
+// SET CURRENT
+function setCurrent(editor, props) {
+   const editorID = editor.getAttribute('id')
+   // get history
+   const current = histories.get(editorID)
+
+   // return if not found
+   if (!current) return
+
+   // update data
+   histories.set(editorID, { ...current, ...props })
 }
 
 // INIT
-export function init(cb) {
-   if (typeof cb === 'function') listener = cb // switch listener function
-
+export function init() {
    // init editor hists
    const editors = document.querySelectorAll('.pe-editor')
    for (const editor of editors) {
       const page = editor.querySelector('.pe-page')
-      if (!histories.get(editor)) {
-         histories.set(editor, {
-            pointer: -1,
-            history: [page.outerHTML],
-         })
-      }
+      initHistory(editor, page)
    }
+   // register buttons
+   registerClick('.pe-undo', undoListener)
+   registerClick('.pe-redo', redoListener)
 }
 
 // REFRESH UNDO REDO STYLE
 function refreshButtons(editor) {
-   // get history
-   const current = histories.get(editor)
-
+   // get current
+   const { pointer, size } = getCurrent(editor)
    // undo button
    const undoBtn = editor.querySelector('.pe-undo')
-   if (current.pointer > 0 && current.history.length > 1) {
-      undoBtn.classList.remove('pe-is-disabled')
-   } else {
-      undoBtn.classList.add('pe-is-disabled')
-   }
+   if (pointer > 0 && size > 1) undoBtn.classList.remove('pe-is-disabled')
+   else undoBtn.classList.add('pe-is-disabled')
 
    // redo button
    const redoBtn = editor.querySelector('.pe-redo')
-   if (current.pointer < current.history.length - 1) {
-      redoBtn.classList.remove('pe-is-disabled')
-   } else {
-      redoBtn.classList.add('pe-is-disabled')
-   }
+   if (pointer < size - 1) redoBtn.classList.remove('pe-is-disabled')
+   else redoBtn.classList.add('pe-is-disabled')
 }
 
-// REFRESH EDITOR
-function refresh(editor) {
-   // set active editor
-   registerClick('.pe-editor', setActiveEditor)
+// INIT HISTORY
+function initHistory(editor, page) {
+   const editorID = editor.getAttribute('id')
+   if (!histories.get(editorID))
+      histories.set(editorID, {
+         pointer: 0,
+         history: [page.outerHTML],
+      })
+}
 
-   // delete-handle
-   registerClick('.pe-delete-handle', deleteItem, editor)
+// MARK STATE
+export function markState(editor) {
+   // return if not editor
+   if (!editor) return window?.$pe.reload()
 
-   // toggle toolbar
-   registerClick('.pe-element', toggleToolbar, editor)
+   // get history
+   const { history, pointer, size } = getCurrent(editor)
 
-   // hide toolbar
-   registerClick('.pe-page', toggleToolbar, editor)
+   // get current state of page
+   const { html } = getPage(editor)
 
-   // init audio
-   initAudio()
-
-   // init materials
-   initMaterials()
-
-   // element hover
-   const { start, end } = hoverListeners
-   registerHover('.pe-element', start, end, editor)
-
-   // locate controller
-   locateController(editor)
-
-   // open menu
-   openMenu(editor)
+   // if memory is full
+   if (size >= memory && pointer + 1 === size)
+      setCurrent(editor, {
+         history: [...history, html].slice(1, memory + 1),
+      })
+   // if last
+   else if (pointer + 1 === size)
+      setCurrent(editor, {
+         history: [...history, html],
+         pointer: pointer + 1,
+      })
+   // else
+   else
+      setCurrent(editor, {
+         history: [...[...history].slice(0, pointer + 1), html],
+         pointer: pointer + 1,
+      })
 
    // refresh buttons
    refreshButtons(editor)
+
+   // refresh page
+   window?.$pe?.historyListener(editor, html)
+}
+
+// UNDO
+export function undo(editor) {
+   // get history
+   const { pointer, history } = getCurrent(editor)
+
+   // if no history return
+   if (history === null) return init()
+
+   // get page
+   const { node } = getPage(editor)
+
+   // undo if history is not empty
+   if (pointer > 0) {
+      node.outerHTML = history[pointer - 1]
+      setCurrent(editor, {
+         pointer: pointer - 1,
+      })
+   }
+
+   // refresh buttons
+   refreshButtons(editor)
+
+   // call history listener
+   window?.$pe?.historyListener(editor, node.outerHTML)
+}
+
+// REDO
+export function redo(editor) {
+   // get history
+   const { pointer, history, size } = getCurrent(editor)
+
+   // if no history return
+   if (history === null) return init()
+
+   // get page
+   const { node } = getPage(editor)
+
+   // redo if pointer is not the last index
+   if (pointer + 1 < size) {
+      node.outerHTML = history[pointer + 1]
+      setCurrent(editor, {
+         pointer: pointer + 1,
+      })
+   }
+
+   // refresh buttons
+   refreshButtons(editor)
+
+   // call history listener
+   window?.$pe?.historyListener(editor, node.outerHTML)
 }

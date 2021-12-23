@@ -13,12 +13,12 @@ import {
 import { reload as reloadEditor } from './editor.js'
 import { reload as reloadPreview } from './preview.js'
 
-function reload(opts) {
-   reloadEditor(opts)
-   reloadPreview(opts)
+function reload(mode = 'edit') {
+   if (mode === 'edit') reloadEditor()
+   if (mode === 'view') reloadPreview()
 }
 
-function init() {
+function init({ listener }) {
    // append to the window
    window.$pe = {
       reload,
@@ -29,6 +29,7 @@ function init() {
       removeElement,
       getEditorById,
       getActiveEditor,
+      historyListener: listener,
    }
 }
 

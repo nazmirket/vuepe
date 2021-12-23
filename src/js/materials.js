@@ -21,7 +21,7 @@ export function init() {
    initDragDrop()
 
    // init click listener
-   document.querySelectorAll('.pe-drop-item').forEach(function(material) {
+   document.querySelectorAll('.pe-drop-item').forEach(function (material) {
       material.addEventListener('click', insertOnClick)
    })
 }

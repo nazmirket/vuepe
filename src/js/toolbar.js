@@ -40,10 +40,7 @@ import { load as loadVideo } from './video.js'
 import { load as loadText, updateFontColorIndicator } from './textarea.js'
 import { load as loadImage } from './image.js'
 
-import {
-   locate as locateController,
-   hide as hideController,
-} from './controller.js'
+import { hide as hideController } from './controller.js'
 
 import align from './align.js'
 import alpha from './alpha.js'
@@ -232,38 +229,31 @@ export function setupAlpha() {
 export function toggleToolbar(event) {
    // get editor
    const editor = getEditor(event?.target || event)
+
+   if (!editor) return
+
    // check if origin is delete button
    const isControl = queryParent(event.target, 'pe-controller')
+
    // check if click origin is delete button
    const isDel = queryParent(event.target, 'pe-delete-handle')
+
    // check if click origin is rotate button
    const isRotate = queryParent(event.target, 'pe-rotate-handle')
 
    // ignore if the origin is controller
-   if ((isControl || isRotate) && !isDel) {
-      return
-   }
+   if (isControl || isRotate || isDel) return
 
-   // hide controller
-   hideController(editor)
-   // de-activate all elements at first
-   deActivateAll(editor)
-   // if origin is delete button then return
-   if (isDel) {
-      hideAll(editor)
-      return
-   }
    // check if click origin is page
    const isPage = event.target.classList.contains('pe-page')
+
    // if origin is page then de activate all elements and return
    if (isPage) {
       hideAll(editor)
+      hideController(editor)
       return
    }
-   // set active class
-   const el = queryParent(event.target, 'pe-element')
-   el?.classList.add('pe-is-active')
-   locateController(editor)
+
    // open menu
    openMenu(editor)
 }
@@ -272,14 +262,16 @@ export function toggleToolbar(event) {
 export function openMenu(editor) {
    // hide all at first
    hideAll(editor)
+
    // find element
    const el = editor.querySelector('.pe-element.pe-is-active')
+
    // return if no element
-   if (!el) {
-      return
-   }
+   if (!el) return
+
    // init type
    const type = resolveType(el)
+
    // get tool list based on type
    const items = tools[type]
    if (items) {
@@ -297,18 +289,8 @@ export function hideAll(editor) {
    // find toolbar
    const toolbar = editor.querySelector('.pe-options-toolbar')
    // set display none to all toolbar components
-   toolbar?.querySelectorAll('.pe-tool').forEach(function(el) {
+   toolbar?.querySelectorAll('.pe-tool').forEach(function (el) {
       el.style.display = 'none'
-   })
-}
-
-// DE ACTIVATE ALL ELEMENTS
-export function deActivateAll(editor) {
-   // get page
-   const page = editor.querySelector('.pe-page')
-   // deactivate all
-   page.querySelectorAll('.pe-element').forEach(function(e) {
-      e.classList.remove('pe-is-active')
    })
 }
 
