@@ -134,8 +134,6 @@
       </div>
     </div>
     <!---->
-
-    <p>{{ temp }}</p>
   </div>
 </template>
 
@@ -199,7 +197,7 @@ export default {
   },
   mounted() {
     init({ listener: this.update });
-    this.reload();
+    setTimeout(this.reload, 200);
   },
   watch: {
     temp() {

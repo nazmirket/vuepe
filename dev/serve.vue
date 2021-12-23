@@ -30,14 +30,17 @@
       <Editor
         id="editor-asdasd"
         v-model="pageContent"
-        :width="800"
-        :height="600"
+        :width="600"
+        :height="800"
         :zoom="100"
       />
     </div>
 
     <div class="sub">
-      <PageViewer :page="pageContent" :opts="{ w: 800, h: 600, maxH: 220 }" />
+      <PageViewer
+        :page="pageContent"
+        :opts="{ w: 600, h: 800, maxH: 230, maxW: 240 }"
+      />
     </div>
   </div>
 </template>

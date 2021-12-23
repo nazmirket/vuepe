@@ -1,7 +1,10 @@
 <template>
-  <div :class="`pe-preview pe-size-${options.w}x${options.h}`">
+  <div
+    style="border: 1px solid red"
+    :class="`pe-preview ${cls} pe-size-${options.w}x${options.h}`"
+  >
     <div v-html="style" />
-    <div :class="['pe-page-wrapper', cls]" v-html="page" />
+    <div class="pe-page-wrapper" v-html="page" />
   </div>
 </template>
 
@@ -32,7 +35,7 @@ export default {
   computed: {
     cls() {
       const suffix = parseInt(this.ratio * 100);
-      return `pe-page-wrapper-${suffix}`;
+      return `pe-preview-wrapper-${suffix}`;
     },
     ratio() {
       const { w, h, maxW, maxH, fixedH, fixedW } = this.options;
@@ -59,11 +62,15 @@ export default {
       // return style
       return `
       <style>
-        .pe-page-wrapper.${this.cls}{
+        .${this.cls} {
             width:${this.ratio * w}px;
             height:${this.ratio * h}px
         }
-        .pe-page-wrapper.${this.cls} .pe-page{
+        .${this.cls} .pe-page-wrapper {
+            width:${this.ratio * w}px;
+            height:${this.ratio * h}px
+        }
+        .${this.cls} .pe-page{
             transform:scale(${this.ratio});
         }
       </style>
