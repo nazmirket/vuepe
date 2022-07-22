@@ -31,8 +31,7 @@ export default {
   },
   computed: {
     cls() {
-      const suffix = parseInt(this.ratio * 100);
-      return `pe-preview-wrapper-${suffix}`;
+      return `pe-preview-wrapper-${this.options?.w}x${this.options?.h}`;
     },
     ratio() {
       const { w, h, maxW, maxH, fixedH, fixedW } = this.options;
@@ -60,15 +59,15 @@ export default {
       return `
       <style>
         .${this.cls} {
-            width:${this.ratio * w}px;
-            height:${this.ratio * h}px
+            width:${this.ratio * w}px !important;
+            height:${this.ratio * h}px !important;
         }
         .${this.cls} .pe-page-wrapper {
-            width:${this.ratio * w}px;
-            height:${this.ratio * h}px
+            width:${this.ratio * w}px !important;
+            height:${this.ratio * h}px !important;
         }
         .${this.cls} .pe-page{
-            transform:scale(${this.ratio});
+            transform:scale(${this.ratio}) !important;
         }
       </style>
       `;

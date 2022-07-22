@@ -251,3 +251,6 @@ export function parseJSON(data) {
       return null
    }
 }
+
+// HIDE ELEMENT
+export function hide(element) {}

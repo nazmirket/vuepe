@@ -313,56 +313,6 @@
    }
 }
 
-// HISTORY TOOLBAR
-.pe-history-toolbar {
-   margin-left: auto;
-   width: min-content;
-   height: 30px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   z-index: 99999;
-   // TOOL
-   .pe-tool {
-      padding: 0 4px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: unset !important;
-   }
-   .pe-undo,
-   .pe-redo {
-      button {
-         width: 34px;
-         height: 34px;
-         background: none;
-         border: 1px solid rgb(223, 227, 230);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         border-radius: 100%;
-         cursor: pointer;
-         &:hover {
-            transform: scale(0.97);
-            transition: 0.2s;
-         }
-      }
-      img {
-         width: 100%;
-      }
-
-      &.pe-is-disabled {
-         button {
-            cursor: not-allowed;
-         }
-         img {
-            filter: opacity(0.4);
-         }
-      }
-   }
-}
-
 // EDITOR ELEMENT
 .pe-editor .pe-page .pe-element {
    // GENERAL ITEM STYLES
@@ -393,12 +343,12 @@
 
 // CONTROLLER
 .pe-controller {
+   // pointer-events: none;
+   // touch-action: none;
    box-sizing: border-box;
-   touch-action: none;
    position: absolute;
    display: none;
    border: $controller-br;
-   pointer-events: none;
    &.pe-is-active {
       display: block;
    }
@@ -417,11 +367,10 @@
       top: -37px;
       left: calc(50% - 9px);
       img {
-         width: 18px;
-         background: rgb(233, 236, 240);
+         width: 20px;
+         background: rgb(120, 143, 155);
          border-radius: 100%;
-         padding: 3px;
-         border: 1px solid rgba(0, 0, 0, 0.4);
+         padding: 2px;
       }
    }
 
@@ -435,10 +384,9 @@
       left: calc(50% - 9px);
       img {
          width: 18px;
-         background: rgb(233, 236, 240);
+         background: rgb(120, 143, 155);
          border-radius: 100%;
-         padding: 3px;
-         border: 1px solid rgba(0, 0, 0, 0.4);
+         padding: 4px;
       }
    }
 
@@ -447,30 +395,31 @@
       display: none;
       .pe-thumb {
          position: absolute;
-         width: 12px;
-         height: 12px;
-         background: $page-bg;
-         border: $controller-br;
+         width: 10px;
+         height: 10px;
+         background: rgb(255, 255, 255);
          pointer-events: auto;
          border-radius: 100%;
+         box-shadow: 0 0 0 2px $controller-br-color;
+
          &.pe-thumb-tl {
-            top: -8px;
-            left: -8px;
+            top: -5px;
+            left: -5px;
          }
 
          &.pe-thumb-tr {
-            top: -8px;
-            right: -8px;
+            top: -5px;
+            right: -5px;
          }
 
          &.pe-thumb-bl {
-            bottom: -8px;
-            left: -8px;
+            bottom: -5px;
+            left: -5px;
          }
 
          &.pe-thumb-br {
-            bottom: -8px;
-            right: -8px;
+            bottom: -5px;
+            right: -5px;
          }
       }
    }

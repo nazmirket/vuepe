@@ -1,5 +1,4 @@
 import { getMaxZ } from './helpers.js'
-import { markState } from './history.js'
 
 import { create as createText } from './textarea.js'
 import { create as createAudio } from './audio.js'

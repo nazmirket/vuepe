@@ -4,7 +4,6 @@ import {
    getDragAngle,
    getEditor,
 } from './helpers.js'
-import { markState } from './history.js'
 
 // DRAG LISTENER
 export const dragListeners = {

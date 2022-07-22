@@ -1,54 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   class="ionicon"
-   viewBox="0 0 32 32"
-   version="1.1"
-   id="svg6"
-   sodipodi:docname="rotate.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   width="32"
-   height="32"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <defs
-     id="defs10" />
-  <sodipodi:namedview
-     id="namedview8"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     showgrid="false"
-     inkscape:zoom="12.046875"
-     inkscape:cx="12.741894"
-     inkscape:cy="8.8404669"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg6" />
-  <title
-     id="title2">Close</title>
-  <metadata
-     id="metadata943">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:title>Close</dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path
-     fill="#6563ff"
-     d="m 26.890635,20.911025 h -6.213033 a 1.3715305,1.3715305 0 0 0 0,2.743061 h 3.291673 a 10.972244,10.972244 0 0 1 -18.8996899,-7.557133 1.3715305,1.3715305 0 0 0 -2.743061,0 13.715305,13.715305 0 0 0 23.1514349,9.916166 v 2.427609 a 1.3715305,1.3715305 0 0 0 2.743061,0 V 22.26884 A 1.3715305,1.3715305 0 0 0 26.890635,20.911025 Z M 16.041829,2.3816472 A 13.715305,13.715305 0 0 0 6.6056997,6.1807867 v -2.427609 a 1.3715307,1.3715307 0 0 0 -2.7430614,0 V 9.925065 a 1.3715305,1.3715305 0 0 0 1.3715305,1.371531 h 6.1718872 a 1.3715305,1.3715305 0 0 0 0,-2.7430615 H 8.1143827 a 10.972244,10.972244 0 0 1 18.8996903,7.5434185 1.3715305,1.3715305 0 0 0 2.743061,0 A 13.715305,13.715305 0 0 0 16.041829,2.3816472 Z"
-     id="path2"
-     style="stroke-width:1;fill:#000000;fill-opacity:1" />
+<?xml version="1.0" encoding="utf-8"?>
+<svg class="ionicon" viewBox="0 0 32 32" version="1.1" id="svg6" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <title id="title2">Close</title>
+  <path d="m 26.890635,20.911025 h -6.213033 a 1.3715305,1.3715305 0 0 0 0,2.743061 h 3.291673 a 10.972244,10.972244 0 0 1 -18.8996899,-7.557133 1.3715305,1.3715305 0 0 0 -2.743061,0 13.715305,13.715305 0 0 0 23.1514349,9.916166 v 2.427609 a 1.3715305,1.3715305 0 0 0 2.743061,0 V 22.26884 A 1.3715305,1.3715305 0 0 0 26.890635,20.911025 Z M 16.041829,2.3816472 A 13.715305,13.715305 0 0 0 6.6056997,6.1807867 v -2.427609 a 1.3715307,1.3715307 0 0 0 -2.7430614,0 V 9.925065 a 1.3715305,1.3715305 0 0 0 1.3715305,1.371531 h 6.1718872 a 1.3715305,1.3715305 0 0 0 0,-2.7430615 H 8.1143827 a 10.972244,10.972244 0 0 1 18.8996903,7.5434185 1.3715305,1.3715305 0 0 0 2.743061,0 A 13.715305,13.715305 0 0 0 16.041829,2.3816472 Z" id="path2" style="stroke-width: 1; fill-opacity: 1; fill: rgb(255, 255, 255);"/>
 </svg>
