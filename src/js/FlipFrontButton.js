@@ -22,7 +22,6 @@ export default class FlipFrontButton extends Tool {
    bringToFront() {
       const active = this.getActive()
       const maxZ = this.toolbar.editor.getMaxZ()
-      console.log(maxZ)
       active.style.setZ(maxZ + 1)
       active.reload()
    }

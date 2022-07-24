@@ -1,6 +1,6 @@
 import Tool from './Tool.js'
 
-export default class TextAlignSelect extends Tool {
+export default class FontAlignToggle extends Tool {
    constructor(toolbar) {
       const root = toolbar.root.querySelector('.pe-change-align')
       super(toolbar, root, 'ti009')

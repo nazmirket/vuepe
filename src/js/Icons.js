@@ -5,10 +5,13 @@ import AlignCenterIcon from '../icons/align-c.svg'
 import DeleteIcon from '../icons/delete.svg'
 import RotateIcon from '../icons/rotate.svg'
 
+import SelectArrow from '../icons/select-arrow.svg'
+
 export default {
    AlignRightIcon,
    AlignCenterIcon,
    AlignLeftIcon,
    DeleteIcon,
    RotateIcon,
+   SelectArrow,
 }

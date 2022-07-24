@@ -1,6 +1,10 @@
 import Tool from './Tool.js'
 
 export default class FlipHorizontalButton extends Tool {
+   // input button
+   button
+   flipped
+
    constructor(toolbar) {
       const root = toolbar.root.querySelector('.pe-flip-vertical')
       super(toolbar, root, 'ti002')

@@ -21,11 +21,6 @@ export default {
             interact.modifiers.restrictEdges({
                outer: '.pe-page',
             }),
-            // keep w/h ratio constant
-            interact.modifiers.aspectRatio({
-               ratio: 'preserve',
-               modifiers: [interact.modifiers.restrictSize({ max: 'parent' })],
-            }),
          ],
          inertia: false,
       })

@@ -5,8 +5,8 @@ import FlipFrontButton from './FlipFrontButton.js'
 import OpacitySlider from './OpacitySlider.js'
 import FontFamilySelect from './FontFamilySelect.js'
 import FontSizeSelect from './FontSizeSelect.js'
-import TextColorSelect from './TextColorSelect.js'
-import TextAlignSelect from './TextAlignSelect.js'
+import FontColorSelect from './FontColorSelect.js'
+import FontAlignToggle from './FontAlignToggle.js'
 import FontWeightToggle from './FontWeightToggle.js'
 import FontItalicToggle from './FontItalicToggle.js'
 import FontStrikeToggle from './FontStrikeToggle.js'
@@ -29,8 +29,8 @@ export default class Toolbar {
          new OpacitySlider(this),
          new FontFamilySelect(this),
          new FontSizeSelect(this),
-         new TextColorSelect(this),
-         new TextAlignSelect(this),
+         new FontColorSelect(this),
+         new FontAlignToggle(this),
          new FontWeightToggle(this),
          new FontItalicToggle(this),
          new FontStrikeToggle(this),

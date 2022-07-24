@@ -35,9 +35,7 @@ export default class FlipHorizontalButton extends Tool {
 
    flip() {
       const active = this.getActive()
-      active.style.setTransform({
-         scaleX: this.flipped ? 1 : -1,
-      })
+      active.style.setTransform({ scaleX: this.flipped ? 1 : -1 })
       active.reload()
    }
 }

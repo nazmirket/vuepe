@@ -12,6 +12,15 @@ export default class Style {
       scaleY: 1,
    }
 
+   font = {
+      weight: 'normal',
+      style: 'normal',
+      size: 16,
+      family: 'sans-serif',
+      align: 'left',
+      decoration: 'none',
+   }
+
    constructor(p = {}) {
       this.z = isNaN(p?.z) ? 0 : p.z
 
@@ -33,10 +42,22 @@ export default class Style {
       // horizantal flip
       this.transform.scaleX = p?.transform?.scaleX || 1
       this.transform.scaleY = p?.transform?.scaleY || 1
+
+      // font props
+      this.font.weight = p?.font?.weight || 'normal'
+      this.font.style = p?.font?.style || 'normal'
+      this.font.size = p?.font?.size || 16
+      this.font.family = p?.font?.family || 'sans-serif'
+      this.font.align = p?.font?.align || 'left'
+      this.font.decoration = p?.font?.decoration || 'none'
    }
 
    setTransform(p) {
       this.transform = { ...this.transform, ...p }
+   }
+
+   setFont(p) {
+      this.font = { ...this.font, ...p }
    }
 
    setSize(width, height) {

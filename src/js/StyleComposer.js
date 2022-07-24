@@ -24,5 +24,13 @@ export default function compose(s) {
    // opacity
    parts.push(`opacity:${isNaN(s.opacity) ? 1 : s.opacity}`)
 
+   // font props
+   parts.push(`font-weight: ${s?.font?.weight || 'normal'}`)
+   parts.push(`font-style: ${s?.font?.style || 'normal'}`)
+   parts.push(`font-size: ${s?.font?.size || 16}px`)
+   parts.push(`font-family: ${s?.font?.family || 'sans-serif'}`)
+   parts.push(`text-align: ${s?.font?.align || 'left'}`)
+   parts.push(`text-decoration: ${s?.font?.decoration || 'none'}`)
+
    return parts.join(';')
 }

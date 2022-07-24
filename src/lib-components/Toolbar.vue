@@ -5,17 +5,21 @@
     <div class="pe-options-toolbar">
       <!--FONT FAMILY-->
       <span class="pe-tool pe-change-font">
-        <select class="pe-change-font-select" />
+        <select />
       </span>
 
       <!--FONT SIZE-->
       <span class="pe-tool pe-change-font-size">
-        <select class="pe-change-font-size-select" />
+        <select>
+          <option v-for="n in 60" :value="n * 2 + 10" :key="`fs-${n}`">
+            {{ n * 2 + 10 }}
+          </option>
+        </select>
       </span>
 
       <!--TEXT ALIGN-->
       <span class="pe-tool pe-change-align">
-        <img class="pe-align-selected" src="../icons/align-l.svg" />
+        <img src="../icons/align-l.svg" />
       </span>
 
       <!--COLOR-->
@@ -29,20 +33,23 @@
 
       <!--TOGGLE BOLD-->
       <span class="pe-tool pe-toggle-bold">
-        <input type="checkbox" class="pe-toggle-bold-btn" />
-        <img src="../icons/bold.svg" />
+        <button>
+          <img src="../icons/bold.svg" />
+        </button>
       </span>
 
       <!--TOGGLE ITALIC-->
       <span class="pe-tool pe-toggle-italic">
-        <input type="checkbox" class="pe-toggle-italic-btn" />
-        <img src="../icons/italic.svg" />
+        <button>
+          <img src="../icons/italic.svg" />
+        </button>
       </span>
 
       <!--TOGGLE STRIKE-->
       <span class="pe-tool pe-toggle-strike">
-        <input type="checkbox" class="pe-toggle-strike-btn" />
-        <img src="../icons/strike.svg" />
+        <button>
+          <img src="../icons/strike.svg" />
+        </button>
       </span>
 
       <!--FLIP HORIZONTAL-->

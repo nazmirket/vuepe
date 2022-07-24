@@ -91,46 +91,32 @@
       padding: 3px;
    }
 
-   // TOGGLE BOLD-ITALIC-STRIKE
-   .pe-toggle-bold,
-   .pe-toggle-italic,
-   .pe-toggle-strike {
-      background-color: transparent;
-      input {
-         display: none;
-      }
-      input:checked {
-         background-color: $toggle-bg-active;
-      }
-      img {
-         cursor: pointer;
-      }
-   }
-
-   // FONT SELECTOR
-   .pe-change-font select {
-      color: $icon-color;
-      width: 170px;
-      height: 100%;
-      border: $default-br;
-      border-radius: 5px;
-      -webkit-appearance: none;
-      &:focus {
-         outline: none;
-      }
-   }
-
    // FONT SIZE SELECTOR
-   .pe-change-font-size select {
+   .pe-change-font-size select,
+   .pe-change-font select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
       color: $icon-color;
-      width: 60px;
       height: 100%;
       border: $default-br;
       border-radius: 5px;
       -webkit-appearance: none;
+      background: transparent;
+      background-repeat: no-repeat;
+      background-position-x: 100%;
+      background-position-y: 5px;
       &:focus {
          outline: none;
       }
+   }
+
+   .pe-change-font-size select {
+      width: 70px;
+      padding: 0 15px;
+   }
+
+   .pe-change-font select {
+      width: 170px;
    }
 
    // ALIGN SELECTOR
@@ -238,13 +224,27 @@
       }
    }
 
+   // TOGGLE BOLD-ITALIC-STRIKE
+   .pe-toggle-bold,
+   .pe-toggle-italic,
+   .pe-toggle-strike {
+      width: 32px;
+      button {
+         background: none;
+         border: none;
+         cursor: pointer;
+      }
+      button.pe-is-active img {
+         filter: saturate(30);
+      }
+   }
+
    // FLIP HORIZONTAL-VERTICAL-BACK-FRONT
    .pe-flip-horizontal,
    .pe-flip-vertical,
    .pe-flip-back,
    .pe-flip-front {
       width: 32px;
-      height: 100%;
       button {
          background: none;
          border: none;
@@ -254,8 +254,8 @@
 
    .pe-flip-horizontal,
    .pe-flip-vertical {
-      button.pe-is-active {
-         background-color: $toggle-bg-active;
+      button.pe-is-active img {
+         filter: saturate(30);
       }
    }
 }
