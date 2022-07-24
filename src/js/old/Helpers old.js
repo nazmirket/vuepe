@@ -1,7 +1,7 @@
 // import icons
-import AlignLeftIcon from '../icons/align-left.svg'
-import AlignRightIcon from '../icons/align-right.svg'
-import AlignCenterIcon from '../icons/align-center.svg'
+import AlignLeftIcon from '../icons/align-l.svg'
+import AlignRightIcon from '../icons/align-r.svg'
+import AlignCenterIcon from '../icons/align-c.svg'
 
 // RGB TO HEX
 export function rgbToHex(rgb) {

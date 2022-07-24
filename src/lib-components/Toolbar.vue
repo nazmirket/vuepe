@@ -15,12 +15,7 @@
 
       <!--TEXT ALIGN-->
       <span class="pe-tool pe-change-align">
-        <img class="pe-align-selected" src="../icons/align-left.svg" />
-        <div class="pe-align-menu pe-hidden">
-          <img src="../icons/align-left.svg" class="pe-left-alg" />
-          <img src="../icons/align-center.svg" class="pe-center-alg" />
-          <img src="../icons/align-right.svg" class="pe-right-alg" />
-        </div>
+        <img class="pe-align-selected" src="../icons/align-l.svg" />
       </span>
 
       <!--COLOR-->
@@ -78,13 +73,13 @@
         </button>
       </span>
 
-      <!--ALPHA-->
-      <span class="pe-tool pe-change-alpha">
-        <span class="pe-alpha-icon">
+      <!--OPACITY-->
+      <span class="pe-tool pe-change-opacity">
+        <span class="pe-opacity-icon">
           <img src="../icons/opacity.svg" />
         </span>
-        <div class="pe-alpha-menu pe-hidden">
-          <input type="range" min="0" max="100" class="pe-alpha-slider" />
+        <div class="pe-opacity-menu">
+          <input type="range" min="0" max="100" class="pe-opacity-slider" />
         </div>
       </span>
     </div>

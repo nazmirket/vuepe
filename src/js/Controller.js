@@ -1,8 +1,11 @@
-import ToolMaps from './ToolMaps'
-import StyleComposer from './StyleComposer'
-import Icons from './Icons'
+import Id from './Id.js'
+import ControllerStyle from './ControllerStyle'
+
 import Interact from './Interact'
-import IdGenerator from './IdGenerator.js'
+
+import RotateButton from './RotateButton'
+import DeleteButton from './DeleteButton'
+import Thumb from './Thumb'
 
 export default class Controller {
    // controller id
@@ -10,143 +13,115 @@ export default class Controller {
    // controller root element
    root
 
-   // buttons
-   buttons = {
-      d: null,
-      r: null,
-   }
+   // control buttons
+   deleteButton
+   rotateButton
+
+   // thumbs for resize
+   thumbs = []
 
    // style
-   style = {
-      z: 9999,
-      left: 0,
-      top: 0,
-      width: 0,
-      height: 0,
-      transform: {
-         translate: { x: 0, y: 0 },
-         rotate: 0,
-         scaleX: 1,
-         scaleY: 1,
-      },
-   }
+   style
 
    // constructor
    constructor(editor) {
-      this.id = IdGenerator()
+      this.id = Id()
       this.editor = editor
       this.root = this.editor.root.querySelector('.pe-controller')
-      this.buttons.d = this.root.querySelector('.pe-delete-handle')
-      this.buttons.r = this.root.querySelector('.pe-rotate-handle')
+
+      this.style = new ControllerStyle()
+
+      this.deleteButton = new DeleteButton(this)
+      this.rotateButton = new RotateButton(this)
+
+      this.thumbs = [
+         new Thumb(this, { v: 'top', h: 'left' }),
+         new Thumb(this, { v: 'top', h: 'right' }),
+         new Thumb(this, { v: 'bottom', h: 'left' }),
+         new Thumb(this, { v: 'bottom', h: 'right' }),
+      ]
 
       this.init()
    }
 
    // INIT
    init() {
-      this.buttons.d.addEventListener(
-         'click',
-         function () {
-            this.editor.remove(this.editor.getActive())
-         }.bind(this)
-      )
-
-      this.buttons.d.querySelector('img').src = Icons.DeleteIcon
-      this.buttons.r.querySelector('img').src = Icons.RotateIcon
-
       this.root.setAttribute('id', this.id)
 
-      // SET RESIZE
+      this.deleteButton.init()
+      this.rotateButton.init()
+
       Interact.setResize(this)
-
-      // SET DRAG
       Interact.setDrag(this)
-
-      // SET ROTATE
-      Interact.setRotate(this)
    }
 
-   // LOCATE
-   locate() {
+   // show
+   show() {
       this.root.classList.add('pe-is-active')
 
-      const component = this.editor.getActive()
-      const type = component.type
-      const options = ToolMaps[type].controller
+      const active = this.editor.getActive()
+      const options = active.getControllerOptions()
 
-      // DELETE
-      // activate
-      if (options.delete) this.buttons.d.style.display = 'unset'
-      // hide
-      else this.buttons.d.style.display = 'none'
+      // DELETE BUTTON
+      this.deleteButton.setStatus(options.delete)
 
-      // ROTATE
-      // activate
-      if (options.delete) this.buttons.r.style.display = 'unset'
-      // hide
-      else this.buttons.r.style.display = 'none'
+      // ROTATE BUTTON
+      this.rotateButton.setStatus(options.rotate)
 
       // THUMBS
-      if (options.thumbs) {
-         this.root.classList.add('pe-is-resizable')
-      }
-      //hide
-      else this.root.classList.remove('pe-is-resizable')
-
-      // make visible
-      this.root.classList.add('pe-is-active')
+      for (const thumb of this.thumbs) thumb.setStatus(options.resize)
 
       // copy width
-      this.style = { ...component.style }
+      this.style.copy(active.style)
 
-      this.style.z = 9999
-      this.style.transform.rotate = 0
+      this.reload()
+   }
+
+   // hide
+   hide() {
+      this.root.classList.remove('pe-is-active')
+
+      // DELETE BUTTON
+      this.deleteButton.setStatus(false)
+
+      // ROTATE BUTTON
+      this.rotateButton.setStatus(false)
+
+      // THUMBS
+      for (const thumb of this.thumbs) thumb.setStatus(false)
 
       this.reload()
    }
 
    // reload to sync view
    reload() {
-      this.root.style = StyleComposer(this.style)
+      this.root.style = this.style.toString()
    }
 
    // apply changes to the active component
-   apply(bind = {}) {
-      const { rotate } = bind
+   apply() {
       const active = this.editor.getActive()
-
-      const transform = {
-         ...active.style.transform,
-         rotate: rotate || active.style.transform.rotate,
-      }
-
-      active.style = {
-         ...this.style,
-         z: active.style.z,
-         transform: { ...transform },
-      }
-
+      active.style.copy(this.style)
       active.reload()
    }
 
    // resize
    resize(width, height) {
-      this.style.width = width
-      this.style.height = height
+      this.style.setSize(width, height)
       this.apply()
       this.reload()
    }
 
    // rotate
    rotate(angle) {
-      this.apply({ rotate: angle })
+      this.style.setRotate(angle)
+      this.apply()
       this.reload()
    }
 
    // drag
    drag(left, top) {
-      this.style.left = left
-      this.style.top = top
+      this.style.setPosition(left, top)
       this.apply()
       this.reload()
    }

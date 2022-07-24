@@ -5,10 +5,10 @@ export default {
    setResize(controller) {
       interact(controller.root).resizable({
          edges: {
-            top: '.pe-thumb.pe-thumb-tl, .pe-thumb.pe-thumb-tr',
-            left: '.pe-thumb.pe-thumb-tl, .pe-thumb.pe-thumb-bl',
-            bottom: '.pe-thumb.pe-thumb-br, .pe-thumb.pe-thumb-bl',
-            right: '.pe-thumb.pe-thumb-br, .pe-thumb.pe-thumb-tr',
+            top: '.pe-thumb-top-left, .pe-thumb-top-right',
+            left: '.pe-thumb-top-left, .pe-thumb-bottom-left',
+            bottom: '.pe-thumb-bottom-right, .pe-thumb-bottom-left',
+            right: '.pe-thumb-bottom-right, .pe-thumb-top-right',
          },
          listeners: {
             move: function (e) {
@@ -30,16 +30,16 @@ export default {
          inertia: false,
       })
    },
-   setRotate(controller) {
-      interact(controller.buttons.r).draggable({
+   setRotate(rotateButton) {
+      interact(rotateButton.root).draggable({
          onstart: function (e) {
-            Mutations.rotate.start(controller, e)
+            Mutations.rotate.start(rotateButton.controller, e)
          }.bind(this),
          onmove: function (e) {
-            Mutations.rotate.move(controller, e)
+            Mutations.rotate.move(rotateButton.controller, e)
          }.bind(this),
          onend: function (e) {
-            Mutations.rotate.end(controller, e)
+            Mutations.rotate.end(rotateButton.controller, e)
          }.bind(this),
       })
    },

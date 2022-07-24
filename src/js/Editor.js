@@ -1,4 +1,8 @@
-import Component from './Component'
+import ImageComponent from './ImageComponent'
+import TextComponent from './TextComponent'
+import AudioComponent from './AudioComponent'
+import VideoComponent from './VideoComponent'
+
 import Controller from './Controller'
 import Toolbar from './Toolbar'
 
@@ -7,7 +11,7 @@ export default class Editor {
    root
    page
    configs = {}
-   components = []
+   components = {}
 
    constructor(opts, components = [], configs = {}) {
       // root
@@ -26,13 +30,15 @@ export default class Editor {
 
       // add components
       for (const data of components) {
-         const component = new Component(
-            this,
-            data.type,
-            data.style,
-            data.props
-         )
-         this.components.push(component)
+         let c = null
+         const { type, style, props } = data
+
+         if (type === 'image') c = new ImageComponent(this, style, props)
+         if (type === 'video') c = new VideoComponent(this, style, props)
+         if (type === 'audio') c = new AudioComponent(this, style, props)
+         if (type === 'text') c = new TextComponent(this, style, props)
+
+         this.components[c.id] = c
       }
 
       // init editor
@@ -42,21 +48,20 @@ export default class Editor {
    // load function
    load() {
       // init components
-      this.components.forEach((c) => c.init())
+      Object.values(this.components).forEach((c) => c.init())
    }
 
    // set active component
    setActive(id) {
       if (this.active === id) return
       this.active = id
-      this.toolbar.load()
-      this.controller.locate()
+      this.toolbar.show()
+      this.controller.show()
    }
 
    // get active component
    getActive() {
-      const component = this.components.find((c) => c.id === this.active)
-      return component
+      return this.components[this.active]
    }
 
    // get page
@@ -66,13 +71,52 @@ export default class Editor {
 
    // insert
    insert(data) {
-      const component = new Component(this, data.type, data.style, data.props)
-      this.components.push(component)
-      component.init()
+      let c = null
+
+      const { type, style, props } = data
+
+      if (type === 'image') c = new ImageComponent(this, style, props)
+      if (type === 'video') c = new VideoComponent(this, style, props)
+      if (type === 'audio') c = new AudioComponent(this, style, props)
+      if (type === 'text') c = new TextComponent(this, style, props)
+
+      this.components[c.id] = c
+      c.init()
+      this.onChange()
    }
 
    // remove
    remove(component) {
-      console.log('removing... ', component)
+      const componentId = component.id
+
+      // remove root of the element
+      this.components[componentId]?.remove()
+
+      // remove elements from the component map
+      delete this.components[componentId]
+
+      // hide controller
+      this.controller.hide()
+
+      // hide toolbar
+      this.toolbar.hide()
+
+      this.onChange()
+   }
+
+   // get max z index
+   getMaxZ() {
+      return Object.values(this.components)
+         .map((c) => c.style.z)
+         .sort((a, b) => a - b)
+         .pop()
+   }
+
+   // get min z index
+   getMinZ() {
+      return Object.values(this.components)
+         .map((c) => c.style.z)
+         .sort((a, b) => b - a)
+         .pop()
    }
 }

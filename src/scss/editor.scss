@@ -56,27 +56,6 @@
    transform-origin: 0 0;
 }
 
-// DRAG DROP
-.pe-editor .pe-page-can-drop {
-   outline: $page-drop-outline;
-}
-.pe-drop-item {
-   transition: 0.4s;
-   border: $material-br;
-   cursor: pointer;
-   border-radius: 10px;
-   padding: 10px;
-}
-.pe-active-drop-item {
-   transition: 0.4s;
-   border: $material-br-active;
-}
-.pe-audio-material {
-   display: flex;
-   width: 230px;
-   height: 70px;
-}
-
 // TOOLBAR
 .pe-toolbar {
    position: absolute;
@@ -86,46 +65,45 @@
    background: white;
    display: flex;
    align-items: center;
-   height: 50px;
-   padding-bottom: 3px;
    border-bottom: $default-br;
+   padding: 10px;
+   height: 32px;
 }
 
 // OPTIONS TOOLBAR
 .pe-options-toolbar {
-   width: min-content;
    display: flex;
-   justify-content: center;
+   justify-content: flex-start;
    align-items: center;
-   z-index: 999999999999;
-   height: 35px;
+   z-index: 99999999;
+   width: 100%;
+   height: 100%;
+   column-gap: 12px;
 
    // TOOL
    .pe-tool {
       display: none;
-      padding: 0 4px;
-      height: 35px;
       justify-content: center;
       align-items: center;
-      max-width: unset !important;
+      height: 32px !important;
+      border-radius: 8px !important;
+      overflow: hidden;
+      padding: 3px;
    }
 
    // TOGGLE BOLD-ITALIC-STRIKE
    .pe-toggle-bold,
    .pe-toggle-italic,
    .pe-toggle-strike {
+      background-color: transparent;
       input {
          display: none;
       }
-      input:checked + img {
+      input:checked {
          background-color: $toggle-bg-active;
       }
       img {
          cursor: pointer;
-         border-radius: 6px;
-         width: 35px;
-         height: 100%;
-         background-color: transparent;
       }
    }
 
@@ -133,10 +111,9 @@
    .pe-change-font select {
       color: $icon-color;
       width: 170px;
-      height: 35px;
+      height: 100%;
       border: $default-br;
-      padding: 5px 15px;
-      border-radius: 12px;
+      border-radius: 5px;
       -webkit-appearance: none;
       &:focus {
          outline: none;
@@ -147,11 +124,9 @@
    .pe-change-font-size select {
       color: $icon-color;
       width: 60px;
-      height: 35px;
+      height: 100%;
       border: $default-br;
-      padding: 5px 15px;
-      border-radius: 12px;
-      margin-right: 4px;
+      border-radius: 5px;
       -webkit-appearance: none;
       &:focus {
          outline: none;
@@ -162,72 +137,42 @@
    .pe-change-align {
       cursor: pointer;
       position: relative;
-      padding: 0;
-      width: 40px;
-      margin-right: 2px;
-      .pe-align-selected {
-         &:hover {
-            background-color: $toggle-bg-active;
-         }
-         width: auto;
-         padding: 3px 4px;
-      }
-      .pe-align-menu {
-         width: 40px;
-         padding: 0;
-         overflow: hidden;
-         background-color: white;
-         display: flex;
-         flex-direction: column;
-         top: 0;
-         left: 0;
-         right: 0;
-         position: absolute;
-         align-items: center;
-         outline: $default-br;
-         img {
-            &:hover {
-               background-color: $toggle-bg-active;
-            }
-            width: auto;
-            padding: 3px 4px;
-         }
+      &:hover {
+         background-color: $toggle-bg-active;
       }
    }
 
-   // ALPHA SELECTOR
-   .pe-change-alpha {
-      position: relative;
-      .pe-alpha-icon {
-         width: 35px;
-         height: 35px;
-         cursor: pointer;
-         border-radius: 6px;
-         display: flex;
-         justify-content: center;
-         img {
-            width: 30px;
+   // OPACITY SLIDER
+   .pe-change-opacity {
+      align-items: center;
+      border: 1px solid transparent;
+      &:hover {
+         background: rgb(249, 253, 255);
+         border: 1px solid rgb(227, 227, 227);
+         .pe-opacity-menu {
+            display: flex;
          }
       }
 
-      .pe-alpha-menu {
-         position: absolute;
-         top: 35px;
-         left: 0;
-         background-color: white;
-         border: $default-br;
-         border-radius: 12px;
+      .pe-opacity-icon {
+         cursor: pointer;
          display: flex;
-         height: 35px;
-         width: 160px;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .pe-opacity-menu {
+         display: none;
+         height: 32px;
+         width: 140px;
          align-items: center;
          justify-content: center;
-         .pe-alpha-slider {
+         .pe-opacity-slider {
             -webkit-appearance: none;
             appearance: none;
-            background-color: rgb(213, 225, 231);
+            background-color: rgb(56, 176, 236);
             height: 7px;
-            border: 1px solid rgb(104, 112, 116);
+            border: none;
             border-radius: 5px;
             outline: none;
             &::-webkit-slider-thumb {
@@ -235,17 +180,17 @@
                appearance: none;
                width: 16px;
                height: 16px;
-               border: 3px solid rgb(69, 81, 97);
+               border: 2px solid rgba(69, 81, 97, 0.8);
                border-radius: 100%;
-               background: rgb(213, 225, 231);
+               background: rgb(255, 255, 255);
                cursor: pointer;
             }
             &::-moz-range-thumb {
                width: 16px;
                height: 16px;
-               border: 3px solid rgb(69, 81, 97);
+               border: 2px solid rgba(69, 81, 97, 0.8);
                border-radius: 100%;
-               background: rgb(213, 225, 231);
+               background: rgb(255, 255, 255);
                cursor: pointer;
             }
          }
@@ -254,8 +199,6 @@
 
    // COLOR SELECTOR
    .pe-change-color {
-      width: 40px;
-      height: 35px;
       cursor: pointer;
       background-color: white;
       position: relative;
@@ -267,10 +210,10 @@
          align-items: center;
          justify-content: center;
          img {
-            width: 22px;
+            width: 26px;
          }
          .pe-color-indicator {
-            background-color: red;
+            background-color: rgb(252, 60, 60);
             width: 28px;
             height: 6px;
             border-radius: 3px;
@@ -300,15 +243,19 @@
    .pe-flip-vertical,
    .pe-flip-back,
    .pe-flip-front {
+      width: 32px;
+      height: 100%;
       button {
          background: none;
          border: none;
-         border-radius: 6px;
          cursor: pointer;
-         height: 100%;
       }
-      img {
-         width: auto;
+   }
+
+   .pe-flip-horizontal,
+   .pe-flip-vertical {
+      button.pe-is-active {
+         background-color: $toggle-bg-active;
       }
    }
 }
@@ -321,7 +268,7 @@
          cursor: pointer !important;
       }
    }
-   &.pe-is-hovered {
+   &:hover {
       transition: 0.2s;
       border: $element-br-hover;
    }
@@ -351,11 +298,6 @@
    border: $controller-br;
    &.pe-is-active {
       display: block;
-   }
-   &.pe-is-resizable {
-      .pe-thumbs {
-         display: unset;
-      }
    }
 
    // DELETE HANDLE
@@ -392,7 +334,6 @@
 
    // THUMBS
    .pe-thumbs {
-      display: none;
       .pe-thumb {
          position: absolute;
          width: 10px;
@@ -402,22 +343,22 @@
          border-radius: 100%;
          box-shadow: 0 0 0 2px $controller-br-color;
 
-         &.pe-thumb-tl {
+         &.pe-thumb-top-left {
             top: -5px;
             left: -5px;
          }
 
-         &.pe-thumb-tr {
+         &.pe-thumb-top-right {
             top: -5px;
             right: -5px;
          }
 
-         &.pe-thumb-bl {
+         &.pe-thumb-bottom-left {
             bottom: -5px;
             left: -5px;
          }
 
-         &.pe-thumb-br {
+         &.pe-thumb-bottom-right {
             bottom: -5px;
             right: -5px;
          }

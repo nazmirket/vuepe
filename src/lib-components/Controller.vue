@@ -7,10 +7,10 @@
       <img src="../icons/delete.svg" />
     </span>
     <div class="pe-thumbs">
-      <span class="pe-thumb pe-thumb-tl"></span>
-      <span class="pe-thumb pe-thumb-tr"></span>
-      <span class="pe-thumb pe-thumb-bl"></span>
-      <span class="pe-thumb pe-thumb-br"></span>
+      <span class="pe-thumb pe-thumb-top-left" />
+      <span class="pe-thumb pe-thumb-top-right" />
+      <span class="pe-thumb pe-thumb-bottom-left" />
+      <span class="pe-thumb pe-thumb-bottom-right" />
     </div>
   </div>
 </template>

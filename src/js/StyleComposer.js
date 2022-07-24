@@ -21,5 +21,8 @@ export default function compose(s) {
    parts.push(`left:${s.left}%`)
    parts.push(`top:${s.top}%`)
 
+   // opacity
+   parts.push(`opacity:${isNaN(s.opacity) ? 1 : s.opacity}`)
+
    return parts.join(';')
 }
