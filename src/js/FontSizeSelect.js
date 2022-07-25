@@ -1,25 +1,25 @@
+import CustomSelectBox from './CustomSelectBox'
 import Tool from './Tool.js'
-import Icons from './Icons'
 
 export default class FontSizeSelect extends Tool {
    // input select
    select
-   size
 
    constructor(toolbar) {
       const root = toolbar.root.querySelector('.pe-change-font-size')
       super(toolbar, root, 'ti007')
 
-      this.select = this.root.querySelector('select')
+      this.select = new CustomSelectBox(
+         this.root.querySelector('.pe-selector'),
+         this.handlers.change
+      )
 
-      // register event listener
-      this.select.addEventListener('change', this.handlers.change)
-      this.select.style.backgroundImage = `url(${Icons.SelectArrow})`
+      this.setOptions()
    }
 
    handlers = {
-      change: function (event) {
-         this.setSize(event.target.value)
+      change: function (value) {
+         this.setSize(parseInt(value))
          this.load()
          this.toolbar.editor.onChange()
       }.bind(this),
@@ -27,14 +27,21 @@ export default class FontSizeSelect extends Tool {
 
    load() {
       super.load()
-
       const active = this.getActive()
-      this.size = active.style.font.size
+      this.select.set(parseInt(active.style.font.size))
    }
 
    setSize(value) {
       const active = this.getActive()
       active.style.setFont({ size: value })
       active.reload()
+   }
+
+   setOptions() {
+      const sizes = Array.from(Array(61))
+         .fill(10)
+         .map((b, i) => b + i * 2)
+
+      this.select.setOptions(sizes.map((i) => ({ value: i, style: '' })))
    }
 }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg height="20px" viewBox="0 0 36 20" width="36px" fill="#000000" version="1.1" id="svg6" xmlns="http://www.w3.org/2000/svg">
+<svg height="16px" viewBox="0 0 12 16" width="12px" fill="#000000" version="1.1" id="svg6" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <view id="view-1" viewBox="20.249 6.311 0.141 0.097">
+      <title>View 1</title>
+    </view>
+  </defs>
   <path d="M 0,0 H 24 V 24 H 0 Z" fill="none" id="path2"/>
-  <g id="g970" transform="matrix(0.73847, 0, 0, 0.73847, 9.300617, 1.198014)" style="fill:#1c1c1c;fill-opacity:1;stroke-width:1.35415">
+  <g id="g970" transform="matrix(0.73847, 0, 0, 0.73847, -10.094529, -0.635069)" style="fill:#1c1c1c;fill-opacity:1;stroke-width:1.35415">
     <g id="g850" transform="translate(8.9527434,0.51441908)" style="fill:#3f494d;fill-opacity:1">
       <rect style="opacity:1;vector-effect:none;fill:#3f494d;fill-opacity:1;fill-rule:evenodd;stroke-width:0.980695;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect951-7" width="7.1837482" height="1.4535849" x="-8.1728039" y="10.981508" ry="0.63700199" rx="0.71822667" transform="matrix(-0.76061904,0.64919848,0.64930108,0.76053147,0,0)"/>
       <rect style="opacity:1;vector-effect:none;fill:#3f494d;fill-opacity:1;fill-rule:evenodd;stroke-width:0.980695;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect951-7-67" width="7.1837487" height="1.4535849" x="12.12836" y="-6.3478012" ry="0.63700199" rx="0.71822661" transform="matrix(0.76061905,0.64919848,-0.64930107,0.76053147,0,0)"/>

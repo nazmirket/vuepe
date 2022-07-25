@@ -401,46 +401,17 @@
           align-items: center;
   height: 32px !important;
   border-radius: 8px !important;
-  overflow: hidden;
   padding: 3px;
 }
 
-.pe-options-toolbar .pe-change-font-size select,
-.pe-options-toolbar .pe-change-font select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  color: #3f494d;
-  height: 100%;
-  border: 1px solid #e2e6eb;
-  border-radius: 5px;
-  -webkit-appearance: none;
-  background: transparent;
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 5px;
-}
-
-.pe-options-toolbar .pe-change-font-size select:focus,
-.pe-options-toolbar .pe-change-font select:focus {
-  outline: none;
-}
-
-.pe-options-toolbar .pe-change-font-size select {
-  width: 70px;
-  padding: 0 15px;
-}
-
-.pe-options-toolbar .pe-change-font select {
-  width: 170px;
-}
-
 .pe-options-toolbar .pe-change-align {
-  cursor: pointer;
-  position: relative;
+  width: 32px;
 }
 
-.pe-options-toolbar .pe-change-align:hover {
-  background-color: #e6ecf0;
+.pe-options-toolbar .pe-change-align button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .pe-options-toolbar .pe-change-opacity {
@@ -546,13 +517,13 @@
 }
 
 .pe-options-toolbar .pe-change-color .pe-color-area .pe-color-indicator {
-  background-color: #fc3c3c;
+  outline: 1px solid rgba(128, 128, 128, 0.2);
   width: 28px;
   height: 6px;
   border-radius: 3px;
 }
 
-.pe-options-toolbar .pe-change-color .pe-change-color-picker {
+.pe-options-toolbar .pe-change-color input {
   z-index: 99;
   cursor: pointer;
   top: 0;
@@ -564,11 +535,11 @@
   opacity: 0;
 }
 
-.pe-options-toolbar .pe-change-color .pe-change-color-picker::-webkit-color-swatch {
+.pe-options-toolbar .pe-change-color input::-webkit-color-swatch {
   display: none;
 }
 
-.pe-options-toolbar .pe-change-color .pe-change-color-picker::-moz-color-swatch {
+.pe-options-toolbar .pe-change-color input::-moz-color-swatch {
   display: none;
 }
 
@@ -714,4 +685,112 @@
 .pe-controller .pe-thumbs .pe-thumb.pe-thumb-bottom-right {
   bottom: -5px;
   right: -5px;
+}
+
+.pe-change-font .pe-selector {
+  width: 200px;
+}
+
+.pe-change-font-size .pe-selector {
+  width: 60px;
+}
+
+.pe-selector {
+  font-family: sans-serif;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 36px;
+  padding: 0 8px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pe-selector .pe-selector-display {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 14px;
+}
+
+.pe-selector.pe-is-active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.pe-selector.pe-is-active .pe-selector-options {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  visibility: visible;
+  opacity: 1;
+}
+
+.pe-selector .pe-selector-options {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  top: 100%;
+  right: -1px;
+  left: -1px;
+  visibility: hidden;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: white;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  /* width */
+  /* Track */
+  /* Handle */
+}
+
+.pe-selector .pe-selector-options::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pe-selector .pe-selector-options::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: none;
+}
+
+.pe-selector .pe-selector-options::-webkit-scrollbar-thumb {
+  background: #74767d;
+  border-radius: 50px;
+}
+
+.pe-selector .pe-selector-option {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.pe-selector .pe-selector-option:hover {
+  background: rgba(206, 206, 206, 0.4);
 }

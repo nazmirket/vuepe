@@ -5,21 +5,31 @@
     <div class="pe-options-toolbar">
       <!--FONT FAMILY-->
       <span class="pe-tool pe-change-font">
-        <select />
+        <div class="pe-selector">
+          <span class="pe-selector-display">
+            <span class="pe-selector-label" />
+            <img src="../icons/select-arrow.svg" />
+          </span>
+          <div class="pe-selector-options" />
+        </div>
       </span>
 
       <!--FONT SIZE-->
       <span class="pe-tool pe-change-font-size">
-        <select>
-          <option v-for="n in 60" :value="n * 2 + 10" :key="`fs-${n}`">
-            {{ n * 2 + 10 }}
-          </option>
-        </select>
+        <div class="pe-selector">
+          <span class="pe-selector-display">
+            <span class="pe-selector-label" />
+            <img src="../icons/select-arrow.svg" />
+          </span>
+          <div class="pe-selector-options" />
+        </div>
       </span>
 
       <!--TEXT ALIGN-->
       <span class="pe-tool pe-change-align">
-        <img src="../icons/align-l.svg" />
+        <button>
+          <img />
+        </button>
       </span>
 
       <!--COLOR-->
@@ -28,7 +38,7 @@
           <img src="../icons/font-color.svg" />
           <span class="pe-color-indicator"></span>
         </span>
-        <input class="pe-change-color-picker" type="color" />
+        <input type="color" />
       </span>
 
       <!--TOGGLE BOLD-->
@@ -97,9 +107,4 @@
 export default {};
 </script>
 
-<style>
-.pe-change-font-size-select,
-.pe-change-font-select {
-  background: url("") no-repeat right rgb(255, 255, 255);
-}
-</style>
+<style></style>

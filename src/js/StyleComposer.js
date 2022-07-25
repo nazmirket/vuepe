@@ -4,6 +4,9 @@ export default function compose(s) {
    // z index
    parts.push(`z-index:${s.z || 0}`)
 
+   // color
+   parts.push(`color:${s.color || '#000000'}`)
+
    // transform
    const tParts = [
       `translate(${s.transform.translate.x || 0},${
