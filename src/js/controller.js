@@ -57,6 +57,7 @@ export default class Controller {
 
    // show
    show() {
+      console.log('showwing..')
       this.root.classList.add('pe-is-active')
 
       const active = this.editor.getActive()
@@ -89,6 +90,9 @@ export default class Controller {
 
       // THUMBS
       for (const thumb of this.thumbs) thumb.setStatus(false)
+
+      // EMPTY ACTIVE ELEMENT
+      this.editor.setActive(null)
 
       this.reload()
    }

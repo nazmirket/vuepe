@@ -14,7 +14,8 @@ export default class Component {
 
    handlers = {
       // click listeners
-      click: function () {
+      click: function (event) {
+         event.stopPropagation()
          this.editor.setActive(this.id)
       }.bind(this),
    }

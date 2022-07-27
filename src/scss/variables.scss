@@ -1,27 +1,20 @@
-// General Variables
-$default-br: 1px solid rgb(226, 230, 235);
-$drop-br: 3px solid rgba(255, 166, 0, 0.2);
+// general variables
+$soft-grey: rgb(215, 222, 225);
+$default-border: 1px solid $soft-grey;
+$primary-color: rgb(77, 89, 96);
+$link-color: rgba(255, 0, 68, 0.6);
+$accent-color: rgb(100, 201, 255);
 
-// Toggle Button Variables
-$toggle-cl: rgb(63, 63, 71);
-$toggle-cl-active: blue;
-$toggle-bg-active: rgb(230, 236, 240);
-
-// Page Variables
-$page-br: 1px solid rgb(226, 230, 235);
-$page-shadow: rgba(99, 99, 99, 0.5) 0px 0px 28px -20px;
-$page-bg: rgb(255, 255, 255);
-$page-drop-outline: $drop-br;
+// page variables
+$page-border: 1px solid $soft-grey;
+$page-background: white;
 $page-font-size: 12px;
 
-// Controller Variables
-$controller-br-color: rgb(100, 201, 255);
-$controller-br: 2px solid $controller-br-color;
+// content variables
+$content-background: rgba(235, 243, 246, 0.5);
 
-// Element Variables
-$element-br: 3px solid transparent;
-$element-br-hover: $drop-br;
-$audio-link-cl: rgb(105, 131, 219);
+// controller variables
+$controller-border: 2px solid $accent-color;
 
-// Icons
-$icon-color: #3f494d;
+// element variables
+$element-outline: 2px solid $link-color;

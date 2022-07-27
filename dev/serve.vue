@@ -29,7 +29,7 @@ export default Vue.extend({
 
 
 <style>
-@import url("../src/scss/editor.css");
+@import url("../src/scss/pe.css");
 
 .pe-root {
   display: flex;

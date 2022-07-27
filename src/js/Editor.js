@@ -1,7 +1,6 @@
 import ImageComponent from './ImageComponent'
 import TextComponent from './TextComponent'
 import AudioComponent from './AudioComponent'
-import VideoComponent from './VideoComponent'
 
 import Controller from './Controller'
 import Toolbar from './Toolbar'
@@ -34,7 +33,6 @@ export default class Editor {
          const { type, style, props } = data
 
          if (type === 'image') c = new ImageComponent(this, style, props)
-         if (type === 'video') c = new VideoComponent(this, style, props)
          if (type === 'audio') c = new AudioComponent(this, style, props)
          if (type === 'text') c = new TextComponent(this, style, props)
 
@@ -45,18 +43,51 @@ export default class Editor {
       this.load()
    }
 
+   handlers = {
+      click: function (event) {
+         event.stopPropagation()
+         console.log(event.target)
+         const panes = ['pe-page', 'pe-content', 'pe-page-wrapper']
+         for (const pane of panes) {
+            if (event.target.classList.contains(pane)) this.controller.hide()
+         }
+      }.bind(this),
+   }
+
    // load function
    load() {
       // init components
       Object.values(this.components).forEach((c) => c.init())
+
+      this.root
+         .querySelector('.pe-content')
+         .addEventListener('click', this.handlers.click)
    }
 
    // set active component
    setActive(id) {
       if (this.active === id) return
+
+      // remove active class from old one
+      const c1 = this.getActive()
+      c1?.root?.classList?.remove('pe-is-active')
+
       this.active = id
-      this.toolbar.show()
-      this.controller.show()
+
+      // add active class to new one
+      const c2 = this.getActive()
+      c2?.root?.classList?.add('pe-is-active')
+
+      // show toolbar and controller if there is active element
+      if (c2) {
+         this.toolbar.show()
+         this.controller.show()
+      }
+      // hide if not
+      else {
+         this.toolbar.hide()
+         this.controller.hide()
+      }
    }
 
    // get active component
@@ -76,7 +107,6 @@ export default class Editor {
       const { type, style, props } = data
 
       if (type === 'image') c = new ImageComponent(this, style, props)
-      if (type === 'video') c = new VideoComponent(this, style, props)
       if (type === 'audio') c = new AudioComponent(this, style, props)
       if (type === 'text') c = new TextComponent(this, style, props)
 

@@ -27,18 +27,10 @@ export default {
       },
    },
    audio: {
-      toolbar: ['ti003', 'ti004'],
+      toolbar: ['ti003', 'ti004', 'ti013'],
       controller: {
          delete: true,
          resize: false,
-         rotate: false,
-      },
-   },
-   video: {
-      toolbar: ['ti003', 'ti004', 'ti005'],
-      controller: {
-         delete: true,
-         resize: true,
          rotate: false,
       },
    },

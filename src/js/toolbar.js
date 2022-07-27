@@ -10,6 +10,7 @@ import FontAlignToggle from './FontAlignToggle.js'
 import FontWeightToggle from './FontWeightToggle.js'
 import FontItalicToggle from './FontItalicToggle.js'
 import FontStrikeToggle from './FontStrikeToggle.js'
+import AudioControl from './AudioControl.js'
 
 export default class Toolbar {
    root
@@ -34,6 +35,7 @@ export default class Toolbar {
          new FontWeightToggle(this),
          new FontItalicToggle(this),
          new FontStrikeToggle(this),
+         new AudioControl(this),
       ]
    }
 

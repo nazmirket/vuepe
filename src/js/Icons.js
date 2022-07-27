@@ -7,6 +7,8 @@ import RotateIcon from '../icons/rotate.svg'
 
 import SelectArrow from '../icons/select-arrow.svg'
 
+import AudioIcon from '../icons/audio.svg'
+
 export default {
    AlignRightIcon,
    AlignCenterIcon,
@@ -14,4 +16,5 @@ export default {
    DeleteIcon,
    RotateIcon,
    SelectArrow,
+   AudioIcon,
 }

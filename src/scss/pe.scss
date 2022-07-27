@@ -1,5 +1,4 @@
 @import 'variables.scss';
-@import 'preview.scss';
 @import 'helpers.scss';
 @import 'pages.scss';
 @import 'zoom.scss';
@@ -12,13 +11,8 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   border: $default-br;
-   background: #ffffff;
+   border: $default-border;
    position: relative;
-
-   &.pe-active-editor .pe-page {
-      outline: 2px solid rgba(220, 205, 255, 0.329);
-   }
 }
 
 // EDITOR CONTENT
@@ -30,7 +24,8 @@
    bottom: 0px;
    right: 0px;
    left: 0px;
-   top: 54px;
+   top: 52px;
+   background-color: $content-background;
 }
 
 // PAGE WRAPPER
@@ -42,17 +37,19 @@
 }
 
 // PAGE
+.pe-page {
+   font-size: $page-font-size;
+}
+
+// PAGE
 .pe-editor .pe-page {
-   border: $page-br;
-   background-color: $page-bg;
+   border: $page-border;
+   background-color: $page-background;
    overflow: hidden;
    position: absolute;
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
-   box-shadow: $page-shadow;
-   -webkit-box-shadow: $page-shadow;
-   font-size: $page-font-size !important;
    transform-origin: 0 0;
 }
 
@@ -65,7 +62,7 @@
    background: white;
    display: flex;
    align-items: center;
-   border-bottom: $default-br;
+   border-bottom: $default-border;
    padding: 10px;
    height: 32px;
 }
@@ -86,7 +83,6 @@
       justify-content: center;
       align-items: center;
       height: 32px !important;
-      border-radius: 8px !important;
       padding: 3px;
    }
 
@@ -104,8 +100,8 @@
    .pe-change-opacity {
       align-items: center;
       border: 1px solid transparent;
+      border-radius: 8px;
       &:hover {
-         background: rgb(249, 253, 255);
          border: 1px solid rgb(227, 227, 227);
          .pe-opacity-menu {
             display: flex;
@@ -128,7 +124,7 @@
          .pe-opacity-slider {
             -webkit-appearance: none;
             appearance: none;
-            background-color: rgb(56, 176, 236);
+            background-color: $link-color;
             height: 7px;
             border: none;
             border-radius: 5px;
@@ -138,17 +134,18 @@
                appearance: none;
                width: 16px;
                height: 16px;
-               border: 2px solid rgba(69, 81, 97, 0.8);
+               border: 1px solid $link-color;
                border-radius: 100%;
-               background: rgb(255, 255, 255);
+               background: white;
                cursor: pointer;
             }
+
             &::-moz-range-thumb {
                width: 16px;
                height: 16px;
-               border: 2px solid rgba(69, 81, 97, 0.8);
+               border: 1px solid $link-color;
                border-radius: 100%;
-               background: rgb(255, 255, 255);
+               background: white;
                cursor: pointer;
             }
          }
@@ -207,7 +204,7 @@
          cursor: pointer;
       }
       button.pe-is-active img {
-         filter: saturate(30);
+         filter: saturate(25) brightness(150%);
       }
    }
 
@@ -227,37 +224,16 @@
    .pe-flip-horizontal,
    .pe-flip-vertical {
       button.pe-is-active img {
-         filter: saturate(30);
+         filter: saturate(25) brightness(150%);
       }
    }
-}
 
-// EDITOR ELEMENT
-.pe-editor .pe-page .pe-element {
-   // GENERAL ITEM STYLES
-   &:not(.pe-is-active) {
-      .pe-item {
-         cursor: pointer !important;
+   // AUDIO CONTROL
+   .pe-audio-control {
+      audio {
+         height: 36px;
       }
    }
-   &:hover {
-      transition: 0.2s;
-      border: $element-br-hover;
-   }
-
-   &.pe-is-active {
-      border: $element-br !important;
-      .pe-item {
-         cursor: unset !important;
-      }
-   }
-}
-
-// ELEMENT
-.pe-element {
-   border: $element-br;
-   box-sizing: border-box;
-   touch-action: none;
 }
 
 // CONTROLLER
@@ -267,7 +243,9 @@
    box-sizing: border-box;
    position: absolute;
    display: none;
-   border: $controller-br;
+   border: $controller-border;
+   border-radius: 5px;
+
    &.pe-is-active {
       display: block;
    }
@@ -282,7 +260,7 @@
       left: calc(50% - 9px);
       img {
          width: 20px;
-         background: rgb(120, 143, 155);
+         background: $accent-color;
          border-radius: 100%;
          padding: 2px;
       }
@@ -298,7 +276,7 @@
       left: calc(50% - 9px);
       img {
          width: 18px;
-         background: rgb(120, 143, 155);
+         background: $accent-color;
          border-radius: 100%;
          padding: 4px;
       }
@@ -310,29 +288,29 @@
          position: absolute;
          width: 10px;
          height: 10px;
-         background: rgb(255, 255, 255);
+         background: white;
          pointer-events: auto;
          border-radius: 100%;
-         box-shadow: 0 0 0 2px $controller-br-color;
+         box-shadow: 0 0 0 2px $accent-color;
 
-         &.pe-thumb-top-left {
-            top: -5px;
-            left: -5px;
-         }
-
+         &.pe-thumb-top-left,
          &.pe-thumb-top-right {
             top: -5px;
-            right: -5px;
          }
 
-         &.pe-thumb-bottom-left {
-            bottom: -5px;
+         &.pe-thumb-bottom-left,
+         &.pe-thumb-top-left {
             left: -5px;
          }
 
+         &.pe-thumb-top-right,
+         &.pe-thumb-bottom-right {
+            right: -5px;
+         }
+
+         &.pe-thumb-bottom-left,
          &.pe-thumb-bottom-right {
             bottom: -5px;
-            right: -5px;
          }
       }
    }
@@ -349,7 +327,7 @@
 .pe-selector {
    font-family: sans-serif;
    position: relative;
-   border: 1px solid rgba(0, 0, 0, 0.15);
+   border: $default-border;
    border-radius: 5px;
    box-sizing: border-box;
    height: 36px;
@@ -392,33 +370,139 @@
       background: white;
       max-height: 250px;
       overflow-y: auto;
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      border: $default-border;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
-
-      /* width */
-      &::-webkit-scrollbar {
-         width: 8px;
-      }
-
-      /* Track */
-      &::-webkit-scrollbar-track {
-         box-shadow: none;
-         background: none;
-      }
-
-      /* Handle */
-      &::-webkit-scrollbar-thumb {
-         background: rgb(116, 118, 125);
-         border-radius: 50px;
-      }
    }
 
    .pe-selector-option {
       cursor: pointer;
       padding: 5px;
       &:hover {
-         background: rgba(206, 206, 206, 0.4);
+         color: white;
+         background: $link-color;
+      }
+   }
+}
+
+/* width */
+::-webkit-scrollbar {
+   width: 22px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   cursor: pointer !important;
+   background: $primary-color;
+   border-radius: 50px;
+   padding: 0 6px;
+   border: 6px solid transparent;
+   background-clip: padding-box;
+   &:hover {
+      background: $link-color;
+      background-clip: padding-box;
+   }
+}
+
+// PREVIEW
+.pe-preview {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+// PAGE
+.pe-preview .pe-page {
+   background-color: $page-background;
+   overflow: hidden;
+   position: absolute;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   transform-origin: 0 0;
+}
+
+// EDITOR ELEMENT
+.pe-editor .pe-element {
+   .pe-item {
+      cursor: pointer;
+   }
+
+   &:not(.pe-is-active):hover {
+      outline: $element-outline;
+   }
+
+   &.pe-is-active .pe-item {
+      cursor: unset;
+   }
+}
+
+// ELEMENT
+.pe-element {
+   cursor: pointer;
+   border-radius: 3px;
+   position: absolute;
+   touch-action: none;
+   box-sizing: border-box;
+   display: block;
+
+   // GENERAL ITEM STYLES
+   .pe-item {
+      resize: none;
+      border: none;
+      width: 100%;
+      height: 100%;
+      background: none;
+      cursor: default;
+   }
+
+   // IMAGE
+   &.pe-is-element-image {
+      width: 30%;
+      .pe-item {
+         padding: 0;
+      }
+   }
+
+   // TEXT
+   &.pe-is-element-text {
+      width: 40%;
+      height: auto;
+      display: block !important;
+      .pe-item {
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -khtml-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+         &:focus {
+            outline: none !important;
+         }
+      }
+   }
+
+   // AUDIO
+   &.pe-is-element-audio {
+      height: 52px;
+      width: 52px;
+      .pe-item {
+         cursor: unset;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         img {
+            width: 100%;
+            height: 100%;
+         }
+      }
+      &.pe-is-on-play img {
+         filter: hue-rotate(50deg) saturate(40) brightness(150%);
       }
    }
 }
