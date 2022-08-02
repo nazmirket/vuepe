@@ -1,8 +1,8 @@
-import { Editor, PageViewer } from '@/lib-components/index'
+import { Editor, Viewer } from '@/lib-components/index'
 
 export default function install(Vue) {
-   Vue.component('page-editor', Editor)
-   Vue.component('pe-page-viewer', PageViewer)
+   Vue.component('pe-editor', Editor)
+   Vue.component('pe-viewer', Viewer)
 }
 
-export { Editor, PageViewer }
+export { Editor, Viewer }

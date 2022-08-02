@@ -46,7 +46,6 @@ export default class Editor {
    handlers = {
       click: function (event) {
          event.stopPropagation()
-         console.log(event.target)
          const panes = ['pe-page', 'pe-content', 'pe-page-wrapper']
          for (const pane of panes) {
             if (event.target.classList.contains(pane)) this.controller.hide()

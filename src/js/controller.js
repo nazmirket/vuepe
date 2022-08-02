@@ -57,7 +57,6 @@ export default class Controller {
 
    // show
    show() {
-      console.log('showwing..')
       this.root.classList.add('pe-is-active')
 
       const active = this.editor.getActive()

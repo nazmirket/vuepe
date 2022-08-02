@@ -2,6 +2,7 @@
 @import 'helpers.scss';
 @import 'pages.scss';
 @import 'zoom.scss';
+@import 'animation.scss';
 
 // EDITOR
 .pe-editor {
@@ -409,15 +410,15 @@
    }
 }
 
-// PREVIEW
-.pe-preview {
+// VIEWER
+.pe-viewer {
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 
 // PAGE
-.pe-preview .pe-page {
+.pe-viewer .pe-page {
    background-color: $page-background;
    overflow: hidden;
    position: absolute;
@@ -502,7 +503,8 @@
          }
       }
       &.pe-is-on-play img {
-         filter: hue-rotate(50deg) saturate(40) brightness(150%);
+         animation: play 3s;
+         animation-iteration-count: infinite;
       }
    }
 }

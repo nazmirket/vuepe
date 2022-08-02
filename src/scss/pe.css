@@ -129,6 +129,36 @@
           transform: scale(2);
 }
 
+@-webkit-keyframes play {
+  0% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+  50% {
+    -webkit-filter: hue-rotate(40deg) saturate(60) brightness(300%);
+            filter: hue-rotate(40deg) saturate(60) brightness(300%);
+  }
+  100% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+}
+
+@keyframes play {
+  0% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+  50% {
+    -webkit-filter: hue-rotate(40deg) saturate(60) brightness(300%);
+            filter: hue-rotate(40deg) saturate(60) brightness(300%);
+  }
+  100% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+}
+
 .pe-editor {
   width: 100%;
   height: 100%;
@@ -606,7 +636,7 @@
   background-clip: padding-box;
 }
 
-.pe-preview {
+.pe-viewer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -619,7 +649,7 @@
           align-items: center;
 }
 
-.pe-preview .pe-page {
+.pe-viewer .pe-page {
   background-color: white;
   overflow: hidden;
   position: absolute;
@@ -712,6 +742,8 @@
 }
 
 .pe-element.pe-is-element-audio.pe-is-on-play img {
-  -webkit-filter: hue-rotate(50deg) saturate(40) brightness(150%);
-          filter: hue-rotate(50deg) saturate(40) brightness(150%);
+  -webkit-animation: play 3s;
+          animation: play 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
