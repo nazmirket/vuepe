@@ -2,7 +2,7 @@ import View from './View'
 
 export default class TextView extends View {
    constructor(viewer, style, props) {
-      super(viewer, style, props)
+      super(viewer, style, props, 'text')
    }
 
    create() {

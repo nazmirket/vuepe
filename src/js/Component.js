@@ -3,6 +3,7 @@ import Id from './Id.js'
 
 export default class Component {
    // root element
+   type
    id
    root
    editor
@@ -21,11 +22,12 @@ export default class Component {
    }
 
    // constructor
-   constructor(editor, style, props) {
+   constructor(editor, style, props, type) {
       this.id = Id()
       this.editor = editor
       this.style = new ComponentStyle(style)
       this.props = { ...props }
+      this.type = type
    }
 
    // init function
@@ -35,14 +37,6 @@ export default class Component {
 
       const page = this.editor.getPage()
       page.appendChild(this.root)
-
-      const eRect = this.root.getBoundingClientRect()
-      const pRect = page.getBoundingClientRect()
-
-      this.style.setSize(
-         (eRect.width / pRect.width) * 100,
-         (eRect.height / pRect.height) * 100
-      )
 
       this.setClick()
 

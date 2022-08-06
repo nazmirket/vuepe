@@ -1,5 +1,4 @@
 @import 'variables.scss';
-@import 'helpers.scss';
 @import 'pages.scss';
 @import 'zoom.scss';
 @import 'animation.scss';
@@ -7,7 +6,6 @@
 // EDITOR
 .pe-editor {
    width: 100%;
-   height: 100%;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -42,7 +40,7 @@
    font-size: $page-font-size;
 }
 
-// PAGE
+// EDITOR PAGE
 .pe-editor .pe-page {
    border: $page-border;
    background-color: $page-background;
@@ -412,9 +410,7 @@
 
 // VIEWER
 .pe-viewer {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+   border: 1px solid black;
 }
 
 // PAGE

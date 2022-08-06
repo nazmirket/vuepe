@@ -19,8 +19,8 @@ export default function compose(s) {
    parts.push(`transform: ${tParts.join(' ')}`)
 
    // width height left top
-   parts.push(`width:${s.width}%`)
-   parts.push(`height:${s.height}%`)
+   parts.push(isNaN(s.width) ? 'width:auto' : `width:${s.width}%`)
+   parts.push(isNaN(s.height) ? 'height:auto' : `height:${s.height}%`)
    parts.push(`left:${s.left}%`)
    parts.push(`top:${s.top}%`)
 
@@ -34,6 +34,8 @@ export default function compose(s) {
    parts.push(`font-family: ${s?.font?.family || 'sans-serif'}`)
    parts.push(`text-align: ${s?.font?.align || 'left'}`)
    parts.push(`text-decoration: ${s?.font?.decoration || 'none'}`)
+
+   console.log(parts.join(';'))
 
    return parts.join(';')
 }

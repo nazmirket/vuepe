@@ -21,7 +21,7 @@ export default class FontSizeSelect extends Tool {
       change: function (value) {
          this.setSize(parseInt(value))
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

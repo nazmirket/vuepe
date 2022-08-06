@@ -9,7 +9,7 @@
       <!--PAGE WRAPPER-->
       <div
         class="pe-page-wrapper"
-        :style="{ width: `${scaledW}px`, height: `${scaledH}px` }"
+        :style="{ width: `${sW}px`, height: `${sH}px` }"
       >
         <div class="pe-page">
           <Controller />
@@ -25,18 +25,23 @@ import Toolbar from "./Toolbar.vue";
 import Controller from "./Controller.vue";
 import Editor from "../js/Editor";
 export default {
+  model: {
+    prop: "page",
+    event: "change",
+  },
   components: {
     Toolbar,
     Controller,
   },
+  data() {
+    return {
+      editor: null,
+    };
+  },
   props: {
-    components: {
-      type: Array,
-      default: [],
-    },
-    configs: {
-      type: Object,
-      default: {},
+    page: {
+      components: { type: Array, default: [] },
+      configs: { type: Object, default: {} },
     },
     width: {
       type: Number,
@@ -55,31 +60,24 @@ export default {
     ratio() {
       return (this.zoom || 100) / 100;
     },
-    scaledH() {
+    sH() {
       return this.ratio * this.height;
     },
-    scaledW() {
+    sW() {
       return this.ratio * this.width;
     },
   },
   mounted() {
     const root = this.$refs.peditor;
-    new Editor(
-      {
-        root: root,
-        onChange: function () {
-          console.log("change detected...");
-        },
-      },
-      [...this.components],
-      this.configs
-    );
+    this.editor = new Editor({ root: root, onChange: this.onChange });
+    this.editor.load([...this.page.components], this.page.configs);
+  },
+  methods: {
+    onChange(components, configs) {
+      this.$emit("change", { components, configs });
+    },
   },
 };
 </script>
 
-<style>
-.pe-editor {
-  height: unset !important;
-}
-</style>
+<style></style>

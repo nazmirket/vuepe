@@ -14,7 +14,7 @@ export default {
             move: function (e) {
                Mutations.resize(controller, e)
             }.bind(this),
-            end: controller.editor.onChange,
+            end: controller.editor.sync,
          },
          modifiers: [
             // keep the edges inside the parent
@@ -52,7 +52,7 @@ export default {
             move: function (e) {
                Mutations.drag(controller, e)
             }.bind(this),
-            end: controller.editor.onChange,
+            end: controller.editor.sync,
          },
       })
    },

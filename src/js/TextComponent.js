@@ -3,7 +3,7 @@ import ToolMaps from './ToolMaps'
 
 export default class TextComponent extends Component {
    constructor(editor, style, props) {
-      super(editor, style, props)
+      super(editor, style, props, 'text')
    }
 
    create() {

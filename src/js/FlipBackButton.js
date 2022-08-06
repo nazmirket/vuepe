@@ -15,7 +15,7 @@ export default class FlipBackButton extends Tool {
       click: function () {
          this.sendToBack()
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

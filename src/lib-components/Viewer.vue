@@ -2,25 +2,9 @@
   <div
     ref="peviewer"
     :class="['pe-viewer', `pe-size-${viewport.w}x${viewport.h}`]"
-    :style="{
-      width: `${scaledW}px !important`,
-      height: `${scaledH}px !important`,
-    }"
+    :style="{ width: `${sW}px !important`, height: `${sH}px !important` }"
   >
-    <div
-      class="pe-page-wrapper"
-      :style="{
-        width: `${scaledW}px !important`,
-        height: `${scaledH}px !important`,
-      }"
-    >
-      <div
-        class="pe-page"
-        :style="{
-          transform: `transform:scale(${ratio}) !important;`,
-        }"
-      />
-    </div>
+    <div class="pe-page" :style="{ transform: `scale(${ratio}) !important` }" />
   </div>
 </template>
 
@@ -28,13 +12,15 @@
 import Viewer from "../js/Viewer";
 export default {
   props: {
-    components: {
-      type: Array,
-      default: [],
-    },
-    configs: {
-      type: Object,
-      default: {},
+    page: {
+      components: {
+        type: Array,
+        default: [],
+      },
+      configs: {
+        type: Object,
+        default: {},
+      },
     },
     options: {
       type: Object,
@@ -43,6 +29,7 @@ export default {
   },
   data() {
     return {
+      viewer: null,
       defaults: {
         viewport: {
           w: 0,
@@ -67,8 +54,8 @@ export default {
 
       // if not fixed
       if (maxW || maxH) {
-        const wRatio = maxW / w || 1;
-        const hRatio = maxH / h || 1;
+        const wRatio = maxW / w || 0;
+        const hRatio = maxH / h || 0;
 
         ratio = Math.min(wRatio, hRatio);
       }
@@ -76,11 +63,11 @@ export default {
       // return ratio
       return ratio;
     },
-    scaledH() {
+    sH() {
       const { h } = this.viewport;
       return this.ratio * h;
     },
-    scaledW() {
+    sW() {
       const { w } = this.viewport;
       return this.ratio * w;
     },
@@ -88,9 +75,19 @@ export default {
       return { ...this.defaults.viewport, ...this.options.viewport };
     },
   },
+  watch: {
+    page() {
+      if (this.viewer) {
+        this.viewer.clear();
+        this.viewer.render([...this.page.components], this.page.configs);
+      }
+    },
+  },
   mounted() {
     const root = this.$refs.peviewer;
-    new Viewer({ root: root }, [...this.components], this.configs);
+    this.viewer = new Viewer({ root: root });
+    this.viewer.clear();
+    this.viewer.render([...this.page.components], this.page.configs);
   },
 };
 </script>

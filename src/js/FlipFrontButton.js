@@ -15,7 +15,7 @@ export default class FlipFrontButton extends Tool {
       click: function () {
          this.bringToFront()
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

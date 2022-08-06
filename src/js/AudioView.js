@@ -5,7 +5,7 @@ export default class AudioView extends View {
    isPlaying = false
 
    constructor(viewer, style, props) {
-      super(viewer, style, props)
+      super(viewer, style, props, 'audio')
    }
 
    create() {

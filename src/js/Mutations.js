@@ -92,7 +92,7 @@ export default {
 
          active.setAttribute('data-angle', angle)
 
-         controller.editor.onChange()
+         controller.editor.sync()
       },
    },
 }

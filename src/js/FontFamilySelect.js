@@ -23,7 +23,7 @@ export default class FontFamilySelect extends Tool {
       change: function (value) {
          this.setFont(value)
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

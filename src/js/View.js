@@ -1,9 +1,8 @@
-import ComponentStyle from './ComponentStyle'
-import Id from './Id.js'
+import ViewStyle from './ViewStyle'
 
 export default class View {
    // root element
-   id
+   type
    root
    viewer
 
@@ -13,29 +12,30 @@ export default class View {
    style
 
    // constructor
-   constructor(viewer, style, props) {
-      this.id = Id()
+   constructor(viewer, style, props, type) {
       this.viewer = viewer
-      this.style = new ComponentStyle(style)
+      this.style = new ViewStyle(style)
       this.props = { ...props }
+      this.type = type
    }
 
    // init function
    init() {
       this.root = this.create()
-      this.root.setAttribute('id', this.id)
-
       const page = this.viewer.getPage()
+
       page.appendChild(this.root)
 
-      const eRect = this.root.getBoundingClientRect()
-      const pRect = page.getBoundingClientRect()
+      this.reload()
+   }
 
-      this.style.setSize(
-         (eRect.width / pRect.width) * 100,
-         (eRect.height / pRect.height) * 100
-      )
-
+   // reload function
+   reload() {
       this.root.style = this.style.toString()
+   }
+
+   // remove
+   remove() {
+      this.root.remove()
    }
 }

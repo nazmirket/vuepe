@@ -19,7 +19,7 @@ export default class FlipHorizontalButton extends Tool {
       click: function () {
          this.flip()
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

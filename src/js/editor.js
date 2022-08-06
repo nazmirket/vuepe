@@ -1,6 +1,4 @@
-import ImageComponent from './ImageComponent'
-import TextComponent from './TextComponent'
-import AudioComponent from './AudioComponent'
+import ComponentFactory from './ComponentFactory'
 
 import Controller from './Controller'
 import Toolbar from './Toolbar'
@@ -12,38 +10,22 @@ export default class Editor {
    configs = {}
    components = {}
 
-   constructor(opts, components = [], configs = {}) {
+   constructor(opts) {
       // root
       this.root = opts.root
       this.page = this.root.querySelector('.pe-page')
 
-      // add configs
-      this.configs = { ...configs }
-
       // events
       this.onChange = opts.onChange
+      this.sync = this.handlers.change
 
       // components
       this.toolbar = new Toolbar(this)
       this.controller = new Controller(this)
-
-      // add components
-      for (const data of components) {
-         let c = null
-         const { type, style, props } = data
-
-         if (type === 'image') c = new ImageComponent(this, style, props)
-         if (type === 'audio') c = new AudioComponent(this, style, props)
-         if (type === 'text') c = new TextComponent(this, style, props)
-
-         this.components[c.id] = c
-      }
-
-      // init editor
-      this.load()
    }
 
    handlers = {
+      // click listener
       click: function (event) {
          event.stopPropagation()
          const panes = ['pe-page', 'pe-content', 'pe-page-wrapper']
@@ -51,12 +33,30 @@ export default class Editor {
             if (event.target.classList.contains(pane)) this.controller.hide()
          }
       }.bind(this),
+      // change listener
+      change: function () {
+         const configs = { ...this.configs }
+         const components = Object.values(this.components).map((c) => ({
+            type: c.type,
+            props: c.props,
+            style: c.style.toObject(),
+         }))
+         this.onChange(components, configs)
+      }.bind(this),
    }
 
    // load function
-   load() {
-      // init components
-      Object.values(this.components).forEach((c) => c.init())
+   load(components = [], configs = {}) {
+      // add components
+      for (const data of components) {
+         const { type, style, props } = data
+         const component = ComponentFactory(this, style, props, type)
+         this.components[component.id] = component
+         component.init()
+      }
+
+      // add configs
+      this.configs = { ...configs }
 
       this.root
          .querySelector('.pe-content')
@@ -101,17 +101,13 @@ export default class Editor {
 
    // insert
    insert(data) {
-      let c = null
-
       const { type, style, props } = data
+      const component = ComponentFactory(this, style, props, type)
 
-      if (type === 'image') c = new ImageComponent(this, style, props)
-      if (type === 'audio') c = new AudioComponent(this, style, props)
-      if (type === 'text') c = new TextComponent(this, style, props)
+      this.components[component.id] = component
+      component.init()
 
-      this.components[c.id] = c
-      c.init()
-      this.onChange()
+      this.sync()
    }
 
    // remove
@@ -130,7 +126,7 @@ export default class Editor {
       // hide toolbar
       this.toolbar.hide()
 
-      this.onChange()
+      this.sync()
    }
 
    // get max z index

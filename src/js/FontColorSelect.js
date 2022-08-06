@@ -23,7 +23,7 @@ export default class TextColorSelect extends Tool {
          const value = event.target.value
          this.set(value)
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

@@ -6,7 +6,7 @@ export default class AudioComponent extends Component {
    isPlaying = false
 
    constructor(editor, style, props) {
-      super(editor, style, props)
+      super(editor, style, props, 'audio')
    }
 
    create() {

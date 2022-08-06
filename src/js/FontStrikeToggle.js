@@ -19,7 +19,7 @@ export default class FontStrikeToggle extends Tool {
       click: function () {
          this.toggle()
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

@@ -20,7 +20,7 @@ export default class OpacitySlider extends Tool {
          const value = parseInt(event.target.value) / 100
          this.set(value)
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

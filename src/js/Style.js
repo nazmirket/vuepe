@@ -2,8 +2,8 @@ export default class Style {
    z = 0
    left = 0
    top = 0
-   width = 0
-   height = 0
+   width = 'auto'
+   height = 'auto'
    opacity = 1
    transform = {
       translate: { x: 0, y: 0 },
@@ -29,8 +29,11 @@ export default class Style {
       this.top = isNaN(p?.top) ? 0 : p.top
 
       // size
-      this.width = isNaN(p?.width) ? 0 : p.width
-      this.height = isNaN(p?.height) ? 0 : p.height
+      this.width = p?.width
+      this.height = p?.height
+
+      // opacity
+      this.opacity = isNaN(p?.opacity) ? 1 : p.opacity
 
       // translate
       this.transform.translate.x = p?.transform?.translate?.x || 0
@@ -90,8 +93,8 @@ export default class Style {
       this.top = isNaN(p?.top) ? 0 : p.top
 
       // size
-      this.width = isNaN(p?.width) ? 0 : p.width
-      this.height = isNaN(p?.height) ? 0 : p.height
+      this.width = p?.width
+      this.height = p?.height
 
       // translate
       this.transform.translate.x = p?.transform?.translate?.x || 0
@@ -99,5 +102,18 @@ export default class Style {
 
       // rotate
       this.transform.rotate = p?.transform?.rotate || 0
+   }
+
+   toObject() {
+      return {
+         z: this.z,
+         left: this.left,
+         top: this.top,
+         width: this.width,
+         height: this.height,
+         opacity: this.opacity,
+         transform: { ...this.transform },
+         font: { ...this.font },
+      }
    }
 }

@@ -19,7 +19,7 @@ export default class FontWeightToggle extends Tool {
       click: function () {
          this.toggle()
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

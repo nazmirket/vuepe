@@ -25,7 +25,7 @@ export default class FontAlignToggle extends Tool {
       click: function () {
          this.change()
          this.load()
-         this.toolbar.editor.onChange()
+         this.toolbar.editor.sync()
       }.bind(this),
    }
 

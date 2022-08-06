@@ -1,41 +1,38 @@
-import ImageView from './ImageView'
-import TextView from './TextView'
-import AudioView from './AudioView'
+import ViewFactory from './ViewFactory'
 
 export default class Viewer {
    root
    page
    configs = {}
-   components = {}
+   views = []
 
-   constructor(opts, components = [], configs = {}) {
+   constructor(opts) {
       // root
       this.root = opts.root
       this.page = this.root.querySelector('.pe-page')
-
-      // add configs
-      this.configs = { ...configs }
-
-      // add components
-      for (const data of components) {
-         let c = null
-         const { type, style, props } = data
-
-         if (type === 'image') c = new ImageView(this, style, props)
-         if (type === 'audio') c = new AudioView(this, style, props)
-         if (type === 'text') c = new TextView(this, style, props)
-
-         this.components[c.id] = c
-      }
-
-      // init editor
-      this.load()
    }
 
    // load function
-   load() {
-      // init components
-      Object.values(this.components).forEach((c) => c.init())
+   render(views = [], configs = {}) {
+      // add configs
+      this.configs = { ...configs }
+
+      this.views = []
+
+      for (const data of views) {
+         const { type, style, props } = data
+
+         const view = ViewFactory(this, style, props, type)
+
+         this.views.push(view)
+         view.init()
+      }
+   }
+
+   // clear
+   clear() {
+      for (const v of this.views) v.remove()
+      this.views = []
    }
 
    // get page
