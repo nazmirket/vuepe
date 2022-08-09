@@ -15,16 +15,16 @@ export default {
     page: {
       components: {
         type: Array,
-        default: [],
+        default: () => [],
       },
       configs: {
         type: Object,
-        default: {},
+        default: () => {},
       },
     },
     options: {
       type: Object,
-      default: {},
+      default: () => {},
     },
   },
   data() {

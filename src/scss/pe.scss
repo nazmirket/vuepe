@@ -2,6 +2,7 @@
 @import 'pages.scss';
 @import 'zoom.scss';
 @import 'animation.scss';
+@import 'scrollbar.scss';
 
 // EDITOR
 .pe-editor {
@@ -10,8 +11,8 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   border: $default-border;
    position: relative;
+   border: none;
 }
 
 // EDITOR CONTENT
@@ -61,9 +62,9 @@
    background: white;
    display: flex;
    align-items: center;
-   border-bottom: $default-border;
-   padding: 10px;
-   height: 32px;
+   border: $default-border;
+   padding: 0 10px;
+   height: 52px;
 }
 
 // OPTIONS TOOLBAR
@@ -382,35 +383,6 @@
          background: $link-color;
       }
    }
-}
-
-/* width */
-::-webkit-scrollbar {
-   width: 22px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-   background: none;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-   cursor: pointer !important;
-   background: $primary-color;
-   border-radius: 50px;
-   padding: 0 6px;
-   border: 6px solid transparent;
-   background-clip: padding-box;
-   &:hover {
-      background: $link-color;
-      background-clip: padding-box;
-   }
-}
-
-// VIEWER
-.pe-viewer {
-   border: 1px solid black;
 }
 
 // PAGE

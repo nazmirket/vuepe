@@ -1,0 +1,27 @@
+@import 'variables.scss';
+
+.pe-editor * {
+   /* width */
+   ::-webkit-scrollbar {
+      width: 22px !important;
+   }
+
+   /* Track */
+   ::-webkit-scrollbar-track {
+      background: none !important;
+   }
+
+   /* Handle */
+   ::-webkit-scrollbar-thumb {
+      cursor: pointer !important;
+      background: $primary-color !important;
+      border-radius: 50px !important;
+      padding: 0 6px !important;
+      border: 6px solid transparent !important;
+      background-clip: padding-box !important;
+      &:hover {
+         background: $link-color !important;
+         background-clip: padding-box !important;
+      }
+   }
+}

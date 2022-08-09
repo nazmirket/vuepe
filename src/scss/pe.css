@@ -143,6 +143,34 @@
   }
 }
 
+.pe-editor * {
+  /* width */
+  /* Track */
+  /* Handle */
+}
+
+.pe-editor * ::-webkit-scrollbar {
+  width: 22px !important;
+}
+
+.pe-editor * ::-webkit-scrollbar-track {
+  background: none !important;
+}
+
+.pe-editor * ::-webkit-scrollbar-thumb {
+  cursor: pointer !important;
+  background: #4d5960 !important;
+  border-radius: 50px !important;
+  padding: 0 6px !important;
+  border: 6px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
+.pe-editor * ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 0, 68, 0.6) !important;
+  background-clip: padding-box !important;
+}
+
 .pe-editor {
   width: 100%;
   display: -webkit-box;
@@ -158,8 +186,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #d7dee1;
   position: relative;
+  border: none;
 }
 
 .pe-content {
@@ -211,9 +239,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 1px solid #d7dee1;
-  padding: 10px;
-  height: 32px;
+  border: 1px solid #d7dee1;
+  padding: 0 10px;
+  height: 52px;
 }
 
 .pe-options-toolbar {
@@ -592,35 +620,6 @@
 .pe-selector .pe-selector-option:hover {
   color: white;
   background: rgba(255, 0, 68, 0.6);
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 22px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: none;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  cursor: pointer !important;
-  background: #4d5960;
-  border-radius: 50px;
-  padding: 0 6px;
-  border: 6px solid transparent;
-  background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 0, 68, 0.6);
-  background-clip: padding-box;
-}
-
-.pe-viewer {
-  border: 1px solid black;
 }
 
 .pe-viewer .pe-page {

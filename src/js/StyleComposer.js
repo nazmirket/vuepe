@@ -35,7 +35,5 @@ export default function compose(s) {
    parts.push(`text-align: ${s?.font?.align || 'left'}`)
    parts.push(`text-decoration: ${s?.font?.decoration || 'none'}`)
 
-   console.log(parts.join(';'))
-
    return parts.join(';')
 }

@@ -1,6 +1,12 @@
 <template>
   <div id="app" class="outer">
-    <Editor v-model="page" :width="600" :height="800" :zoom="100" />
+    <Editor
+      v-model="page"
+      :width="600"
+      :height="800"
+      :zoom="100"
+      pageId="asdasdasd"
+    />
 
     <Viewer
       :page="page"
