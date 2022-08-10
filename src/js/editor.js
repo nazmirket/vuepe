@@ -1,7 +1,7 @@
 import ComponentFactory from './ComponentFactory'
 
 import Controller from './Controller'
-import RootStyle from './RootStyle'
+import PageStyle from './PageStyle'
 import Toolbar from './Toolbar'
 
 export default class Editor {
@@ -61,8 +61,8 @@ export default class Editor {
       }
 
       // load style
-      this.style = new RootStyle(style)
-      this.root.style = this.style.toString()
+      this.style = new PageStyle(style)
+      this.page.style = this.style.toString()
 
       this.root
          .querySelector('.pe-content')
@@ -138,7 +138,7 @@ export default class Editor {
    // set background
    setBackground({ image, color }) {
       this.style.setBackground({ image, color })
-      this.root.style = this.style.toString()
+      this.page.style = this.style.toString()
    }
 
    // get max z index

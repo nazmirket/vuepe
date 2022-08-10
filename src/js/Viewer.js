@@ -1,5 +1,5 @@
 import ViewFactory from './ViewFactory'
-import RootStyle from './RootStyle'
+import PageStyle from './PageStyle'
 
 export default class Viewer {
    root
@@ -9,7 +9,7 @@ export default class Viewer {
    style
 
    // views
-   views = {}
+   views = []
 
    constructor(opts) {
       // root
@@ -30,10 +30,9 @@ export default class Viewer {
       }
 
       // load style
-      this.style = new RootStyle(style)
-      this.root.style = this.style.toString()
+      this.style = new PageStyle(style)
+      this.page.style = this.style.toString()
    }
-
    // clear
    clear() {
       for (const v of this.views) v.remove()
