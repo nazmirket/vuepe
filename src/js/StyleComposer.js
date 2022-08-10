@@ -35,5 +35,13 @@ export default function compose(s) {
    parts.push(`text-align: ${s?.font?.align || 'left'}`)
    parts.push(`text-decoration: ${s?.font?.decoration || 'none'}`)
 
+   // background image
+   if (s?.background?.image)
+      parts.push(`background-image: url(${s.background.image})`)
+
+   // background color
+   if (s?.background?.color)
+      parts.push(`background-color: ${s.background.color}`)
+
    return parts.join(';')
 }

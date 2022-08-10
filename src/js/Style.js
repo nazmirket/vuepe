@@ -21,6 +21,11 @@ export default class Style {
       decoration: 'none',
    }
 
+   background = {
+      image: undefined,
+      color: undefined,
+   }
+
    constructor(p = {}) {
       this.z = isNaN(p?.z) ? 0 : p.z
 
@@ -53,6 +58,10 @@ export default class Style {
       this.font.family = p?.font?.family || 'sans-serif'
       this.font.align = p?.font?.align || 'left'
       this.font.decoration = p?.font?.decoration || 'none'
+
+      // background
+      this.background.image = p?.background?.image
+      this.background.color = p?.background?.color
    }
 
    setTransform(p) {
@@ -79,6 +88,11 @@ export default class Style {
    setPosition(left, top) {
       this.left = left
       this.top = top
+   }
+
+   setBackground({ image, color }) {
+      this.background.image = image
+      this.background.color = color
    }
 
    setZ(z) {
@@ -114,6 +128,7 @@ export default class Style {
          opacity: this.opacity,
          transform: { ...this.transform },
          font: { ...this.font },
+         background: { ...this.background },
       }
    }
 }

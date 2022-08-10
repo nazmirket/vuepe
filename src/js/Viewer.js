@@ -1,10 +1,15 @@
 import ViewFactory from './ViewFactory'
+import RootStyle from './RootStyle'
 
 export default class Viewer {
    root
    page
-   configs = {}
-   views = []
+
+   // style
+   style
+
+   // views
+   views = {}
 
    constructor(opts) {
       // root
@@ -13,12 +18,8 @@ export default class Viewer {
    }
 
    // load function
-   render(views = [], configs = {}) {
-      // add configs
-      this.configs = { ...configs }
-
+   render(views = [], style) {
       this.views = []
-
       for (const data of views) {
          const { type, style, props } = data
 
@@ -27,6 +28,10 @@ export default class Viewer {
          this.views.push(view)
          view.init()
       }
+
+      // load style
+      this.style = new RootStyle(style)
+      this.root.style = this.style.toString()
    }
 
    // clear

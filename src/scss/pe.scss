@@ -62,7 +62,6 @@
    background: white;
    display: flex;
    align-items: center;
-   border: $default-border;
    padding: 0 10px;
    height: 52px;
 }
@@ -84,6 +83,9 @@
       align-items: center;
       height: 32px !important;
       padding: 3px;
+      img {
+         height: 32px !important;
+      }
    }
 
    // ALIGN SELECTOR
@@ -257,12 +259,12 @@
       pointer-events: auto;
       z-index: 99999999;
       top: -37px;
-      left: calc(50% - 9px);
+      left: calc(50% - 11px);
       img {
-         width: 20px;
+         width: 22px;
          background: $accent-color;
          border-radius: 100%;
-         padding: 2px;
+         padding: 3px;
       }
    }
 
@@ -273,12 +275,12 @@
       pointer-events: auto;
       z-index: 99999999;
       bottom: -40px;
-      left: calc(50% - 9px);
+      left: calc(50% - 11px);
       img {
-         width: 18px;
+         width: 22px;
          background: $accent-color;
          border-radius: 100%;
-         padding: 4px;
+         padding: 3px;
       }
    }
 

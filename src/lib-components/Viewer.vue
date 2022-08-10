@@ -17,7 +17,7 @@ export default {
         type: Array,
         default: () => [],
       },
-      configs: {
+      style: {
         type: Object,
         default: () => {},
       },
@@ -79,7 +79,7 @@ export default {
     page() {
       if (this.viewer) {
         this.viewer.clear();
-        this.viewer.render([...this.page.components], this.page.configs);
+        this.viewer.render([...this.page.components], this.page.style);
       }
     },
   },
@@ -87,7 +87,7 @@ export default {
     const root = this.$refs.peviewer;
     this.viewer = new Viewer({ root: root });
     this.viewer.clear();
-    this.viewer.render([...this.page.components], this.page.configs);
+    this.viewer.render([...this.page.components], this.page.style);
   },
 };
 </script>

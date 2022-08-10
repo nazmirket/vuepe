@@ -149,15 +149,18 @@
   /* Handle */
 }
 
-.pe-editor * ::-webkit-scrollbar {
+.pe-editor *::-webkit-scrollbar {
   width: 22px !important;
 }
 
-.pe-editor * ::-webkit-scrollbar-track {
+.pe-editor *::-webkit-scrollbar-track {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  border: none !important;
   background: none !important;
 }
 
-.pe-editor * ::-webkit-scrollbar-thumb {
+.pe-editor *::-webkit-scrollbar-thumb {
   cursor: pointer !important;
   background: #4d5960 !important;
   border-radius: 50px !important;
@@ -166,7 +169,7 @@
   background-clip: padding-box !important;
 }
 
-.pe-editor * ::-webkit-scrollbar-thumb:hover {
+.pe-editor *::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 0, 68, 0.6) !important;
   background-clip: padding-box !important;
 }
@@ -239,7 +242,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #d7dee1;
   padding: 0 10px;
   height: 52px;
 }
@@ -271,6 +273,10 @@
           align-items: center;
   height: 32px !important;
   padding: 3px;
+}
+
+.pe-options-toolbar .pe-tool img {
+  height: 32px !important;
 }
 
 .pe-options-toolbar .pe-change-align {
@@ -478,14 +484,14 @@
   pointer-events: auto;
   z-index: 99999999;
   top: -37px;
-  left: calc(50% - 9px);
+  left: calc(50% - 11px);
 }
 
 .pe-controller .pe-delete-handle img {
-  width: 20px;
+  width: 22px;
   background: #64c9ff;
   border-radius: 100%;
-  padding: 2px;
+  padding: 3px;
 }
 
 .pe-controller .pe-rotate-handle {
@@ -494,14 +500,14 @@
   pointer-events: auto;
   z-index: 99999999;
   bottom: -40px;
-  left: calc(50% - 9px);
+  left: calc(50% - 11px);
 }
 
 .pe-controller .pe-rotate-handle img {
-  width: 18px;
+  width: 22px;
   background: #64c9ff;
   border-radius: 100%;
-  padding: 4px;
+  padding: 3px;
 }
 
 .pe-controller .pe-thumbs .pe-thumb {

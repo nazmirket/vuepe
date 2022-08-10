@@ -1,13 +1,18 @@
 import ComponentFactory from './ComponentFactory'
 
 import Controller from './Controller'
+import RootStyle from './RootStyle'
 import Toolbar from './Toolbar'
 
 export default class Editor {
    active = ''
    root
    page
-   configs = {}
+
+   // style
+   style
+
+   // components
    components = {}
 
    constructor(opts) {
@@ -35,18 +40,18 @@ export default class Editor {
       }.bind(this),
       // change listener
       change: function () {
-         const configs = { ...this.configs }
+         const style = { ...this.style.toObject() }
          const components = Object.values(this.components).map((c) => ({
             type: c.type,
             props: c.props,
             style: c.style.toObject(),
          }))
-         this.onChange(components, configs)
+         this.onChange(components, style)
       }.bind(this),
    }
 
    // load function
-   load(components = [], configs = {}) {
+   load(components = [], style = {}) {
       // add components
       for (const data of components) {
          const { type, style, props } = data
@@ -55,8 +60,9 @@ export default class Editor {
          component.init()
       }
 
-      // add configs
-      this.configs = { ...configs }
+      // load style
+      this.style = new RootStyle(style)
+      this.root.style = this.style.toString()
 
       this.root
          .querySelector('.pe-content')
@@ -127,6 +133,12 @@ export default class Editor {
       this.toolbar.hide()
 
       this.sync()
+   }
+
+   // set background
+   setBackground({ image, color }) {
+      this.style.setBackground({ image, color })
+      this.root.style = this.style.toString()
    }
 
    // get max z index

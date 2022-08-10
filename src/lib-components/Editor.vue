@@ -9,7 +9,7 @@
       <!--PAGE WRAPPER-->
       <div
         class="pe-page-wrapper"
-        :style="{ width: `${sW}px`, height: `${sH}px` }"
+        :style="{ width: sW + 'px', height: sH + 'px' }"
       >
         <div class="pe-page">
           <Controller />
@@ -41,7 +41,7 @@ export default {
   props: {
     page: {
       components: { type: Array, default: () => [] },
-      configs: { type: Object, default: () => {} },
+      style: { type: Object, default: () => {} },
     },
     width: {
       type: Number,
@@ -74,13 +74,13 @@ export default {
   mounted() {
     const root = this.$refs.peditor;
     this.editor = new Editor({ root: root, onChange: this.onChange });
-    this.editor.load([...this.page.components], this.page.configs);
+    this.editor.load([...this.page.components], this.page.style);
 
     this.addToWindow();
   },
   methods: {
-    onChange(components, configs) {
-      this.$emit("change", { components, configs });
+    onChange(components, style) {
+      this.$emit("change", { components, style });
     },
     addToWindow() {
       if (!window?.$pe) window.$pe = {};
