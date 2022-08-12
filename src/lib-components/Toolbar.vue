@@ -36,7 +36,7 @@
       <span class="pe-tool pe-change-color">
         <span class="pe-color-area">
           <img src="../icons/font-color.svg" />
-          <span class="pe-color-indicator"></span>
+          <span class="pe-color-indicator" />
         </span>
         <input type="color" />
       </span>

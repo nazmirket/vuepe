@@ -2,9 +2,9 @@
   <div
     ref="peviewer"
     :class="['pe-viewer', `pe-size-${viewport.w}x${viewport.h}`]"
-    :style="{ width: `${sW}px !important`, height: `${sH}px !important` }"
+    :style="{ width: `${sW}px`, height: `${sH}px` }"
   >
-    <div class="pe-page" :style="{ transform: `scale(${ratio}) !important` }" />
+    <div class="pe-page" :style="{ transform: `scale(${ratio})` }" />
   </div>
 </template>
 

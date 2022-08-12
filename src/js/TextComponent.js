@@ -12,7 +12,6 @@ export default class TextComponent extends Component {
 
       const element = document.createElement('p')
       element.innerText = this.props.content
-      element.contentEditable = true
       element.classList.add('pe-item')
 
       wrapper.appendChild(element)

@@ -22,16 +22,18 @@ export default class TextColorSelect extends Tool {
       change: function (event) {
          const value = event.target.value
          this.set(value)
-         this.load()
          this.toolbar.editor.sync()
       }.bind(this),
    }
 
    load() {
       super.load()
-
       const active = this.getActive()
       this.value = active.style.color
+      this.refresh()
+   }
+
+   refresh() {
       this.picker.value = this.value || '#000000'
       this.indicator.style.background = this.value
    }
@@ -39,7 +41,8 @@ export default class TextColorSelect extends Tool {
    set(value) {
       const active = this.getActive()
       active.style.color = value
+      this.value = value
       active.reload()
-      this.indicator.style.background = this.value
+      this.refresh()
    }
 }

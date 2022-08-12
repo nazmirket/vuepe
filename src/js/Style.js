@@ -5,6 +5,8 @@ export default class Style {
    width = 'auto'
    height = 'auto'
    opacity = 1
+   color = '#000000'
+
    transform = {
       translate: { x: 0, y: 0 },
       rotate: 0,
@@ -39,6 +41,9 @@ export default class Style {
 
       // opacity
       this.opacity = isNaN(p?.opacity) ? 1 : p.opacity
+
+      // color
+      this.color = p?.color || '#000000'
 
       // translate
       this.transform.translate.x = p?.transform?.translate?.x || 0

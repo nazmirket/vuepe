@@ -64,6 +64,7 @@
    align-items: center;
    padding: 0 10px;
    height: 52px;
+   border-bottom: $default-border;
 }
 
 // OPTIONS TOOLBAR
@@ -83,8 +84,10 @@
       align-items: center;
       height: 32px !important;
       padding: 3px;
+
       img {
          height: 32px !important;
+         min-width: 32px !important;
       }
    }
 
@@ -102,7 +105,7 @@
    .pe-change-opacity {
       align-items: center;
       border: 1px solid transparent;
-      border-radius: 8px;
+      border-radius: 5px;
       &:hover {
          border: 1px solid rgb(227, 227, 227);
          .pe-opacity-menu {
@@ -119,24 +122,24 @@
 
       .pe-opacity-menu {
          display: none;
-         height: 32px;
-         width: 140px;
+         height: 38px !important;
+         width: 145px;
          align-items: center;
          justify-content: center;
          .pe-opacity-slider {
             -webkit-appearance: none;
             appearance: none;
-            background-color: $link-color;
+            background-color: rgba(255, 0, 68, 0.4);
             height: 7px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             outline: none;
             &::-webkit-slider-thumb {
                -webkit-appearance: none;
                appearance: none;
                width: 16px;
                height: 16px;
-               border: 1px solid $link-color;
+               border: 3px solid rgba(255, 0, 68, 1);
                border-radius: 100%;
                background: white;
                cursor: pointer;
@@ -160,19 +163,19 @@
       background-color: white;
       position: relative;
       .pe-color-area {
-         width: 100%;
-         height: 100%;
          display: flex;
          flex-direction: column;
          align-items: center;
          justify-content: center;
          img {
-            width: 26px;
+            width: 25px !important;
+            height: 25px !important;
          }
          .pe-color-indicator {
+            display: flex;
             outline: 1px solid rgba(128, 128, 128, 0.2);
-            width: 28px;
-            height: 6px;
+            width: 32px !important;
+            height: 6px !important;
             border-radius: 3px;
          }
       }
@@ -240,8 +243,7 @@
 
 // CONTROLLER
 .pe-controller {
-   // pointer-events: none;
-   // touch-action: none;
+   touch-action: none;
    box-sizing: border-box;
    position: absolute;
    display: none;
@@ -333,19 +335,24 @@
    border-radius: 5px;
    box-sizing: border-box;
    height: 36px;
-   padding: 0 8px;
    cursor: pointer;
    display: flex;
    align-items: center;
+
    .pe-selector-display {
       width: 100%;
       display: flex;
       white-space: nowrap;
       justify-content: space-between;
       align-items: center;
-      column-gap: 5px;
+      column-gap: 3px;
       box-sizing: border-box;
       font-size: 14px;
+      padding-left: 8px;
+      img {
+         width: 18px !important;
+         height: 18px !important;
+      }
    }
 
    &.pe-is-active {
@@ -460,16 +467,16 @@
 
    // AUDIO
    &.pe-is-element-audio {
-      height: 52px;
-      width: 52px;
+      display: flex;
       .pe-item {
+         width: 100%;
          cursor: unset;
          display: flex;
          justify-content: center;
          align-items: center;
          img {
+            display: flex;
             width: 100%;
-            height: 100%;
          }
       }
       &.pe-is-on-play img {

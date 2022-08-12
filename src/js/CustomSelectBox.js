@@ -26,6 +26,7 @@ export default class CustomSelectBox {
 
    set(selected) {
       this.selected = this.options.find((o) => o.value === selected)
+      this.refresh()
    }
 
    refresh() {

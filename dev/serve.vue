@@ -50,24 +50,30 @@ export default Vue.extend({
           //     width: 30,
           //   },
           // },
-          // {
-          //   id: "asdasdasdasd",
-          //   type: "text",
-          //   props: {
-          //     content:
-          //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          //   },
-          //   style: {
-          //     z: 10,
-          //     width: 40,
-          //   },
-          // },
+          {
+            type: "text",
+            props: {
+              content:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            },
+            style: {
+              z: 10,
+              width: 40,
+              height: 20,
+              color: "#000000",
+              font: {
+                family: "Roboto",
+              },
+            },
+          },
           // {
           //   type: "audio",
           //   props: {
           //     src: "https://download.samplelib.com/mp3/sample-3s.mp3",
           //   },
-          //   style: {},
+          //   style: {
+          //     width: 8,
+          //   },
           // },
         ],
         style: {},
