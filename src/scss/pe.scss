@@ -394,6 +394,11 @@
    }
 }
 
+// VIEWER
+.pe-viewer {
+   overflow: hidden;
+}
+
 // PAGE
 .pe-viewer .pe-page {
    background-color: $page-background;

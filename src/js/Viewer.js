@@ -1,5 +1,6 @@
 import ViewFactory from './ViewFactory'
 import PageStyle from './PageStyle'
+import FontLoader from './FontLoader'
 
 export default class Viewer {
    root
@@ -15,6 +16,9 @@ export default class Viewer {
       // root
       this.root = opts.root
       this.page = this.root.querySelector('.pe-page')
+
+      // load fonts
+      FontLoader.load()
    }
 
    // load function

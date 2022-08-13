@@ -139,6 +139,7 @@ export default class Editor {
    setBackground({ image, color }) {
       this.style.setBackground({ image, color })
       this.page.style = this.style.toString()
+      this.sync()
    }
 
    // get max z index

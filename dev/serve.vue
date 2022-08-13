@@ -2,18 +2,13 @@
   <div id="app" class="outer">
     <Editor
       v-model="page"
-      :width="600"
-      :height="800"
+      :width="viewport.w"
+      :height="viewport.h"
       :zoom="100"
-      pageId="asdasdasd"
+      pageId="IUASHDYASDYQYNA"
     />
 
-    <Viewer
-      :page="page"
-      :options="{
-        viewport: { w: 600, h: 800, maxH: 200, maxW: 240 },
-      }"
-    />
+    <Viewer :page="page" :options="{ viewport }" />
   </div>
 </template>
 
@@ -27,6 +22,12 @@ export default Vue.extend({
   components: { Editor, Viewer },
   data() {
     return {
+      viewport: {
+        w: 600,
+        h: 800,
+        maxH: 200,
+        maxW: 240,
+      },
       page: {
         components: [
           {
@@ -79,6 +80,15 @@ export default Vue.extend({
         style: {},
       },
     };
+  },
+  mounted() {
+    setTimeout(
+      function () {
+        this.viewport.maxH = 400;
+        this.viewport.maxW = 400;
+      }.bind(this),
+      2000
+    );
   },
 });
 </script>

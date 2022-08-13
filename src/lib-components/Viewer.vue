@@ -2,9 +2,8 @@
   <div
     ref="peviewer"
     :class="['pe-viewer', `pe-size-${viewport.w}x${viewport.h}`]"
-    :style="{ width: `${sW}px`, height: `${sH}px` }"
   >
-    <div class="pe-page" :style="{ transform: `scale(${ratio})` }" />
+    <div ref="pepage" class="pe-page" />
   </div>
 </template>
 
@@ -54,8 +53,8 @@ export default {
 
       // if not fixed
       if (maxW || maxH) {
-        const wRatio = maxW / w || 0;
-        const hRatio = maxH / h || 0;
+        const wRatio = maxW / w || 1;
+        const hRatio = maxH / h || 1;
 
         ratio = Math.min(wRatio, hRatio);
       }
@@ -75,11 +74,25 @@ export default {
       return { ...this.defaults.viewport, ...this.options.viewport };
     },
   },
+  methods: {
+    refresh() {
+      this.$refs.peviewer.style.width = this.sW + "px";
+      this.$refs.peviewer.style.height = this.sH + "px";
+      this.$refs.pepage.style.transform = "scale(" + this.ratio + ")";
+    },
+  },
   watch: {
+    viewport() {
+      this.refresh();
+    },
     page() {
       if (this.viewer) {
         this.viewer.clear();
-        this.viewer.render([...this.page.components], this.page.style);
+        this.viewer.render(
+          [...(this.page?.components || [])],
+          this.page?.style || {}
+        );
+        this.refresh();
       }
     },
   },
@@ -87,7 +100,11 @@ export default {
     const root = this.$refs.peviewer;
     this.viewer = new Viewer({ root: root });
     this.viewer.clear();
-    this.viewer.render([...this.page.components], this.page.style);
+    this.viewer.render(
+      [...(this.page?.components || [])],
+      this.page?.style || {}
+    );
+    this.refresh();
   },
 };
 </script>
