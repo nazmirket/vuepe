@@ -1,4 +1,5 @@
-import { Editor, Viewer } from '@/lib-components/index'
+import Editor from './Editor'
+import Viewer from './Viewer'
 
 export default function install(Vue) {
    Vue.component('pe-editor', Editor)
