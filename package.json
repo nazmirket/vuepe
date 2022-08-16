@@ -1,12 +1,12 @@
 {
-   "name": "vue-page-editor",
+   "name": "vuepe",
    "author": "nazmiyilmaz",
-   "version": "2.2.2",
+   "version": "2.2.3",
    "description": "A multi purpose page editor plugin for Vue2",
-   "main": "dist/vue-page-editor.ssr.js",
-   "browser": "dist/pe.esm.js",
-   "module": "dist/pe.esm.js",
-   "unpkg": "dist/pe.min.js",
+   "main": "dist/vuepe.ssr.js",
+   "browser": "dist/vuepe.esm.js",
+   "module": "dist/vuepe.esm.js",
+   "unpkg": "dist/vuepe.min.js",
    "files": [
       "dist/*",
       "src/**/*.vue",

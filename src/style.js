@@ -1,1 +1,1 @@
-import './scss/pe.scss'
+import './scss/vuepe.scss'

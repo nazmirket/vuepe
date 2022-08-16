@@ -87,7 +87,7 @@ if (!argv.format || argv.format === 'es') {
       input: 'src/entry.esm.js',
       external,
       output: {
-         file: 'dist/pe.esm.js',
+         file: 'dist/vuepe.esm.js',
          format: 'esm',
          exports: 'named',
       },
@@ -120,7 +120,7 @@ if (!argv.format || argv.format === 'cjs') {
       external,
       output: {
          compact: true,
-         file: 'dist/pe.ssr.js',
+         file: 'dist/vuepe.ssr.js',
          format: 'cjs',
          name: 'VuePageEditor',
          exports: 'auto',
@@ -150,7 +150,7 @@ if (!argv.format || argv.format === 'iife') {
       external,
       output: {
          compact: true,
-         file: 'dist/pe.min.js',
+         file: 'dist/vuepe.min.js',
          format: 'iife',
          name: 'VuePageEditor',
          exports: 'auto',
@@ -173,7 +173,7 @@ buildFormats.push({
    input: 'src/style.js',
    plugins: [
       scss({
-         output: 'dist/pe.min.css',
+         output: 'dist/vuepe.min.css',
          outputStyle: 'compressed',
          failOnError: true,
       }),

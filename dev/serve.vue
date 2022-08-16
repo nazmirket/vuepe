@@ -88,7 +88,7 @@ export default Vue.extend({
 
 
 <style>
-@import url("../src/scss/pe.css");
+@import url("../src/scss/vuepe.css");
 
 body,
 html {
