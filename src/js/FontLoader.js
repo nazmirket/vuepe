@@ -19,8 +19,12 @@ export default {
    loaded: false,
    fonts: [],
    load(fontSelector) {
+      // dont load if server
+      if (!window) return
+
       // if loaded return
       if (this.loaded) return
+
       // load fonts
       WebFont.load({
          // google fonts

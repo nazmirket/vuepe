@@ -1,0 +1,28 @@
+@-webkit-keyframes play {
+  0% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+  50% {
+    -webkit-filter: hue-rotate(40deg) saturate(60) brightness(300%);
+            filter: hue-rotate(40deg) saturate(60) brightness(300%);
+  }
+  100% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+}
+@keyframes play {
+  0% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+  50% {
+    -webkit-filter: hue-rotate(40deg) saturate(60) brightness(300%);
+            filter: hue-rotate(40deg) saturate(60) brightness(300%);
+  }
+  100% {
+    -webkit-filter: hue-rotate(40deg) saturate(40) brightness(300%);
+            filter: hue-rotate(40deg) saturate(40) brightness(300%);
+  }
+}
