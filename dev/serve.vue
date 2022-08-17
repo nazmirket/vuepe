@@ -15,7 +15,7 @@
   
 <script>
 import Vue from "vue";
-import { Editor, Viewer } from "@/entry.esm";
+import { Editor, Viewer } from "../src/entry.esm";
 
 export default Vue.extend({
   name: "ServeDev",

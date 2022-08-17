@@ -1,10 +1,10 @@
 <template>
   <div class="pe-controller">
     <span class="pe-rotate-handle">
-      <img src="icons/rotate.svg" />
+      <img src="./icons/rotate.svg" />
     </span>
     <span class="pe-delete-handle">
-      <img src="icons/delete.svg" />
+      <img src="./icons/delete.svg" />
     </span>
     <div class="pe-thumbs">
       <span class="pe-thumb pe-thumb-top-left" />

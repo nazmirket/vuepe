@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Viewer from "/public/js/Viewer";
+import Viewer from "./js/Viewer";
 export default {
   props: {
     page: {

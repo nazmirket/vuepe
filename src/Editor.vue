@@ -23,7 +23,7 @@
 <script>
 import Toolbar from "./Toolbar.vue";
 import Controller from "./Controller.vue";
-import Editor from "/public/js/Editor";
+import Editor from "./js/Editor";
 export default {
   model: {
     prop: "page",
