@@ -1,7 +1,7 @@
 {
    "name": "vuepe",
    "author": "nazmiyilmaz",
-   "version": "1.2.6",
+   "version": "1.2.7",
    "description": "A multi purpose page editor plugin for Vue2",
    "main": "dist/vuepe.ssr.js",
    "browser": "dist/vuepe.esm.js",

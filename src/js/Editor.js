@@ -128,6 +128,8 @@ export default class Editor {
 
    // remove
    remove(component) {
+      if (!component) return
+
       const componentId = component.id
 
       // remove root of the element
