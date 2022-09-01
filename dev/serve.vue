@@ -80,6 +80,17 @@ export default Vue.extend({
                 height: 15,
               },
             },
+            {
+              id: "qw9e8q89we89qweasdsad89",
+              type: "audio",
+              props: {
+                src: "https://download.samplelib.com/mp3/sample-3s.mp3",
+              },
+              style: {
+                width: 8,
+                height: 8,
+              },
+            },
           ],
           style: {},
         };

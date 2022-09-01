@@ -95,6 +95,7 @@ export default class Editor {
          this.toolbar.show()
          this.controller.show()
       }
+
       // hide toolbar and controller
       else {
          this.toolbar.hide()
