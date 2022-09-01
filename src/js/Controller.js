@@ -1,4 +1,3 @@
-import Id from './Id.js'
 import ControllerStyle from './ControllerStyle'
 
 import Interact from './Interact'
@@ -8,8 +7,6 @@ import DeleteButton from './DeleteButton'
 import Thumb from './Thumb'
 
 export default class Controller {
-   // controller id
-   id
    // controller root element
    root
 
@@ -25,7 +22,6 @@ export default class Controller {
 
    // constructor
    constructor(editor) {
-      this.id = Id()
       this.editor = editor
       this.root = this.editor.root.querySelector('.pe-controller')
 
@@ -46,8 +42,6 @@ export default class Controller {
 
    // INIT
    init() {
-      this.root.setAttribute('id', this.id)
-
       this.deleteButton.init()
       this.rotateButton.init()
 
@@ -104,8 +98,10 @@ export default class Controller {
    // apply changes to the active component
    apply() {
       const active = this.editor.getActive()
-      active.style.copy(this.style)
-      active.reload()
+      if (active) {
+         active.style.copy(this.style)
+         active.reload()
+      }
    }
 
    // resize

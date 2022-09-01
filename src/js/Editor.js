@@ -41,10 +41,13 @@ export default class Editor {
       // change listener
       change: function () {
          const style = { ...this.style.toObject() }
+         const active = this.active
          const components = Object.values(this.components).map((c) => ({
+            id: c.id,
             type: c.type,
             props: c.props,
             style: c.style.toObject(),
+            isActive: c.id === active,
          }))
          this.onChange(components, style)
       }.bind(this),
@@ -52,12 +55,16 @@ export default class Editor {
 
    // load function
    load(components = [], style = {}) {
+      // clear
+      this.clear()
+
       // add components
       for (const data of components) {
-         const { type, style, props } = data
-         const component = ComponentFactory(this, style, props, type)
-         this.components[component.id] = component
-         component.init()
+         const { type, style, props, id, isActive } = data
+         this.components[id] = ComponentFactory(this, style, props, type, id)
+         this.components[id].init()
+
+         if (isActive) this.setActive(id)
       }
 
       // load style
@@ -88,7 +95,7 @@ export default class Editor {
          this.toolbar.show()
          this.controller.show()
       }
-      // hide if not
+      // hide toolbar and controller
       else {
          this.toolbar.hide()
          this.controller.hide()
@@ -97,7 +104,9 @@ export default class Editor {
 
    // get active component
    getActive() {
-      return this.components[this.active]
+      return this.components[this.active]?.id
+         ? this.components[this.active]
+         : undefined
    }
 
    // get page
@@ -156,5 +165,12 @@ export default class Editor {
          .map((c) => c.style.z)
          .sort((a, b) => b - a)
          .pop()
+   }
+
+   // clear
+   clear() {
+      this.setActive()
+      this.page.querySelectorAll('.pe-element').forEach((e) => e.remove())
+      this.components = {}
    }
 }

@@ -20,6 +20,9 @@ export default class Tool {
 
    load() {
       const active = this.getActive()
+
+      if (!active) return this.hide()
+
       const hasTool = active.getToolbarOptions().includes(this.id)
 
       if (!hasTool) return this.hide()

@@ -5,7 +5,7 @@
       :width="viewport.w"
       :height="viewport.h"
       :zoom="100"
-      pageId="IUASHDYASDYQYNA"
+      pageId="asdasdasdasdasdasdsa"
     />
 
     <Viewer :page="page" :options="{ viewport }" :interactive="true" />
@@ -30,28 +30,8 @@ export default Vue.extend({
       },
       page: {
         components: [
-          // {
-          //   type: "image",
-          //   props: {
-          //     src: "https://media.istockphoto.com/photos/colored-powder-explosion-on-black-background-picture-id1140180560?k=20&m=1140180560&s=612x612&w=0&h=X_400OQDFQGqccORnKt2PHYvTZ3dBLeEnCH_hRiUQrY=",
-          //   },
-          //   style: {
-          //     z: 0,
-          //     width: 30,
-          //     height: 15,
-          //   },
-          // },
-          // {
-          //   type: "image",
-          //   props: {
-          //     src: "https://letsenhance.io/static/334225cab5be263aad8e3894809594ce/75c5a/MainAfter.jpg",
-          //   },
-          //   style: {
-          //     z: 5,
-          //     width: 30,
-          //   },
-          // },
           {
+            id: "qw9e8q89we89qwe89",
             type: "text",
             props: {
               content:
@@ -68,6 +48,7 @@ export default Vue.extend({
             },
           },
           {
+            id: "qw9e8q89we89qweasdsad89",
             type: "audio",
             props: {
               src: "https://download.samplelib.com/mp3/sample-3s.mp3",
@@ -82,7 +63,35 @@ export default Vue.extend({
       },
     };
   },
-  mounted() {},
+  mounted() {
+    setTimeout(
+      function () {
+        this.page = {
+          components: [
+            {
+              id: "ldoıqwnodnuıasdhjkjasd",
+              type: "image",
+              props: {
+                src: "https://letsenhance.io/static/334225cab5be263aad8e3894809594ce/75c5a/MainAfter.jpg",
+              },
+              style: {
+                z: 5,
+                width: 30,
+                height: 15,
+              },
+            },
+          ],
+          style: {},
+        };
+      }.bind(this),
+      2000
+    );
+  },
+  methods: {
+    onChange() {
+      console.log("change ....");
+    },
+  },
 });
 </script>
 

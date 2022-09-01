@@ -29,14 +29,9 @@ export default {
     prop: "page",
     event: "change",
   },
-  components: {
-    Toolbar,
-    Controller,
-  },
+  components: { Toolbar, Controller },
   data() {
-    return {
-      editor: null,
-    };
+    return { editor: null };
   },
   props: {
     page: {
@@ -71,20 +66,27 @@ export default {
       return this.ratio * this.width;
     },
   },
+  watch: {
+    page() {
+      this.load();
+    },
+  },
   mounted() {
-    const root = this.$refs.peditor;
-    this.editor = new Editor({ root: root, onChange: this.onChange });
-    this.editor.load([...this.page.components], this.page.style);
-
-    this.addToWindow();
+    if (this.page && this.pageId) this.load();
   },
   methods: {
     onChange(components, style) {
       this.$emit("change", { components, style });
     },
-    addToWindow() {
+    initPE() {
       if (!window?.$pe) window.$pe = {};
+    },
+    load() {
+      this.initPE();
+      const root = this.$refs.peditor;
+      this.editor = new Editor({ root, onChange: this.onChange });
       window.$pe[this.pageId] = this.editor;
+      this.editor.load([...this.page.components], this.page.style);
     },
   },
 };

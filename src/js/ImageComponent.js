@@ -2,8 +2,8 @@ import Component from './Component'
 import ToolMaps from './ToolMaps'
 
 export default class ImageComponent extends Component {
-   constructor(editor, style, props) {
-      super(editor, style, props, 'image')
+   constructor(editor, style, props, id) {
+      super(editor, style, props, 'image', id)
    }
 
    create() {

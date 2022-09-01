@@ -28,12 +28,12 @@ export default class AudioControl extends Tool {
    load() {
       super.load()
       const active = this.getActive()
-      this.src = active.props.src
+      this.src = active?.props?.src
       this.audio.src = this.src
    }
 
    setStatus(isPlaying) {
       const active = this.getActive()
-      active.setStatus(isPlaying)
+      active?.setStatus(isPlaying)
    }
 }

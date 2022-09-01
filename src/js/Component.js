@@ -1,5 +1,4 @@
 import ComponentStyle from './ComponentStyle'
-import Id from './Id.js'
 
 export default class Component {
    // root element
@@ -22,8 +21,8 @@ export default class Component {
    }
 
    // constructor
-   constructor(editor, style, props, type) {
-      this.id = Id()
+   constructor(editor, style, props, type, id) {
+      this.id = id
       this.editor = editor
       this.style = new ComponentStyle(style)
       this.props = { ...props }

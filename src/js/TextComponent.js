@@ -2,8 +2,8 @@ import Component from './Component'
 import ToolMaps from './ToolMaps'
 
 export default class TextComponent extends Component {
-   constructor(editor, style, props) {
-      super(editor, style, props, 'text')
+   constructor(editor, style, props, id) {
+      super(editor, style, props, 'text', id)
    }
 
    create() {

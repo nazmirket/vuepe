@@ -27,6 +27,9 @@ export default class FlipHorizontalButton extends Tool {
       super.load()
 
       const active = this.getActive()
+
+      if (!active) return
+
       this.flipped = active.style.transform.scaleX === -1
 
       if (this.flipped) this.button.classList.add('pe-is-active')

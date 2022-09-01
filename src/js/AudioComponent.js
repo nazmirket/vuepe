@@ -5,8 +5,8 @@ import Icons from './Icons'
 export default class AudioComponent extends Component {
    isPlaying = false
 
-   constructor(editor, style, props) {
-      super(editor, style, props, 'audio')
+   constructor(editor, style, props, id) {
+      super(editor, style, props, 'audio', id)
    }
 
    create() {
