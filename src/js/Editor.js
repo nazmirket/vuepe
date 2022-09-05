@@ -43,11 +43,11 @@ export default class Editor {
          const style = { ...this.style.toObject() }
          const active = this.active
          const components = Object.values(this.components).map((c) => ({
-            id: c.id,
+            id: c.cid,
             type: c.type,
             props: c.props,
             style: c.style.toObject(),
-            isActive: c.id === active,
+            isActive: c.cid === active,
          }))
          this.onChange(components, style)
       }.bind(this),
@@ -60,11 +60,11 @@ export default class Editor {
 
       // add components
       for (const data of components) {
-         const { type, style, props, id, isActive } = data
-         this.components[id] = ComponentFactory(this, style, props, type, id)
-         this.components[id].init()
+         const { type, style, props, cid, isActive } = data
+         this.components[cid] = ComponentFactory(this, style, props, type, cid)
+         this.components[cid].init()
 
-         if (isActive) this.setActive(id)
+         if (isActive) this.setActive(cid)
       }
 
       // load style
@@ -77,14 +77,14 @@ export default class Editor {
    }
 
    // set active component
-   setActive(id) {
-      if (this.active === id) return
+   setActive(cid) {
+      if (this.active === cid) return
 
       // remove active class from old one
       const c1 = this.getActive()
       c1?.root?.classList?.remove('pe-is-active')
 
-      this.active = id
+      this.active = cid
 
       // add active class to new one
       const c2 = this.getActive()
@@ -105,7 +105,7 @@ export default class Editor {
 
    // get active component
    getActive() {
-      return this.components[this.active]?.id
+      return this.components[this.active]?.cid
          ? this.components[this.active]
          : undefined
    }
@@ -120,7 +120,7 @@ export default class Editor {
       const { type, style, props } = data
       const component = ComponentFactory(this, style, props, type)
 
-      this.components[component.id] = component
+      this.components[component.cid] = component
       component.init()
 
       this.sync()
@@ -130,7 +130,7 @@ export default class Editor {
    remove(component) {
       if (!component) return
 
-      const componentId = component.id
+      const componentId = component.cid
 
       // remove root of the element
       this.components[componentId]?.remove()

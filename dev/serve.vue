@@ -31,7 +31,7 @@ export default Vue.extend({
       page: {
         components: [
           {
-            id: "qw9e8q89we89qwe89",
+            cid: "qw9e8q89we89qwe89",
             type: "text",
             props: {
               content:
@@ -48,7 +48,7 @@ export default Vue.extend({
             },
           },
           {
-            id: "qw9e8q89we89qweasdsad89",
+            cid: "qw9e8q89we89qweasdsad89",
             type: "audio",
             props: {
               src: "https://download.samplelib.com/mp3/sample-3s.mp3",
@@ -69,7 +69,7 @@ export default Vue.extend({
         this.page = {
           components: [
             {
-              id: "ldoıqwnodnuıasdhjkjasd",
+              cid: "ldoıqwnodnuıasdhjkjasd",
               type: "image",
               props: {
                 src: "https://letsenhance.io/static/334225cab5be263aad8e3894809594ce/75c5a/MainAfter.jpg",
@@ -81,7 +81,7 @@ export default Vue.extend({
               },
             },
             {
-              id: "qw9e8q89we89qweasdsad89",
+              cid: "qw9e8q89we89qweasdsad89",
               type: "audio",
               props: {
                 src: "https://download.samplelib.com/mp3/sample-3s.mp3",
