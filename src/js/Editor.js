@@ -43,7 +43,7 @@ export default class Editor {
          const style = { ...this.style.toObject() }
          const active = this.active
          const components = Object.values(this.components).map((c) => ({
-            id: c.cid,
+            cid: c.cid,
             type: c.type,
             props: c.props,
             style: c.style.toObject(),
@@ -117,8 +117,8 @@ export default class Editor {
 
    // insert
    insert(data) {
-      const { type, style, props } = data
-      const component = ComponentFactory(this, style, props, type)
+      const { type, style, props, cid } = data
+      const component = ComponentFactory(this, style, props, type, cid)
 
       this.components[component.cid] = component
       component.init()
