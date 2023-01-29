@@ -25,10 +25,6 @@ export default {
       type: Object,
       default: () => {},
     },
-    interactive: {
-      type: Boolean,
-      default: false,
-    },
   },
   data() {
     return {
@@ -102,7 +98,7 @@ export default {
   },
   mounted() {
     const root = this.$refs.peviewer;
-    this.viewer = new Viewer({ root: root, interactive: this.interactive });
+    this.viewer = new Viewer({ root: root });
     this.viewer.clear();
     this.viewer.render(
       [...(this.page?.components || [])],

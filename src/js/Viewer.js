@@ -6,8 +6,6 @@ export default class Viewer {
    root
    page
 
-   interactive = false
-
    // style
    style
 
@@ -18,9 +16,6 @@ export default class Viewer {
       // root
       this.root = opts.root
       this.page = this.root.querySelector('.pe-page')
-
-      // interactive prop
-      this.interactive = opts.interactive
 
       // load fonts
       FontLoader.load()

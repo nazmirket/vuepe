@@ -99,11 +99,6 @@
           <input type="range" min="0" max="100" class="pe-opacity-slider" />
         </div>
       </span>
-
-      <!--AUDIO-->
-      <span class="pe-tool pe-audio-control">
-        <audio controls></audio>
-      </span>
     </div>
   </div>
 </template>

@@ -1,6 +1,8 @@
+@use 'sass:math';
+
 @for $i from 8 through 40 {
    $perc: ($i * 5);
-   $ratio: ($perc / 100);
+   $ratio: math.div($perc, 100);
    .pe-zoom-#{$perc} {
       .pe-page {
          transform: scale($ratio);

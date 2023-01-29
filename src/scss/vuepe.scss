@@ -1,7 +1,6 @@
 @import 'variables.scss';
 @import 'pages.scss';
 @import 'zoom.scss';
-@import 'animation.scss';
 @import 'scrollbar.scss';
 
 // EDITOR
@@ -232,13 +231,6 @@
          filter: saturate(25) brightness(150%);
       }
    }
-
-   // AUDIO CONTROL
-   .pe-audio-control {
-      audio {
-         height: 36px;
-      }
-   }
 }
 
 // CONTROLLER
@@ -467,26 +459,6 @@
          &:focus {
             outline: none !important;
          }
-      }
-   }
-
-   // AUDIO
-   &.pe-is-element-audio {
-      display: flex;
-      .pe-item {
-         width: 100%;
-         cursor: unset;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         img {
-            display: flex;
-            width: 100%;
-         }
-      }
-      &.pe-is-on-play img {
-         animation: play 3s;
-         animation-iteration-count: infinite;
       }
    }
 }

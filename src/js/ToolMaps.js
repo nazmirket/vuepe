@@ -26,12 +26,4 @@ export default {
          rotate: true,
       },
    },
-   audio: {
-      toolbar: ['ti003', 'ti004', 'ti013'],
-      controller: {
-         delete: true,
-         resize: false,
-         rotate: false,
-      },
-   },
 }

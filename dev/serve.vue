@@ -8,7 +8,7 @@
       pageId="asdasdasdasdasdasdsa"
     />
 
-    <Viewer :page="page" :options="{ viewport }" :interactive="true" />
+    <Viewer :page="page" :options="{ viewport }" />
   </div>
 </template>
 
@@ -47,17 +47,6 @@ export default Vue.extend({
               },
             },
           },
-          {
-            cid: "qw9e8q89we89qweasdsad89",
-            type: "audio",
-            props: {
-              src: "https://download.samplelib.com/mp3/sample-3s.mp3",
-            },
-            style: {
-              width: 8,
-              height: 8,
-            },
-          },
         ],
         style: {},
       },
@@ -78,17 +67,6 @@ export default Vue.extend({
                 z: 5,
                 width: 30,
                 height: 15,
-              },
-            },
-            {
-              cid: "qw9e8q89we89qweasdsad89",
-              type: "audio",
-              props: {
-                src: "https://download.samplelib.com/mp3/sample-3s.mp3",
-              },
-              style: {
-                width: 8,
-                height: 8,
               },
             },
           ],
